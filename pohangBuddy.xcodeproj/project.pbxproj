@@ -17,6 +17,7 @@
 		EC4230EA2F7819860009F673 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D92F7819860009F673 /* Pretendard-SemiBold.ttf */; };
 		EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4230DB2F7819860009F673 /* Assets.xcassets */; };
 		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
+		EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230F02F7828F60009F673 /* FishCareView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pohangBuddyApp.swift; sourceTree = "<group>"; };
 		EC4230E02F7819860009F673 /* StampStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusView.swift; sourceTree = "<group>"; };
 		EC4230ED2F7819E10009F673 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		EC4230F02F7828F60009F673 /* FishCareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCareView.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -60,11 +62,12 @@
 			isa = PBXGroup;
 			children = (
 				EC4230DB2F7819860009F673 /* Assets.xcassets */,
-				EC4230DC2F7819860009F673 /* DropDownView.swift */,
-				EC4230DD2F7819860009F673 /* HomeView.swift */,
 				EC4230DE2F7819860009F673 /* Info.plist */,
-				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
+				EC4230DD2F7819860009F673 /* HomeView.swift */,
+				EC4230F02F7828F60009F673 /* FishCareView.swift */,
+				EC4230DC2F7819860009F673 /* DropDownView.swift */,
 				EC4230E02F7819860009F673 /* StampStatusView.swift */,
+				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230DA2F7819860009F673 /* Font */,
 				EC4230EF2F781E000009F673 /* Extension */,
 			);
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC4230E22F7819860009F673 /* DropDownView.swift in Sources */,
+				EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */,
 				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
 				EC4230E32F7819860009F673 /* HomeView.swift in Sources */,
 				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,

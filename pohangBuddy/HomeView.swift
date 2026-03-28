@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showModal = false
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -49,7 +51,7 @@ struct HomeView: View {
 
             Spacer()
 
-            Button(action: tappedStamp) {
+            Button(action: fishCareButtonTapped) {
                 Text("밥 주러 가기")
                     .foregroundStyle(Color.black.opacity(0.6))
                     .font(.head3)
@@ -59,11 +61,14 @@ struct HomeView: View {
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
+            .sheet(isPresented: self.$showModal) {
+                FishCareView()
+            }
         }
     }
 
-    private func tappedStamp() {
-        print("탭!")
+    private func fishCareButtonTapped() {
+        self.showModal = true
     }
 }
 
