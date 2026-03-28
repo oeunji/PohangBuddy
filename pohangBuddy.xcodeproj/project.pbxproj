@@ -59,16 +59,24 @@
 		EC4230E12F7819860009F673 /* pohangBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				EC4230DA2F7819860009F673 /* Font */,
 				EC4230DB2F7819860009F673 /* Assets.xcassets */,
 				EC4230DC2F7819860009F673 /* DropDownView.swift */,
 				EC4230DD2F7819860009F673 /* HomeView.swift */,
 				EC4230DE2F7819860009F673 /* Info.plist */,
 				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230E02F7819860009F673 /* StampStatusView.swift */,
-				EC4230ED2F7819E10009F673 /* Font+Extension.swift */,
+				EC4230DA2F7819860009F673 /* Font */,
+				EC4230EF2F781E000009F673 /* Extension */,
 			);
 			path = pohangBuddy;
+			sourceTree = "<group>";
+		};
+		EC4230EF2F781E000009F673 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EC4230ED2F7819E10009F673 /* Font+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		ECE5E91A2F7622F30087EB62 = {
