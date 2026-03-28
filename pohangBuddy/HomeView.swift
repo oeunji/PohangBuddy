@@ -32,10 +32,11 @@ struct HomeView: View {
                 .padding(.top, 12)
 
             HStack {
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text("스탬프 현황")
-                        .font(.title)
+                        .font(.head2)
                     Text("10개 중 4개 채웠어요!")
+                        .font(.body1)
                 }
                 Spacer()
             }
@@ -48,13 +49,16 @@ struct HomeView: View {
 
             Spacer()
 
-            Button("밥 주러 가기", action: tappedStamp)
-                .frame(maxWidth: .infinity, minHeight: 48)
-                .background(Color.gray.opacity(0.2))
-                .foregroundStyle(Color.black)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal, 24)
-                .padding(.bottom, 24)
+            Button(action: tappedStamp) {
+                Text("밥 주러 가기")
+                    .foregroundStyle(Color.black.opacity(0.6))
+                    .font(.head3)
+                    .frame(maxWidth: .infinity, minHeight: 48)
+                    .background(Color.blue.opacity(0.2))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 24)
         }
     }
 

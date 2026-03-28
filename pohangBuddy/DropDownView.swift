@@ -23,6 +23,7 @@ struct DropDownView: View {
             HStack {
                 Text(selectedOption)
                     .foregroundStyle(Color.black)
+                    .font(.body1)
                 Spacer()
                 Image(systemName: "chevron.down")
                     .foregroundStyle(Color.black)
