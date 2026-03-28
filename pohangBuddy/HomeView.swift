@@ -25,6 +25,19 @@ struct HomeView: View {
         
         Image("map")
         
+        HStack {
+            VStack(alignment: .leading) {
+                Text("스탬프 현황")
+                    .font(.title)
+                Text("10개 중 4개 채웠어요!")
+            }
+            .padding(.leading, 24)
+            
+            Spacer()
+        }
+
+        
+        
         Spacer()
     }
 }
