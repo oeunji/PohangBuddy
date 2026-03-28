@@ -19,10 +19,9 @@ struct HomeView: View {
         
         DropDownView()
         
+        Image("map")
+        
         Spacer()
-        
-
-        
     }
 }
 
