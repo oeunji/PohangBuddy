@@ -17,7 +17,11 @@ struct HomeView: View {
         .padding(.top, 10)
         .padding(.bottom, 24)
         
-        DropDownView()
+        HStack {
+            DropDownView()
+                .padding(.leading, 24)
+            Spacer()
+        }
         
         Image("map")
         
