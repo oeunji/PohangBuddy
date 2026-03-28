@@ -27,6 +27,7 @@ struct HomeView: View {
             Image("map")
                 .resizable()
                 .scaledToFit()
+                .cornerRadius(24)
                 .padding(.horizontal, 24)
                 .padding(.top, 12)
 
