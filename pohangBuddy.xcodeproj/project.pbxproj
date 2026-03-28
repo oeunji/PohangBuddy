@@ -6,17 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EC4230E22F7819860009F673 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DC2F7819860009F673 /* DropDownView.swift */; };
+		EC4230E32F7819860009F673 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DD2F7819860009F673 /* HomeView.swift */; };
+		EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */; };
+		EC4230E52F7819860009F673 /* StampStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230E02F7819860009F673 /* StampStatusView.swift */; };
+		EC4230E72F7819860009F673 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D62F7819860009F673 /* Pretendard-Light.ttf */; };
+		EC4230E82F7819860009F673 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D72F7819860009F673 /* Pretendard-Medium.ttf */; };
+		EC4230E92F7819860009F673 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D82F7819860009F673 /* Pretendard-Regular.ttf */; };
+		EC4230EA2F7819860009F673 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D92F7819860009F673 /* Pretendard-SemiBold.ttf */; };
+		EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4230DB2F7819860009F673 /* Assets.xcassets */; };
+		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		EC4230D62F7819860009F673 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.ttf"; sourceTree = "<group>"; };
+		EC4230D72F7819860009F673 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.ttf"; sourceTree = "<group>"; };
+		EC4230D82F7819860009F673 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
+		EC4230D92F7819860009F673 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
+		EC4230DB2F7819860009F673 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EC4230DC2F7819860009F673 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		EC4230DD2F7819860009F673 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EC4230DE2F7819860009F673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pohangBuddyApp.swift; sourceTree = "<group>"; };
+		EC4230E02F7819860009F673 /* StampStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusView.swift; sourceTree = "<group>"; };
+		EC4230ED2F7819E10009F673 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		ECE5E9252F7622F30087EB62 /* pohangBuddy */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = pohangBuddy;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		ECE5E9202F7622F30087EB62 /* Frameworks */ = {
@@ -29,10 +45,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC4230DA2F7819860009F673 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				EC4230D92F7819860009F673 /* Pretendard-SemiBold.ttf */,
+				EC4230D72F7819860009F673 /* Pretendard-Medium.ttf */,
+				EC4230D82F7819860009F673 /* Pretendard-Regular.ttf */,
+				EC4230D62F7819860009F673 /* Pretendard-Light.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		EC4230E12F7819860009F673 /* pohangBuddy */ = {
+			isa = PBXGroup;
+			children = (
+				EC4230DA2F7819860009F673 /* Font */,
+				EC4230DB2F7819860009F673 /* Assets.xcassets */,
+				EC4230DC2F7819860009F673 /* DropDownView.swift */,
+				EC4230DD2F7819860009F673 /* HomeView.swift */,
+				EC4230DE2F7819860009F673 /* Info.plist */,
+				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
+				EC4230E02F7819860009F673 /* StampStatusView.swift */,
+				EC4230ED2F7819E10009F673 /* Font+Extension.swift */,
+			);
+			path = pohangBuddy;
+			sourceTree = "<group>";
+		};
 		ECE5E91A2F7622F30087EB62 = {
 			isa = PBXGroup;
 			children = (
-				ECE5E9252F7622F30087EB62 /* pohangBuddy */,
+				EC4230E12F7819860009F673 /* pohangBuddy */,
 				ECE5E9242F7622F30087EB62 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +101,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				ECE5E9252F7622F30087EB62 /* pohangBuddy */,
 			);
 			name = pohangBuddy;
 			packageProductDependencies = (
@@ -109,6 +148,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC4230E72F7819860009F673 /* Pretendard-Light.ttf in Resources */,
+				EC4230E82F7819860009F673 /* Pretendard-Medium.ttf in Resources */,
+				EC4230E92F7819860009F673 /* Pretendard-Regular.ttf in Resources */,
+				EC4230EA2F7819860009F673 /* Pretendard-SemiBold.ttf in Resources */,
+				EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +163,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC4230E22F7819860009F673 /* DropDownView.swift in Sources */,
+				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
+				EC4230E32F7819860009F673 /* HomeView.swift in Sources */,
+				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,
+				EC4230E52F7819860009F673 /* StampStatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +305,7 @@
 				DEVELOPMENT_TEAM = AT9KX3ZBW6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pohangBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +338,7 @@
 				DEVELOPMENT_TEAM = AT9KX3ZBW6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pohangBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
