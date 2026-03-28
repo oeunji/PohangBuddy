@@ -35,7 +35,9 @@ struct HomeView: View {
             
             Spacer()
         }
-
+        
+        StampStatusView()
+            .padding(.horizontal, 24)
         
         
         Spacer()
