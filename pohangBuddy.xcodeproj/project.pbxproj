@@ -69,10 +69,10 @@
 				EC4230F02F7828F60009F673 /* FishCareView.swift */,
 				EC4230DC2F7819860009F673 /* DropDownView.swift */,
 				EC4230E02F7819860009F673 /* StampStatusView.swift */,
+				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
 				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230DA2F7819860009F673 /* Font */,
 				EC4230EF2F781E000009F673 /* Extension */,
-				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
 			);
 			path = pohangBuddy;
 			sourceTree = "<group>";
