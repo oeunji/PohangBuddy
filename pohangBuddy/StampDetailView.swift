@@ -83,7 +83,3 @@ struct StampDetailView: View {
 #Preview {
     StampDetailView()
 }
-
-#Preview {
-    StampDetailView()
-}
