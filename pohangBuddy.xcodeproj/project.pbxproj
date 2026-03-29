@@ -18,6 +18,8 @@
 		EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4230DB2F7819860009F673 /* Assets.xcassets */; };
 		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
 		EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230F02F7828F60009F673 /* FishCareView.swift */; };
+		ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */; };
+		ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34E2F78F62900B29402 /* UImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		EC4230ED2F7819E10009F673 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		EC4230F02F7828F60009F673 /* FishCareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCareView.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
+		ECF7B34E2F78F62900B29402 /* UImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,13 +65,11 @@
 		EC4230E12F7819860009F673 /* pohangBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230DB2F7819860009F673 /* Assets.xcassets */,
 				EC4230DE2F7819860009F673 /* Info.plist */,
-				EC4230DD2F7819860009F673 /* HomeView.swift */,
-				EC4230F02F7828F60009F673 /* FishCareView.swift */,
-				EC4230DC2F7819860009F673 /* DropDownView.swift */,
-				EC4230E02F7819860009F673 /* StampStatusView.swift */,
-				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
+				ECF7B3502F78FBBE00B29402 /* View */,
+				ECF7B3512F78FBCF00B29402 /* Components */,
 				EC4230DA2F7819860009F673 /* Font */,
 				EC4230EF2F781E000009F673 /* Extension */,
 			);
@@ -96,6 +98,34 @@
 				ECE5E9232F7622F30087EB62 /* pohangBuddy.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		ECF7B3502F78FBBE00B29402 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC4230DD2F7819860009F673 /* HomeView.swift */,
+				EC4230F02F7828F60009F673 /* FishCareView.swift */,
+				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECF7B3512F78FBCF00B29402 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ECF7B3522F78FC1200B29402 /* ImagePicker */,
+				EC4230DC2F7819860009F673 /* DropDownView.swift */,
+				EC4230E02F7819860009F673 /* StampStatusView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		ECF7B3522F78FC1200B29402 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				ECF7B34E2F78F62900B29402 /* UImagePicker.swift */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +204,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */,
 				EC4230E22F7819860009F673 /* DropDownView.swift in Sources */,
 				EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */,
+				ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */,
 				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
 				EC4230E32F7819860009F673 /* HomeView.swift in Sources */,
 				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,
@@ -318,6 +350,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pohangBuddy/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 업로드하기 위해 사진 라이브러리 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -351,6 +384,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pohangBuddy/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 업로드하기 위해 사진 라이브러리 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
