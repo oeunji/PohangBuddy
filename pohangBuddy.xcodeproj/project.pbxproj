@@ -65,17 +65,13 @@
 		EC4230E12F7819860009F673 /* pohangBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230DB2F7819860009F673 /* Assets.xcassets */,
 				EC4230DE2F7819860009F673 /* Info.plist */,
-				EC4230DD2F7819860009F673 /* HomeView.swift */,
-				EC4230F02F7828F60009F673 /* FishCareView.swift */,
-				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
+				ECF7B3502F78FBBE00B29402 /* View */,
+				ECF7B3512F78FBCF00B29402 /* Components */,
 				EC4230DA2F7819860009F673 /* Font */,
 				EC4230EF2F781E000009F673 /* Extension */,
-				ECF7B34E2F78F62900B29402 /* UImagePicker.swift */,
-				EC4230DC2F7819860009F673 /* DropDownView.swift */,
-				EC4230E02F7819860009F673 /* StampStatusView.swift */,
-				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 			);
 			path = pohangBuddy;
 			sourceTree = "<group>";
@@ -102,6 +98,34 @@
 				ECE5E9232F7622F30087EB62 /* pohangBuddy.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		ECF7B3502F78FBBE00B29402 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC4230DD2F7819860009F673 /* HomeView.swift */,
+				EC4230F02F7828F60009F673 /* FishCareView.swift */,
+				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECF7B3512F78FBCF00B29402 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ECF7B3522F78FC1200B29402 /* ImagePicker */,
+				EC4230DC2F7819860009F673 /* DropDownView.swift */,
+				EC4230E02F7819860009F673 /* StampStatusView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		ECF7B3522F78FC1200B29402 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				ECF7B34E2F78F62900B29402 /* UImagePicker.swift */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
