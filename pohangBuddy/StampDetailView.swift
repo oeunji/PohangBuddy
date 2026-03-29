@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct StampDetailView: View {
-    @State var openPhoto = false
-    @State var image: UIImage?
-
+    @State private var openPhoto = false
+    @State private var image: UIImage?
+    @State private var reviewText: String = "리뷰를 작성해보세요!"
+    
     var body: some View {
         VStack(spacing: 12) {
             Text("미션! 물회 먹방")
@@ -44,7 +45,16 @@ struct StampDetailView: View {
                     .scaledToFit()
                     .frame(height: 100)
             }
-
+            
+            TextEditor(text: $reviewText)
+                .padding()
+                .foregroundColor(Color.black)
+                .font(.body2)
+                .lineSpacing(5)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200)
+                .border(Color.gray, width: 1)
+                .padding()
+            
             Spacer()
             
             Button(action: stampButtonTapped) {
