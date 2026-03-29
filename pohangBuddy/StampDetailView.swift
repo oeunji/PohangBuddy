@@ -10,7 +10,7 @@ import SwiftUI
 struct StampDetailView: View {
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 12) {
             Text("미션! 물회 먹방")
                 .font(.display1)
             
@@ -24,6 +24,12 @@ struct StampDetailView: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 12)
             
+            VStack(alignment: .leading) {
+                Text("주소 - 경북 포항시 북구 동빈로 106")
+                Text("거리 - 2.4km")
+                Text("예상 비용 - 19,000원")
+            }
+
             Spacer()
         }
         
