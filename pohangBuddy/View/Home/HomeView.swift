@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var showModal = false
     @State private var selectedStamp: Int?
-
+    @State private var showModal = false
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -55,17 +55,12 @@ struct HomeView: View {
 
                 Spacer()
 
-                Button(action: fishCareButtonTapped) {
-                    Text("밥 주러 가기")
-                        .foregroundStyle(Color.black.opacity(0.6))
-                        .font(.head3)
-                        .frame(maxWidth: .infinity, minHeight: 48)
-                        .background(Color.blue.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                FishCareButton {
+                    showModal = true
                 }
                 .padding(.horizontal, 24)
                 .padding(.bottom, 24)
-                .sheet(isPresented: self.$showModal) {
+                .sheet(isPresented: $showModal) {
                     FishCareView()
                 }
             }
@@ -73,10 +68,6 @@ struct HomeView: View {
                 StampDetailView()
             }
         }
-    }
-
-    private func fishCareButtonTapped() {
-        self.showModal = true
     }
 }
 
