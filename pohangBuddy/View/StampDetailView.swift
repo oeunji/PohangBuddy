@@ -20,7 +20,7 @@ struct StampDetailView: View {
             Text("포항특미물회")
                 .font(.head1)
 
-            Image(.물회)
+            Image(.물회)
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(24)
