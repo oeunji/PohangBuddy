@@ -35,12 +35,48 @@ struct FishCareView: View {
             ProgressView(value: levelProgress)
                 .padding()
             
-            
+            HStack {
+                VStack {
+                    Button(action: {
+                        feedFish()
+                    }, label: {
+                        Image(.fishFood)
+                            .imageScale(.large)
+                            .font(.largeTitle)
+                            .foregroundStyle(Color.black)
+                    })
+                    
+                    Text("밥 주기")
+                    
+                    Text("1회 남았어요")
+                }
+
+                VStack {
+                    Button(action: {
+                        loveFish()
+                    }, label: {
+                        Image(.fishLove)
+                            .imageScale(.large)
+                            .font(.largeTitle)
+                            .foregroundStyle(Color.black)
+                    })
+                    
+                    Text("밥 주기")
+                    
+                    Text("1회 남았어요")
+                }
+            }
             
             Spacer()
-            
-            Text("밥 주러 왔다!")
         }
+    }
+    
+    private func feedFish() {
+        
+    }
+    
+    private func loveFish() {
+        
     }
 }
 
