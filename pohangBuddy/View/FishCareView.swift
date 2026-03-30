@@ -32,8 +32,13 @@ struct FishCareView: View {
             Text("Level 1")
                 .padding()
             
-            ProgressView(value: levelProgress)
-                .padding()
+            VStack(alignment: .trailing) {
+                ProgressView(value: levelProgress)
+                
+                Text("레벨업까지 50% 남았어요")
+            }
+            .padding()
+
             
             HStack {
                 VStack {
