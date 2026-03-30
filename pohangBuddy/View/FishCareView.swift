@@ -8,7 +8,32 @@
 import SwiftUI
 
 struct FishCareView: View {
+
+    @Environment(\.dismiss) private var dismissView
+
     var body: some View {
-        Text("밥 주러 왔다!")
+        VStack(spacing: 0) {
+            HStack {
+                Button(action: {
+                    dismissView()
+                }, label: {
+                    Image(systemName: "x.circle")
+                        .imageScale(.large)
+                        .font(.largeTitle)
+                        .foregroundStyle(Color.black)
+                })
+                
+                Spacer()
+            }
+
+            
+            Spacer()
+            
+            Text("밥 주러 왔다!")
+        }
     }
+}
+
+#Preview {
+    FishCareView()
 }
