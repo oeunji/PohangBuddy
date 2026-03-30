@@ -22,18 +22,16 @@ struct HomeView: View {
                     HomeTopBarView()
                         .ignoresSafeArea()
                     
-                    HStack {
+                    VStack(spacing: 12) {
                         DropDownView()
-                        Spacer()
+
+                        Image("map")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity)
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
                     }
                     .padding(.horizontal, 24)
-                    
-                    Image("map")
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(24)
-                        .padding(.horizontal, 24)
-                        .padding(.top, 12)
                     
                     HStack {
                         VStack(alignment: .leading, spacing: 8) {
