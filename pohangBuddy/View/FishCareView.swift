@@ -10,6 +10,7 @@ import SwiftUI
 struct FishCareView: View {
 
     @Environment(\.dismiss) private var dismissView
+    @State private var levelProgress = 0.5
 
     var body: some View {
         VStack(spacing: 0) {
@@ -28,6 +29,13 @@ struct FishCareView: View {
             
             Image("fishNormal")
 
+            Text("Level 1")
+                .padding()
+            
+            ProgressView(value: levelProgress)
+                .padding()
+            
+            
             
             Spacer()
             
