@@ -14,17 +14,13 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                
                 Color("backgroundColor")
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    HStack {
-                        Image("logo")
-                        Spacer()
-                    }
-                    .padding(.leading, 24)
-                    .padding(.top, 10)
-                    .padding(.bottom, 24)
+                    HomeTopBarView()
+                        .ignoresSafeArea()
                     
                     HStack {
                         DropDownView()
