@@ -21,6 +21,8 @@ struct DropDownView: View {
             }
         } label: {
             HStack {
+                Image("mapFlagsFull")
+                    .foregroundStyle(Color.black)
                 Text(selectedOption)
                     .foregroundStyle(Color.black)
                     .font(.body1)
