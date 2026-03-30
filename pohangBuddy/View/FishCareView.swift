@@ -22,9 +22,11 @@ struct FishCareView: View {
                         .font(.largeTitle)
                         .foregroundStyle(Color.black)
                 })
-                
+                    
                 Spacer()
             }
+            
+            Image("fishNormal")
 
             
             Spacer()
