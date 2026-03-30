@@ -25,19 +25,22 @@ struct DropDownView: View {
                     .foregroundStyle(Color.black)
                 Text(selectedOption)
                     .foregroundStyle(Color.black)
-                    .font(.body1)
+                    .font(.head4)
                 Spacer()
                 Image(systemName: "chevron.down")
                     .foregroundStyle(Color.black)
             }
-            .padding()
+            .padding(.horizontal, 16)
+            .frame(height: 56)
             .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: 28))
             .overlay(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 28)
                     .stroke(Color.gray, lineWidth: 1)
             )
         }
+        .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
+
     }
 
 }
