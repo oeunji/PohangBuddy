@@ -13,12 +13,20 @@ struct FishCareButton: View {
     
     var body: some View {
         Button(action: action) {
-            Text("밥 주러 가기")
-                .foregroundStyle(Color.black.opacity(0.6))
-                .font(.head3)
-                .frame(maxWidth: .infinity, minHeight: 60)
-                .background(Color.blue.opacity(0.2))
-                .clipShape(RoundedRectangle(cornerRadius: 30))
+            Label {
+                Text("밥 주러 가기")
+            } icon: {
+                Image("meal")
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+            }
+            .foregroundStyle(Color.white)
+            .font(.head3)
+            .frame(maxWidth: .infinity, minHeight: 60)
+            .background(Color.blue.opacity(0.2))
+            .clipShape(RoundedRectangle(cornerRadius: 30))
         }
     }
 }
