@@ -32,7 +32,7 @@ struct HomeTopBarView: View {
                         topTrailingRadius: 0
                     )
                 )
-                .shadow(color: .black.opacity(0.06), radius: 10, y: 4)
+                .shadow(color: .black.opacity(0.08), radius: 10, y: 4)
         )
     }
 }
