@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var selectedStamp: Int?
     @State private var showModal = false
+    @State private var selectedDropDown = DropDownModel.samples[0]
     
     var body: some View {
         VStack{
@@ -22,7 +23,10 @@ struct HomeView: View {
                         
                         ScrollView {
                             VStack(spacing: 12) {
-                                DropDownView()
+                                DropDownView(
+                                    selectedOption: $selectedDropDown,
+                                    options: DropDownModel.samples
+                                )
                                     .padding(.top)
                                 
                                 Image("map")
@@ -37,7 +41,7 @@ struct HomeView: View {
                                 VStack(alignment: .leading, spacing: 8) {
                                     Text("스탬프 현황")
                                         .font(.head1)
-                                    Text("10개 중 4개 채웠어요!")
+                                    Text(selectedDropDown.statusSummary)
                                         .font(.body1)
                                 }
                                 Spacer()
@@ -45,7 +49,7 @@ struct HomeView: View {
                             .padding(.horizontal, 24)
                             .padding(.top, 16)
                             
-                            StampStatusView { index in
+                            StampStatusView(stampStatuses: selectedDropDown.stampStatuses) { index in
                                 selectedStamp = index
                             }
                             .cornerRadius(36)

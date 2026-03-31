@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563A2F7B7599003A25EE /* DropDownModel.swift */; };
+		EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563C2F7B761A003A25EE /* StampStatusModel.swift */; };
 		EC4230E22F7819860009F673 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DC2F7819860009F673 /* DropDownView.swift */; };
 		EC4230E32F7819860009F673 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DD2F7819860009F673 /* HomeView.swift */; };
 		EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC32563A2F7B7599003A25EE /* DropDownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownModel.swift; sourceTree = "<group>"; };
+		EC32563C2F7B761A003A25EE /* StampStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusModel.swift; sourceTree = "<group>"; };
 		EC4230D62F7819860009F673 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.ttf"; sourceTree = "<group>"; };
 		EC4230D72F7819860009F673 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.ttf"; sourceTree = "<group>"; };
 		EC4230D82F7819860009F673 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
@@ -55,6 +59,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC3256382F7B7582003A25EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC3256392F7B758E003A25EE /* Home */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC3256392F7B758E003A25EE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EC32563A2F7B7599003A25EE /* DropDownModel.swift */,
+				EC32563C2F7B761A003A25EE /* StampStatusModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		EC4230DA2F7819860009F673 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +93,7 @@
 				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230DB2F7819860009F673 /* Assets.xcassets */,
 				EC4230DE2F7819860009F673 /* Info.plist */,
+				EC3256382F7B7582003A25EE /* Model */,
 				ECF7B3502F78FBBE00B29402 /* View */,
 				ECF7B3512F78FBCF00B29402 /* Components */,
 				EC4230DA2F7819860009F673 /* Font */,
@@ -233,6 +255,8 @@
 				EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */,
 				ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */,
 				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
+				EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */,
+				EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */,
 				EC4230E32F7819860009F673 /* HomeView.swift in Sources */,
 				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,
 				EC4230E52F7819860009F673 /* StampStatusView.swift in Sources */,

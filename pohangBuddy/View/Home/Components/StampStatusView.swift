@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StampStatusView: View {
+    let stampStatuses: [StampStatusModel]
     let onTapStamp: (Int) -> Void
 
     var body: some View {
@@ -16,17 +17,23 @@ struct StampStatusView: View {
                 columns: Array(repeating: GridItem(.fixed(60), spacing: 24), count: 4),
                 spacing: 18
             ) {
-                ForEach(0..<11) { index in
+                ForEach(stampStatuses) { stamp in
                     Button {
-                        onTapStamp(index)
+                        onTapStamp(stamp.id)
                     } label: {
-                        Text("\(index)")
-                            .foregroundStyle(Color.white)
+                        VStack(spacing: 4) {
+                            Text("\(stamp.id + 1)")
+                                .font(.head4)
+                            Text(stamp.title)
+                                .font(.micro)
+                                .lineLimit(1)
+                        }
+                            .foregroundStyle(stamp.state.foregroundColor)
                             .lineLimit(1)
                             .frame(width: 64, height: 64)
                             .background(
                                 RoundedRectangle(cornerRadius: 30)
-                                    .fill(Color.primary4)
+                                    .fill(stamp.state.backgroundColor)
                             )
                     }
                     .buttonStyle(.plain)
@@ -42,7 +49,7 @@ struct StampStatusView: View {
 
 #Preview {
     NavigationStack {
-        StampStatusView { index in
+        StampStatusView(stampStatuses: DropDownModel.samples[0].stampStatuses) { index in
             print(index)
         }
     }
