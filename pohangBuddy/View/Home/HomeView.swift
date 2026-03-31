@@ -19,6 +19,7 @@ struct HomeView: View {
                     
                     VStack(spacing: 12) {
                         DropDownView()
+                            .padding(.top)
 
                         Image("map")
                             .resizable()
