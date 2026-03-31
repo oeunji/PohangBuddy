@@ -12,8 +12,8 @@ struct StampStatusView: View {
 
     var body: some View {
         LazyVGrid(
-            columns: [GridItem(.adaptive(minimum: 80, maximum: 200))],
-            alignment: .center
+            columns: Array(repeating: GridItem(.fixed(60), spacing: 24), count: 4),
+            spacing: 18
         ) {
             ForEach(0..<11) { index in
                 Button {
@@ -22,10 +22,10 @@ struct StampStatusView: View {
                     Text("\(index)")
                         .foregroundStyle(Color.white)
                         .lineLimit(1)
-                        .frame(width: 60, height: 60)
+                        .frame(width: 64, height: 64)
                         .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.gray)
+                            RoundedRectangle(cornerRadius: 30)
+                                .fill(Color("stampBackgroundColor"))
                         )
                 }
                 .buttonStyle(.plain)

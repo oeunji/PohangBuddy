@@ -25,14 +25,14 @@ struct HomeView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(maxWidth: .infinity)
-                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                            .clipShape(RoundedRectangle(cornerRadius: 36))
                     }
                     .padding(.horizontal, 24)
                     
                     HStack {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("스탬프 현황")
-                                .font(.head2)
+                                .font(.head1)
                             Text("10개 중 4개 채웠어요!")
                                 .font(.body1)
                         }
