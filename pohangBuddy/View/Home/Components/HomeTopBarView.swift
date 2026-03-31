@@ -8,25 +8,32 @@
 import SwiftUI
 
 struct HomeTopBarView: View {
-    
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 32, style: .continuous)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
-
+        VStack(spacing: 0) {
             HStack {
                 Image("logo")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 56)
+                    .frame(height: 52)
 
                 Spacer()
             }
             .padding(.horizontal, 24)
-            .padding(.top, 44)
+            .padding(.bottom, 12)
         }
-        .frame(height: 140)
+        .frame(maxWidth: .infinity)
+        .background(
+            Color.white
+                .clipShape(
+                    UnevenRoundedRectangle(
+                        topLeadingRadius: 0,
+                        bottomLeadingRadius: 36,
+                        bottomTrailingRadius: 36,
+                        topTrailingRadius: 0
+                    )
+                )
+                .shadow(color: .black.opacity(0.06), radius: 10, y: 4)
+        )
     }
 }
 

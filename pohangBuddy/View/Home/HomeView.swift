@@ -14,13 +14,8 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
-                Color("backgroundColor")
-                    .ignoresSafeArea()
-                
                 VStack(spacing: 0) {
                     HomeTopBarView()
-                        .ignoresSafeArea()
                     
                     VStack(spacing: 12) {
                         DropDownView()
@@ -62,7 +57,12 @@ struct HomeView: View {
                         FishCareView()
                     }
                 }
+                .background(
+                    Color("backgroundColor")
+                        .edgesIgnoringSafeArea(.bottom)
+                )
             }
+
             .navigationDestination(item: $selectedStamp) { index in
                 StampDetailView()
             }
