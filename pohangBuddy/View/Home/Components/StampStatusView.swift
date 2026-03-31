@@ -26,7 +26,7 @@ struct StampStatusView: View {
                             .frame(width: 64, height: 64)
                             .background(
                                 RoundedRectangle(cornerRadius: 30)
-                                    .fill(Color("stampBackgroundColor"))
+                                    .fill(Color.primary4)
                             )
                     }
                     .buttonStyle(.plain)
@@ -34,7 +34,7 @@ struct StampStatusView: View {
             }
             .padding(.vertical)
             .background(
-                Color("stampColor")
+                Color.primary2
             )
         }
     }

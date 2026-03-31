@@ -50,9 +50,7 @@ struct HomeView: View {
                             }
                             .cornerRadius(36)
                             .padding(.horizontal, 24)
-                            .padding(.top, 16)
-                            
-                            Spacer()
+                            .padding(.vertical, 16)
                             
                             FishCareButton {
                                 showModal = true
@@ -67,7 +65,7 @@ struct HomeView: View {
                     
                 }
                 .background(
-                    Color("backgroundColor")
+                    Color.neutral1
                 )
                 .navigationDestination(item: $selectedStamp) { index in
                     StampDetailView()

@@ -15,6 +15,7 @@ struct FishCareButton: View {
         Button(action: action) {
             Label {
                 Text("밥 주러 가기")
+                    .font(.head3)
             } icon: {
                 Image("meal")
                     .renderingMode(.template)
@@ -25,8 +26,17 @@ struct FishCareButton: View {
             .foregroundStyle(Color.white)
             .font(.head3)
             .frame(maxWidth: .infinity, minHeight: 60)
-            .background(Color.blue.opacity(0.2))
-            .clipShape(RoundedRectangle(cornerRadius: 30))
+            .background(
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.primary3, Color.primary8],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+            )
+            .shadow(color: Color.blue.opacity(0.3), radius: 8, y: 4)
         }
     }
 }
