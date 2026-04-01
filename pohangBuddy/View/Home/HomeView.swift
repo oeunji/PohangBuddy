@@ -73,6 +73,7 @@ struct HomeView: View {
                 )
                 .navigationDestination(item: $selectedStamp) { index in
                     StampDetailView()
+                        .navigationTitle("미션! 물회 먹기")
                 }
             }
             
