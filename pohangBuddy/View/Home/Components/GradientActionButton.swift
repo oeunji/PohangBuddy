@@ -1,5 +1,5 @@
 //
-//  FishCareButton.swift
+//  GradientActionButton.swift
 //  pohangBuddy
 //
 //  Created by 이은지 on 3/30/26.
@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct FishCareButton: View {
-    
+struct GradientActionButton: View {
+    let title: String
+    let imageName: String
     let action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
             Label {
-                Text("밥 주러 가기")
+                Text(title)
                     .font(.head3)
             } icon: {
-                Image("meal")
+                Image(imageName)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
             }
             .foregroundStyle(Color.white)
-            .font(.head3)
             .frame(maxWidth: .infinity, minHeight: 60)
             .background(
                 RoundedRectangle(cornerRadius: 30)
@@ -38,9 +38,6 @@ struct FishCareButton: View {
             )
             .shadow(color: Color.blue.opacity(0.3), radius: 8, y: 4)
         }
+        .buttonStyle(.plain)
     }
-}
-
-#Preview {
-    FishCareButton(action: {})
 }

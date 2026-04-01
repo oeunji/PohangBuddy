@@ -55,13 +55,11 @@ struct StampDetailView: View {
             
             Spacer()
             
-            Button(action: stampButtonTapped) {
-                Text("스탬프 찍기")
-                    .foregroundStyle(Color.black.opacity(0.6))
-                    .font(.head3)
-                    .frame(maxWidth: .infinity, minHeight: 48)
-                    .background(Color.blue.opacity(0.2))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            GradientActionButton(
+                title: "스탬프 찍기",
+                imageName: "completeIcon"
+            ) {
+                stampButtonTapped()
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 24)

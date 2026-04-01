@@ -56,7 +56,10 @@ struct HomeView: View {
                             .padding(.horizontal, 24)
                             .padding(.vertical, 16)
                             
-                            FishCareButton {
+                            GradientActionButton(
+                                title: "밥 주러 가기",
+                                imageName: "meal"
+                            ) {
                                 showModal = true
                             }
                             .padding(.horizontal, 24)

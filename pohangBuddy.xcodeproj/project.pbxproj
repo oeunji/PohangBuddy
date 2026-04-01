@@ -20,7 +20,7 @@
 		EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4230DB2F7819860009F673 /* Assets.xcassets */; };
 		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
 		EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230F02F7828F60009F673 /* FishCareView.swift */; };
-		ECEAC0A02F7A1B24009B5B16 /* FishCareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC09F2F7A1B24009B5B16 /* FishCareButton.swift */; };
+		ECEAC0A02F7A1B24009B5B16 /* GradientActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC09F2F7A1B24009B5B16 /* GradientActionButton.swift */; };
 		ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */; };
 		ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */; };
 		ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34E2F78F62900B29402 /* UImagePicker.swift */; };
@@ -42,7 +42,7 @@
 		EC4230ED2F7819E10009F673 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		EC4230F02F7828F60009F673 /* FishCareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCareView.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECEAC09F2F7A1B24009B5B16 /* FishCareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCareButton.swift; sourceTree = "<group>"; };
+		ECEAC09F2F7A1B24009B5B16 /* GradientActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientActionButton.swift; sourceTree = "<group>"; };
 		ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopBarView.swift; sourceTree = "<group>"; };
 		ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
 		ECF7B34E2F78F62900B29402 /* UImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImagePicker.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 			children = (
 				EC4230DC2F7819860009F673 /* DropDownView.swift */,
 				EC4230E02F7819860009F673 /* StampStatusView.swift */,
-				ECEAC09F2F7A1B24009B5B16 /* FishCareButton.swift */,
+				ECEAC09F2F7A1B24009B5B16 /* GradientActionButton.swift */,
 				ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */,
 			);
 			path = Components;
@@ -248,7 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECEAC0A02F7A1B24009B5B16 /* FishCareButton.swift in Sources */,
+				ECEAC0A02F7A1B24009B5B16 /* GradientActionButton.swift in Sources */,
 				ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */,
 				ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */,
 				EC4230E22F7819860009F673 /* DropDownView.swift in Sources */,
