@@ -27,9 +27,9 @@ extension DropDownModel {
             id: "restaurant-day",
             title: "오늘은 맛집 데이",
             stampStatuses: [
-                StampStatusModel(id: 0, title: "물회", state: .completed, detail: .restaurantDayMoolhoe),
-                StampStatusModel(id: 1, title: "과메기", state: .completed, detail: .restaurantDayGwamegi),
-                StampStatusModel(id: 2, title: "초밥", state: .completed, detail: .restaurantDaySushi),
+                StampStatusModel(id: 0, title: "물회", state: .available, detail: .restaurantDayMoolhoe),
+                StampStatusModel(id: 1, title: "과메기", state: .available, detail: .restaurantDayGwamegi),
+                StampStatusModel(id: 2, title: "초밥", state: .available, detail: .restaurantDaySushi),
                 StampStatusModel(id: 3, title: "칼국수", state: .available, detail: .restaurantDayKalguksu),
                 StampStatusModel(id: 4, title: "국밥", state: .available, detail: .restaurantDayGukbap),
                 StampStatusModel(id: 5, title: "분식", state: .available, detail: .restaurantDayBunsik)
@@ -39,7 +39,7 @@ extension DropDownModel {
             id: "dopamine-day",
             title: "오늘은 도파민 데이",
             stampStatuses: [
-                StampStatusModel(id: 0, title: "서핑", state: .completed, detail: .dopamineDaySurfing),
+                StampStatusModel(id: 0, title: "서핑", state: .available, detail: .dopamineDaySurfing),
                 StampStatusModel(id: 1, title: "클라이밍", state: .available, detail: .dopamineDayNightMarket),
                 StampStatusModel(id: 2, title: "게임", state: .available, detail: .dopamineDayGame),
                 StampStatusModel(id: 3, title: "ATV", state: .available, detail: .dopamineDayKaraoke),
@@ -53,10 +53,10 @@ extension DropDownModel {
             id: "healing-day",
             title: "오늘은 힐링 데이",
             stampStatuses: [
-                StampStatusModel(id: 0, title: "바다 산책", state: .completed, detail: .healingDaySeaWalk),
-                StampStatusModel(id: 1, title: "카페", state: .completed, detail: .healingDayCafe),
-                StampStatusModel(id: 2, title: "사찰", state: .completed, detail: .healingDayTemple),
-                StampStatusModel(id: 3, title: "정원", state: .completed, detail: .healingDayGarden)
+                StampStatusModel(id: 0, title: "바다 산책", state: .available, detail: .healingDaySeaWalk),
+                StampStatusModel(id: 1, title: "카페", state: .available, detail: .healingDayCafe),
+                StampStatusModel(id: 2, title: "사찰", state: .available, detail: .healingDayTemple),
+                StampStatusModel(id: 3, title: "정원", state: .available, detail: .healingDayGarden)
             ]
         ),
         DropDownModel(
