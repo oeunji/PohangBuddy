@@ -58,14 +58,19 @@ struct StampDetailView: View {
             .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
             
             HStack {
-                Text("리뷰 작성하기")
-                    .font(.head1)
-                    .padding(.top, 16)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("리뷰 작성하기")
+                        .font(.head1)
+
+                    Text("사진과 함께 기록해보세요")
+                        .font(.body3)
+                        .foregroundStyle(.gray)
+                }
+                .padding(.horizontal, 32)
+                .padding(.top, 16)
                 
                 Spacer()
             }
-            .padding(.horizontal, 32)
-
 
             Button(action: {
                 openPhoto.toggle()
