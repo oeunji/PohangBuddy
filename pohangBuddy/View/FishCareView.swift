@@ -11,7 +11,7 @@ struct FishCareView: View {
 
     @Environment(\.dismiss) private var dismissView
     @State private var levelProgress = 0.5
-
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -19,13 +19,17 @@ struct FishCareView: View {
 
                 Text("Level 1")
                     .padding()
+                    .font(.display1)
                 
                 VStack(alignment: .trailing) {
                     ProgressView(value: levelProgress)
                     
                     Text("레벨업까지 50% 남았어요")
+                        .font(.body3)
+                        .padding(.top, 4)
                 }
                 .padding()
+                .padding(.horizontal, 24)
 
                 
                 HStack {
@@ -40,8 +44,12 @@ struct FishCareView: View {
                         })
                         
                         Text("밥 주기")
+                            .font(.head2)
+                            .padding(.top, 4)
                         
                         Text("1회 남았어요")
+                            .font(.head3)
+                            .padding(.top, 1)
                     }
 
                     VStack {
@@ -54,9 +62,13 @@ struct FishCareView: View {
                                 .foregroundStyle(Color.black)
                         })
                         
-                        Text("밥 주기")
+                        Text("쓰담쓰담")
+                            .font(.head2)
+                            .padding(.top, 4)
                         
                         Text("1회 남았어요")
+                            .font(.head3)
+                            .padding(.top, 1)
                     }
                 }
                 

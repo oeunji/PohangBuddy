@@ -8,6 +8,8 @@
 import SwiftUI
 
 extension Font {
+    static let display1: Font = .custom("Pretendard-SemiBold", size: 24)
+
     static let head1: Font = .custom("Pretendard-SemiBold", size: 20)   // 주요 타이틀, 카드 타이틀
     static let head2: Font = .custom("Pretendard-Medium", size: 18)     // 상세 페이지 제목
     static let head3: Font = .custom("Pretendard-Medium", size: 16)     // 카드 소제목, 네비게이션 타이틀
