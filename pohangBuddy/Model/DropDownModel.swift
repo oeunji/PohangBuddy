@@ -63,9 +63,8 @@ extension DropDownModel {
             id: "rest-day",
             title: "오늘은 휴식 데이",
             stampStatuses: [
-                StampStatusModel(id: 0, title: "숙소", state: .available, detail: .restDayStay),
-                StampStatusModel(id: 1, title: "브런치", state: .available, detail: .restDayBrunch),
-                StampStatusModel(id: 2, title: "독서", state: .available, detail: .restDayReading)
+                StampStatusModel(id: 0, title: "브런치", state: .available, detail: .restDayBrunch),
+                StampStatusModel(id: 1, title: "독서", state: .available, detail: .restDayReading)
             ]
         )
     ]

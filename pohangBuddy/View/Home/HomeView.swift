@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedStamp: Int?
+    @State private var selectedStamp: StampStatusModel?
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
     
@@ -50,7 +50,7 @@ struct HomeView: View {
                             .padding(.top, 16)
                             
                             StampStatusView(stampStatuses: selectedDropDown.stampStatuses) { index in
-                                selectedStamp = index
+                                selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
                             }
                             .cornerRadius(36)
                             .padding(.horizontal, 24)
@@ -74,9 +74,9 @@ struct HomeView: View {
                 .background(
                     Color.neutral1
                 )
-                .navigationDestination(item: $selectedStamp) { index in
-                    StampDetailView()
-                        .navigationTitle("미션! 물회 먹기")
+                .navigationDestination(item: $selectedStamp) { stamp in
+                    StampDetailView(detail: stamp.detail)
+                        .navigationTitle(stamp.detail.navigationTitle)
                 }
             }
             

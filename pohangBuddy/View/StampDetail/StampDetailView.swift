@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct StampDetailView: View {
+    let detail: StampDetailModel
     @State private var reviewText = ""
 
     var body: some View {
         ScrollView {
-            Image(.물회)
+            Image(detail.imageName)
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(36)
                 .padding(.horizontal, 24)
                 .padding(.top, 24)
             
-            Text("포항특미물회")
+            Text(detail.placeName)
                 .font(.head1)
                 .padding(.top, 16)
             
@@ -27,7 +28,7 @@ struct StampDetailView: View {
                 InfoRow(
                     imageName: "mapFlagsFull",
                     title: "주소",
-                    value: "경북 포항시 북구 동빈로 106"
+                    value: detail.address
                 )
 
                 Divider()
@@ -35,7 +36,7 @@ struct StampDetailView: View {
                 InfoRow(
                     imageName: "route",
                     title: "거리",
-                    value: "2.4km"
+                    value: detail.distanceText
                 )
 
                 Divider()
@@ -43,7 +44,7 @@ struct StampDetailView: View {
                 InfoRow(
                     imageName: "money",
                     title: "예상 비용",
-                    value: "19,000원"
+                    value: detail.priceText
                 )
             }
             .padding(.horizontal, 20)
@@ -57,10 +58,10 @@ struct StampDetailView: View {
             
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("리뷰 작성하기")
+                    Text(detail.reviewTitle)
                         .font(.head1)
 
-                    Text("오늘의 경험을 남겨보세요")
+                    Text(detail.reviewPrompt)
                         .font(.body3)
                         .foregroundStyle(.gray)
                 }
@@ -72,13 +73,13 @@ struct StampDetailView: View {
             
             CustomTextView(
                 text: $reviewText,
-                placeholder: "자유롭게 기록해보세요"
+                placeholder: detail.reviewPlaceholder
             )
             .padding(.horizontal, 24)
             
             GradientActionButton(
-                title: "스탬프 찍기",
-                imageName: "completeIcon"
+                title: detail.actionButtonTitle,
+                imageName: detail.actionButtonImageName
             ) {
                 stampButtonTapped()
             }
@@ -99,5 +100,5 @@ struct StampDetailView: View {
 }
 
 #Preview {
-    StampDetailView()
+    StampDetailView(detail: DropDownModel.samples[0].stampStatuses[0].detail)
 }
