@@ -13,19 +13,17 @@ struct StampDetailView: View {
     @State private var reviewText: String = "리뷰를 작성해보세요!"
     
     var body: some View {
-        VStack(spacing: 12) {
-            Text("미션! 물회 먹방")
-                .font(.display1)
-
-            Text("포항특미물회")
-                .font(.head1)
-
+        ScrollView {
             Image(.물회)
                 .resizable()
                 .scaledToFit()
-                .cornerRadius(24)
+                .cornerRadius(36)
                 .padding(.horizontal, 24)
-                .padding(.top, 12)
+                .padding(.top, 24)
+            
+            Text("포항특미물회")
+                .font(.head1)
+                .padding(.top, 16)
 
             VStack(alignment: .leading) {
                 Text("주소 - 경북 포항시 북구 동빈로 106")
@@ -67,7 +65,11 @@ struct StampDetailView: View {
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
+
         }
+        .background(
+            Color.neutral1
+        )
         .sheet(isPresented: $openPhoto) {
             UImagePicker(sourceType: .photoLibrary) { pickedImage in
                 self.image = pickedImage

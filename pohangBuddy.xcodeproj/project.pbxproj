@@ -131,6 +131,7 @@
 			children = (
 				EC4230DD2F7819860009F673 /* HomeView.swift */,
 				ECEAC09E2F7A1A96009B5B16 /* Components */,
+				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -151,7 +152,6 @@
 			children = (
 				ECEAC09D2F7A1A8B009B5B16 /* Home */,
 				EC4230F02F7828F60009F673 /* FishCareView.swift */,
-				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
