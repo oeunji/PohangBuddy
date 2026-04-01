@@ -22,6 +22,7 @@
 		EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230F02F7828F60009F673 /* FishCareView.swift */; };
 		ECEAC0A02F7A1B24009B5B16 /* GradientActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC09F2F7A1B24009B5B16 /* GradientActionButton.swift */; };
 		ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */; };
+		ECF77B702F7CC9480091E0B3 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF77B6F2F7CC9480091E0B3 /* InfoRow.swift */; };
 		ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */; };
 		ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34E2F78F62900B29402 /* UImagePicker.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEAC09F2F7A1B24009B5B16 /* GradientActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientActionButton.swift; sourceTree = "<group>"; };
 		ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopBarView.swift; sourceTree = "<group>"; };
+		ECF77B6F2F7CC9480091E0B3 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
 		ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
 		ECF7B34E2F78F62900B29402 /* UImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +133,6 @@
 			children = (
 				EC4230DD2F7819860009F673 /* HomeView.swift */,
 				ECEAC09E2F7A1A96009B5B16 /* Components */,
-				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -147,10 +148,28 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		ECF77B6D2F7CC9350091E0B3 /* StampDetail */ = {
+			isa = PBXGroup;
+			children = (
+				ECF77B6E2F7CC93A0091E0B3 /* Components */,
+				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
+			);
+			path = StampDetail;
+			sourceTree = "<group>";
+		};
+		ECF77B6E2F7CC93A0091E0B3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ECF77B6F2F7CC9480091E0B3 /* InfoRow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		ECF7B3502F78FBBE00B29402 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				ECEAC09D2F7A1A8B009B5B16 /* Home */,
+				ECF77B6D2F7CC9350091E0B3 /* StampDetail */,
 				EC4230F02F7828F60009F673 /* FishCareView.swift */,
 			);
 			path = View;
@@ -248,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF77B702F7CC9480091E0B3 /* InfoRow.swift in Sources */,
 				ECEAC0A02F7A1B24009B5B16 /* GradientActionButton.swift in Sources */,
 				ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */,
 				ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */,
