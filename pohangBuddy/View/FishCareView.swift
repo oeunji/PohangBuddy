@@ -13,66 +13,67 @@ struct FishCareView: View {
     @State private var levelProgress = 0.5
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Button(action: {
-                    dismissView()
-                }, label: {
-                    Image(systemName: "x.circle")
-                        .imageScale(.large)
-                        .font(.largeTitle)
-                        .foregroundStyle(Color.black)
-                })
+        NavigationStack {
+            VStack(spacing: 0) {
+                Image("fishNormal")
+
+                Text("Level 1")
+                    .padding()
+                
+                VStack(alignment: .trailing) {
+                    ProgressView(value: levelProgress)
                     
+                    Text("레벨업까지 50% 남았어요")
+                }
+                .padding()
+
+                
+                HStack {
+                    VStack {
+                        Button(action: {
+                            feedFish()
+                        }, label: {
+                            Image(.fishFood)
+                                .imageScale(.large)
+                                .font(.largeTitle)
+                                .foregroundStyle(Color.black)
+                        })
+                        
+                        Text("밥 주기")
+                        
+                        Text("1회 남았어요")
+                    }
+
+                    VStack {
+                        Button(action: {
+                            loveFish()
+                        }, label: {
+                            Image(.fishLove)
+                                .imageScale(.large)
+                                .font(.largeTitle)
+                                .foregroundStyle(Color.black)
+                        })
+                        
+                        Text("밥 주기")
+                        
+                        Text("1회 남았어요")
+                    }
+                }
+                
                 Spacer()
             }
-            
-            Image("fishNormal")
-
-            Text("Level 1")
-                .padding()
-            
-            VStack(alignment: .trailing) {
-                ProgressView(value: levelProgress)
-                
-                Text("레벨업까지 50% 남았어요")
-            }
-            .padding()
-
-            
-            HStack {
-                VStack {
-                    Button(action: {
-                        feedFish()
-                    }, label: {
-                        Image(.fishFood)
-                            .imageScale(.large)
-                            .font(.largeTitle)
-                            .foregroundStyle(Color.black)
-                    })
-                    
-                    Text("밥 주기")
-                    
-                    Text("1회 남았어요")
-                }
-
-                VStack {
-                    Button(action: {
-                        loveFish()
-                    }, label: {
-                        Image(.fishLove)
-                            .imageScale(.large)
-                            .font(.largeTitle)
-                            .foregroundStyle(Color.black)
-                    })
-                    
-                    Text("밥 주기")
-                    
-                    Text("1회 남았어요")
+            .background(Color.neutral1)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        dismissView()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .frame(width: 32, height: 32)
+                            .background(.regularMaterial, in: Circle())
+                    }
                 }
             }
-            
-            Spacer()
         }
     }
     
