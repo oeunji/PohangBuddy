@@ -24,7 +24,6 @@
 		ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */; };
 		ECF77B702F7CC9480091E0B3 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF77B6F2F7CC9480091E0B3 /* InfoRow.swift */; };
 		ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */; };
-		ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34E2F78F62900B29402 /* UImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +46,6 @@
 		ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopBarView.swift; sourceTree = "<group>"; };
 		ECF77B6F2F7CC9480091E0B3 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
 		ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
-		ECF7B34E2F78F62900B29402 /* UImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +95,6 @@
 				EC4230DE2F7819860009F673 /* Info.plist */,
 				EC3256382F7B7582003A25EE /* Model */,
 				ECF7B3502F78FBBE00B29402 /* View */,
-				ECF7B3512F78FBCF00B29402 /* Components */,
 				EC4230DA2F7819860009F673 /* Font */,
 				EC4230EF2F781E000009F673 /* Extension */,
 			);
@@ -173,22 +170,6 @@
 				EC4230F02F7828F60009F673 /* FishCareView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		ECF7B3512F78FBCF00B29402 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				ECF7B3522F78FC1200B29402 /* ImagePicker */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		ECF7B3522F78FC1200B29402 /* ImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				ECF7B34E2F78F62900B29402 /* UImagePicker.swift */,
-			);
-			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +254,6 @@
 				ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */,
 				EC4230E22F7819860009F673 /* DropDownView.swift in Sources */,
 				EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */,
-				ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */,
 				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
 				EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */,
 				EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */,

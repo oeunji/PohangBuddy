@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StampDetailView: View {
-    @State private var openPhoto = false
     @State private var image: UIImage?
     @State private var reviewText: String = "리뷰를 작성해보세요!"
     
@@ -71,19 +70,6 @@ struct StampDetailView: View {
                 
                 Spacer()
             }
-
-            Button(action: {
-                openPhoto.toggle()
-            }) {
-                let selected = image == nil
-                    ? Image(systemName: "square.and.arrow.up")
-                    : Image(uiImage: image!)
-
-                selected
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
-            }
             
             TextEditor(text: $reviewText)
                 .padding()
@@ -109,11 +95,6 @@ struct StampDetailView: View {
         .background(
             Color.neutral1
         )
-        .sheet(isPresented: $openPhoto) {
-            UImagePicker(sourceType: .photoLibrary) { pickedImage in
-                self.image = pickedImage
-            }
-        }
     }
     
     private func stampButtonTapped() {
