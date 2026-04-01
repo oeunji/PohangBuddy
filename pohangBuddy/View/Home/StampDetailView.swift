@@ -24,9 +24,44 @@ struct StampDetailView: View {
             Text("포항특미물회")
                 .font(.head1)
                 .padding(.top, 16)
+            
+            HStack(spacing: 16) {
+                ZStack {
+                    Image("mapFlagsFull")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                }
+                .frame(width: 40, height: 40)
+                .background(
+                    RoundedRectangle(cornerRadius: 28)
+                        .fill(Color.neutral5)
+                )
+
+                
+                VStack(alignment: .leading) {
+                    Text("주소")
+                        .font(.head2)
+                        .foregroundStyle(.black)
+                    
+                    Text("경북 포항시 북구 동빈로 106")
+                        .font(.body1)
+                        .foregroundStyle(.black)
+                }
+                .padding(.vertical, 16)
+
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .background(
+                RoundedRectangle(cornerRadius: 28)
+                    .fill(Color.white)
+            )
+            .padding(.horizontal, 24)
+            .padding(.vertical, 4)
+            .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
 
             VStack(alignment: .leading) {
-                Text("주소 - 경북 포항시 북구 동빈로 106")
                 Text("거리 - 2.4km")
                 Text("예상 비용 - 19,000원")
             }
