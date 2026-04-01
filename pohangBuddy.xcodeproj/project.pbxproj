@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563A2F7B7599003A25EE /* DropDownModel.swift */; };
 		EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563C2F7B761A003A25EE /* StampStatusModel.swift */; };
-		EC4230E22F7819860009F673 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DC2F7819860009F673 /* DropDownView.swift */; };
 		EC4230E32F7819860009F673 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DD2F7819860009F673 /* HomeView.swift */; };
 		EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */; };
-		EC4230E52F7819860009F673 /* StampStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230E02F7819860009F673 /* StampStatusView.swift */; };
 		EC4230E72F7819860009F673 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D62F7819860009F673 /* Pretendard-Light.ttf */; };
 		EC4230E82F7819860009F673 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D72F7819860009F673 /* Pretendard-Medium.ttf */; };
 		EC4230E92F7819860009F673 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D82F7819860009F673 /* Pretendard-Regular.ttf */; };
@@ -20,10 +18,14 @@
 		EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4230DB2F7819860009F673 /* Assets.xcassets */; };
 		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
 		EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230F02F7828F60009F673 /* FishCareView.swift */; };
-		ECEAC0A02F7A1B24009B5B16 /* FishCareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC09F2F7A1B24009B5B16 /* FishCareButton.swift */; };
-		ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */; };
+		ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */; };
+		ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */; };
+		ECF57E9E2F7D43A000E6D342 /* HomeTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E992F7D43A000E6D342 /* HomeTopBarView.swift */; };
+		ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */; };
+		ECF57EA02F7D43A000E6D342 /* GradientActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */; };
+		ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E962F7D43A000E6D342 /* CustomTextView.swift */; };
+		ECF57EA22F7D43A000E6D342 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E972F7D43A000E6D342 /* DropDownView.swift */; };
 		ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */; };
-		ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7B34E2F78F62900B29402 /* UImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,18 +36,20 @@
 		EC4230D82F7819860009F673 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
 		EC4230D92F7819860009F673 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
 		EC4230DB2F7819860009F673 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EC4230DC2F7819860009F673 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		EC4230DD2F7819860009F673 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC4230DE2F7819860009F673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pohangBuddyApp.swift; sourceTree = "<group>"; };
-		EC4230E02F7819860009F673 /* StampStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusView.swift; sourceTree = "<group>"; };
 		EC4230ED2F7819E10009F673 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		EC4230F02F7828F60009F673 /* FishCareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCareView.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECEAC09F2F7A1B24009B5B16 /* FishCareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCareButton.swift; sourceTree = "<group>"; };
-		ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopBarView.swift; sourceTree = "<group>"; };
+		ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailModel.swift; sourceTree = "<group>"; };
+		ECF57E962F7D43A000E6D342 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		ECF57E972F7D43A000E6D342 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientActionButton.swift; sourceTree = "<group>"; };
+		ECF57E992F7D43A000E6D342 /* HomeTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopBarView.swift; sourceTree = "<group>"; };
+		ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
+		ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusView.swift; sourceTree = "<group>"; };
 		ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
-		ECF7B34E2F78F62900B29402 /* UImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +66,11 @@
 		EC3256382F7B7582003A25EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EC3256392F7B758E003A25EE /* Home */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EC3256392F7B758E003A25EE /* Home */ = {
-			isa = PBXGroup;
-			children = (
+				ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */,
 				EC32563A2F7B7599003A25EE /* DropDownModel.swift */,
 				EC32563C2F7B761A003A25EE /* StampStatusModel.swift */,
 			);
-			path = Home;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EC4230DA2F7819860009F673 /* Font */ = {
@@ -95,7 +92,7 @@
 				EC4230DE2F7819860009F673 /* Info.plist */,
 				EC3256382F7B7582003A25EE /* Model */,
 				ECF7B3502F78FBBE00B29402 /* View */,
-				ECF7B3512F78FBCF00B29402 /* Components */,
+				ECF57E9C2F7D43A000E6D342 /* Components */,
 				EC4230DA2F7819860009F673 /* Font */,
 				EC4230EF2F781E000009F673 /* Extension */,
 			);
@@ -130,46 +127,39 @@
 			isa = PBXGroup;
 			children = (
 				EC4230DD2F7819860009F673 /* HomeView.swift */,
-				ECEAC09E2F7A1A96009B5B16 /* Components */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		ECEAC09E2F7A1A96009B5B16 /* Components */ = {
+		ECF57E9C2F7D43A000E6D342 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				EC4230DC2F7819860009F673 /* DropDownView.swift */,
-				EC4230E02F7819860009F673 /* StampStatusView.swift */,
-				ECEAC09F2F7A1B24009B5B16 /* FishCareButton.swift */,
-				ECEAC0A12F7A212C009B5B16 /* HomeTopBarView.swift */,
+				ECF57E962F7D43A000E6D342 /* CustomTextView.swift */,
+				ECF57E972F7D43A000E6D342 /* DropDownView.swift */,
+				ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */,
+				ECF57E992F7D43A000E6D342 /* HomeTopBarView.swift */,
+				ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */,
+				ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		ECF77B6D2F7CC9350091E0B3 /* StampDetail */ = {
+			isa = PBXGroup;
+			children = (
+				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
+			);
+			path = StampDetail;
 			sourceTree = "<group>";
 		};
 		ECF7B3502F78FBBE00B29402 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				ECEAC09D2F7A1A8B009B5B16 /* Home */,
+				ECF77B6D2F7CC9350091E0B3 /* StampDetail */,
 				EC4230F02F7828F60009F673 /* FishCareView.swift */,
-				ECF7B34C2F78EF4B00B29402 /* StampDetailView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		ECF7B3512F78FBCF00B29402 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				ECF7B3522F78FC1200B29402 /* ImagePicker */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		ECF7B3522F78FC1200B29402 /* ImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				ECF7B34E2F78F62900B29402 /* UImagePicker.swift */,
-			);
-			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,18 +238,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECEAC0A02F7A1B24009B5B16 /* FishCareButton.swift in Sources */,
+				ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */,
+				ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */,
+				ECF57E9E2F7D43A000E6D342 /* HomeTopBarView.swift in Sources */,
+				ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */,
+				ECF57EA02F7D43A000E6D342 /* GradientActionButton.swift in Sources */,
+				ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */,
+				ECF57EA22F7D43A000E6D342 /* DropDownView.swift in Sources */,
 				ECF7B34D2F78EF4B00B29402 /* StampDetailView.swift in Sources */,
-				ECEAC0A22F7A212C009B5B16 /* HomeTopBarView.swift in Sources */,
-				EC4230E22F7819860009F673 /* DropDownView.swift in Sources */,
 				EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */,
-				ECF7B34F2F78F62900B29402 /* UImagePicker.swift in Sources */,
 				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
 				EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */,
 				EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */,
 				EC4230E32F7819860009F673 /* HomeView.swift in Sources */,
 				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,
-				EC4230E52F7819860009F673 /* StampStatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

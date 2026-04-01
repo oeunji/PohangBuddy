@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedStamp: Int?
+    @State private var selectedStamp: StampStatusModel?
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
     
@@ -50,13 +50,16 @@ struct HomeView: View {
                             .padding(.top, 16)
                             
                             StampStatusView(stampStatuses: selectedDropDown.stampStatuses) { index in
-                                selectedStamp = index
+                                selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
                             }
                             .cornerRadius(36)
                             .padding(.horizontal, 24)
                             .padding(.vertical, 16)
                             
-                            FishCareButton {
+                            GradientActionButton(
+                                title: "밥 주러 가기",
+                                imageName: "meal"
+                            ) {
                                 showModal = true
                             }
                             .padding(.horizontal, 24)
@@ -71,12 +74,39 @@ struct HomeView: View {
                 .background(
                     Color.neutral1
                 )
-                .navigationDestination(item: $selectedStamp) { index in
-                    StampDetailView()
+                .navigationDestination(item: $selectedStamp) { stamp in
+                    StampDetailView(
+                        detail: stamp.detail,
+                        onStampCompleted: {
+                            completeStamp(withID: stamp.id)
+                        }
+                    )
+                        .navigationTitle(stamp.detail.navigationTitle)
                 }
             }
             
         }
+    }
+
+    private func completeStamp(withID id: Int) {
+        let updatedStatuses = selectedDropDown.stampStatuses.map { stamp in
+            guard stamp.id == id else { return stamp }
+
+            return StampStatusModel(
+                id: stamp.id,
+                title: stamp.title,
+                state: .completed,
+                detail: stamp.detail
+            )
+        }
+
+        selectedDropDown = DropDownModel(
+            id: selectedDropDown.id,
+            title: selectedDropDown.title,
+            stampStatuses: updatedStatuses
+        )
+
+        selectedStamp = updatedStatuses.first { $0.id == id }
     }
 }
 

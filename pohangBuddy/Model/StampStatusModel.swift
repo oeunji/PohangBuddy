@@ -32,4 +32,5 @@ struct StampStatusModel: Identifiable, Hashable {
     let id: Int
     let title: String
     let state: State
+    let detail: StampDetailModel
 }
