@@ -40,12 +40,12 @@ extension DropDownModel {
             title: "오늘은 도파민 데이",
             stampStatuses: [
                 StampStatusModel(id: 0, title: "서핑", state: .completed, detail: .dopamineDaySurfing),
-                StampStatusModel(id: 1, title: "야시장", state: .available, detail: .dopamineDayNightMarket),
+                StampStatusModel(id: 1, title: "클라이밍", state: .available, detail: .dopamineDayNightMarket),
                 StampStatusModel(id: 2, title: "게임", state: .available, detail: .dopamineDayGame),
-                StampStatusModel(id: 3, title: "노래방", state: .available, detail: .dopamineDayKaraoke),
-                StampStatusModel(id: 4, title: "볼링", state: .available, detail: .dopamineDayBowling),
+                StampStatusModel(id: 3, title: "ATV", state: .available, detail: .dopamineDayKaraoke),
+                StampStatusModel(id: 4, title: "요트", state: .available, detail: .dopamineDayBowling),
                 StampStatusModel(id: 5, title: "드라이브", state: .available, detail: .dopamineDayDrive),
-                StampStatusModel(id: 6, title: "전시", state: .available, detail: .dopamineDayExhibition),
+                StampStatusModel(id: 6, title: "패러글라이딩", state: .available, detail: .dopamineDayExhibition),
                 StampStatusModel(id: 7, title: "축제", state: .available, detail: .dopamineDayFestival)
             ]
         ),

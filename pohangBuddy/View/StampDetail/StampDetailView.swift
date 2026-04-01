@@ -15,7 +15,10 @@ struct StampDetailView: View {
         ScrollView {
             Image(detail.imageName)
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
+                .frame(height: 250)
+                .frame(maxWidth: .infinity)
+                .clipped()
                 .cornerRadius(36)
                 .padding(.horizontal, 24)
                 .padding(.top, 24)
