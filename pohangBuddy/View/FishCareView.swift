@@ -14,47 +14,54 @@ struct FishCareView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                Image("fishNormal")
+            ZStack {
+                Image("ocean")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                                
+                VStack(spacing: 0) {
+                    Image("fishNormal")
 
-                Text("Level 1")
-                    .padding()
-                    .font(.display1)
-                
-                VStack(alignment: .trailing) {
-                    ProgressView(value: levelProgress)
-                        .tint(.yellow)
-                        .scaleEffect(x: 1, y: 3)
+                    Text("Level 1")
+                        .padding()
+                        .font(.display1)
                     
-                    Text("레벨업까지 50% 남았어요")
-                        .font(.body3)
-                        .padding(.top, 8)
-                }
-                .padding()
-                .padding(.horizontal, 24)
-
-                HStack(spacing: 16) {
-                    FishActionCard(
-                        image: .fishFood,
-                        title: "밥 주기",
-                        subtitle: "1회 남았어요"
-                    ) {
-                        feedFish()
+                    VStack(alignment: .trailing) {
+                        ProgressView(value: levelProgress)
+                            .tint(.yellow)
+                            .scaleEffect(x: 1, y: 3)
+                        
+                        Text("레벨업까지 50% 남았어요")
+                            .font(.body3)
+                            .padding(.top, 8)
                     }
+                    .padding()
+                    .padding(.horizontal, 24)
 
-                    FishActionCard(
-                        image: .fishLove,
-                        title: "쓰담쓰담",
-                        subtitle: "1회 남았어요"
-                    ) {
-                        loveFish()
+                    HStack(spacing: 16) {
+                        FishActionCard(
+                            image: .fishFood,
+                            title: "밥 주기",
+                            subtitle: "1회 남았어요"
+                        ) {
+                            feedFish()
+                        }
+
+                        FishActionCard(
+                            image: .fishLove,
+                            title: "쓰담쓰담",
+                            subtitle: "1회 남았어요"
+                        ) {
+                            loveFish()
+                        }
                     }
+                    .padding(.top, 8)
+                    
+                    Spacer()
                 }
-                .padding(.top, 8)
-                
-                Spacer()
+
             }
-            .background(Color.neutral1)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
