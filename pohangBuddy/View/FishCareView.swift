@@ -23,67 +23,32 @@ struct FishCareView: View {
                 
                 VStack(alignment: .trailing) {
                     ProgressView(value: levelProgress)
+                        .tint(.yellow)
+                        .scaleEffect(x: 1, y: 3)
                     
                     Text("레벨업까지 50% 남았어요")
                         .font(.body3)
-                        .padding(.top, 4)
+                        .padding(.top, 8)
                 }
                 .padding()
                 .padding(.horizontal, 24)
 
-                
-                HStack(spacing: 32) {
-                    VStack {
-                        Button(action: {
-                            feedFish()
-                        }, label: {
-                            Image(.fishFood)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 80)
-                        })
-                        
-                        Text("밥 주기")
-                            .font(.head2)
-                            .padding(.top, 4)
-                        
-                        Text("1회 남았어요")
-                            .font(.head3)
-                            .padding(.top, 1)
+                HStack(spacing: 16) {
+                    FishActionCard(
+                        image: .fishFood,
+                        title: "밥 주기",
+                        subtitle: "1회 남았어요"
+                    ) {
+                        feedFish()
                     }
-                    .padding(.vertical, 4)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 36)
-                            .fill(Color.white)
-                    )
-                    .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
 
-                    VStack {
-                        Button(action: {
-                            loveFish()
-                        }, label: {
-                            Image(.fishLove)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 80)
-                        })
-                        
-                        Text("쓰담쓰담")
-                            .font(.head2)
-                            .padding(.top, 4)
-                        
-                        Text("1회 남았어요")
-                            .font(.head3)
-                            .padding(.top, 1)
+                    FishActionCard(
+                        image: .fishLove,
+                        title: "쓰담쓰담",
+                        subtitle: "1회 남았어요"
+                    ) {
+                        loveFish()
                     }
-                    .padding(.vertical, 4)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 36)
-                            .fill(Color.white)
-                    )
-                    .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
                 }
                 .padding(.top, 8)
                 
