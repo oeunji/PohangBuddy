@@ -32,15 +32,15 @@ struct FishCareView: View {
                 .padding(.horizontal, 24)
 
                 
-                HStack {
+                HStack(spacing: 32) {
                     VStack {
                         Button(action: {
                             feedFish()
                         }, label: {
                             Image(.fishFood)
-                                .imageScale(.large)
-                                .font(.largeTitle)
-                                .foregroundStyle(Color.black)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 80)
                         })
                         
                         Text("밥 주기")
@@ -51,15 +51,22 @@ struct FishCareView: View {
                             .font(.head3)
                             .padding(.top, 1)
                     }
+                    .padding(.vertical, 4)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 36)
+                            .fill(Color.white)
+                    )
+                    .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
 
                     VStack {
                         Button(action: {
                             loveFish()
                         }, label: {
                             Image(.fishLove)
-                                .imageScale(.large)
-                                .font(.largeTitle)
-                                .foregroundStyle(Color.black)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 80)
                         })
                         
                         Text("쓰담쓰담")
@@ -70,7 +77,15 @@ struct FishCareView: View {
                             .font(.head3)
                             .padding(.top, 1)
                     }
+                    .padding(.vertical, 4)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 36)
+                            .fill(Color.white)
+                    )
+                    .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
                 }
+                .padding(.top, 8)
                 
                 Spacer()
             }
