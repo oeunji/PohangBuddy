@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct StampDetailView: View {
-    @State private var image: UIImage?
-    @State private var reviewText: String = "리뷰를 작성해보세요!"
-    
+    @State private var reviewText = ""
+
     var body: some View {
         ScrollView {
             Image(.물회)
@@ -61,7 +60,7 @@ struct StampDetailView: View {
                     Text("리뷰 작성하기")
                         .font(.head1)
 
-                    Text("사진과 함께 기록해보세요")
+                    Text("오늘의 경험을 남겨보세요")
                         .font(.body3)
                         .foregroundStyle(.gray)
                 }
@@ -71,16 +70,11 @@ struct StampDetailView: View {
                 Spacer()
             }
             
-            TextEditor(text: $reviewText)
-                .padding()
-                .foregroundColor(Color.black)
-                .font(.body2)
-                .lineSpacing(5)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200)
-                .border(Color.gray, width: 1)
-                .padding()
-            
-            Spacer()
+            CustomTextView(
+                text: $reviewText,
+                placeholder: "자유롭게 기록해보세요"
+            )
+            .padding(.horizontal, 24)
             
             GradientActionButton(
                 title: "스탬프 찍기",
@@ -88,12 +82,14 @@ struct StampDetailView: View {
             ) {
                 stampButtonTapped()
             }
+            .padding(.top, 24)
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
 
         }
         .background(
             Color.neutral1
+                .ignoresSafeArea(.all)
         )
     }
     
