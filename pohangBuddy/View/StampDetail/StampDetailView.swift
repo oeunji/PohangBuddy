@@ -9,6 +9,8 @@ import SwiftUI
 
 struct StampDetailView: View {
     let detail: StampDetailModel
+    let onStampCompleted: () -> Void
+    @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
 
     var body: some View {
@@ -98,10 +100,14 @@ struct StampDetailView: View {
     }
     
     private func stampButtonTapped() {
-        
+        onStampCompleted()
+        dismiss()
     }
 }
 
 #Preview {
-    StampDetailView(detail: DropDownModel.samples[0].stampStatuses[0].detail)
+    StampDetailView(
+        detail: DropDownModel.samples[0].stampStatuses[0].detail,
+        onStampCompleted: {}
+    )
 }

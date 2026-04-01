@@ -75,12 +75,38 @@ struct HomeView: View {
                     Color.neutral1
                 )
                 .navigationDestination(item: $selectedStamp) { stamp in
-                    StampDetailView(detail: stamp.detail)
+                    StampDetailView(
+                        detail: stamp.detail,
+                        onStampCompleted: {
+                            completeStamp(withID: stamp.id)
+                        }
+                    )
                         .navigationTitle(stamp.detail.navigationTitle)
                 }
             }
             
         }
+    }
+
+    private func completeStamp(withID id: Int) {
+        let updatedStatuses = selectedDropDown.stampStatuses.map { stamp in
+            guard stamp.id == id else { return stamp }
+
+            return StampStatusModel(
+                id: stamp.id,
+                title: stamp.title,
+                state: .completed,
+                detail: stamp.detail
+            )
+        }
+
+        selectedDropDown = DropDownModel(
+            id: selectedDropDown.id,
+            title: selectedDropDown.title,
+            stampStatuses: updatedStatuses
+        )
+
+        selectedStamp = updatedStatuses.first { $0.id == id }
     }
 }
 
