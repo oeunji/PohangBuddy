@@ -11,7 +11,8 @@ struct FishCareView: View {
 
     @Environment(\.dismiss) private var dismissView
     @State private var levelProgress = 0.5
-    
+    @State private var isAnimating = false
+        
     var body: some View {
         NavigationStack {
             ZStack {
@@ -22,6 +23,15 @@ struct FishCareView: View {
                                 
                 VStack(spacing: 0) {
                     Image("fishNormal")
+                        .offset(y: isAnimating ? -10 : 10)
+                        .animation(
+                            Animation.easeInOut(duration: 1.0)
+                                .repeatForever(autoreverses: true),
+                            value: isAnimating
+                        )
+                        .onAppear {
+                            isAnimating = true
+                        }
 
                     Text("Level 1")
                         .padding()
