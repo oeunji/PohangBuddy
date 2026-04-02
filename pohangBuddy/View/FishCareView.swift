@@ -13,6 +13,8 @@ struct FishCareView: View {
     @State private var level = 1
     @State private var levelProgress = 0.0
     @State private var fishOffsetY: CGFloat = 10
+    @State private var currentFishImageName = "fishNormal"
+    @State private var fishReactionToken = UUID()
 
     private var remainingPercentText: String {
         let remainingPercent = Int((1 - levelProgress) * 100)
@@ -28,7 +30,7 @@ struct FishCareView: View {
                     .ignoresSafeArea()
                                 
                 VStack(spacing: 0) {
-                    Image("fishNormal")
+                    Image(currentFishImageName)
                         .offset(x: 0, y: fishOffsetY)
                         .frame(height: 220)
                         .onAppear {
@@ -94,21 +96,36 @@ struct FishCareView: View {
     }
     
     private func feedFish() {
+        showTemporaryFishImage("fishEat")
         increaseLevelProgress()
     }
 
     private func loveFish() {
+        showTemporaryFishImage("fishHappy")
         increaseLevelProgress()
     }
 
     private func increaseLevelProgress() {
-        let nextProgress = levelProgress + 0.05
+        let nextProgress = levelProgress + 0.10
 
         if nextProgress >= 1.0 {
             level += 1
             levelProgress = 0
         } else {
             levelProgress = nextProgress
+        }
+    }
+
+    private func showTemporaryFishImage(_ imageName: String) {
+        let token = UUID()
+        fishReactionToken = token
+        currentFishImageName = imageName
+
+        Task {
+            try? await Task.sleep(for: .seconds(1))
+
+            guard fishReactionToken == token else { return }
+            currentFishImageName = "fishNormal"
         }
     }
 }
