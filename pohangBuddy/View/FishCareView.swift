@@ -10,8 +10,14 @@ import SwiftUI
 struct FishCareView: View {
 
     @Environment(\.dismiss) private var dismissView
-    @State private var levelProgress = 0.5
+    @State private var level = 1
+    @State private var levelProgress = 0.0
     @State private var isAnimating = false
+
+    private var remainingPercentText: String {
+        let remainingPercent = Int((1 - levelProgress) * 100)
+        return "레벨업까지 \(remainingPercent)% 남았어요"
+    }
         
     var body: some View {
         NavigationStack {
@@ -32,8 +38,11 @@ struct FishCareView: View {
                         .onAppear {
                             isAnimating = true
                         }
+                        .onDisappear {
+                            isAnimating = false
+                        }
 
-                    Text("Level 1")
+                    Text("Level \(level)")
                         .padding()
                         .font(.display1)
                     
@@ -42,7 +51,7 @@ struct FishCareView: View {
                             .tint(.yellow)
                             .scaleEffect(x: 1, y: 3)
                         
-                        Text("레벨업까지 50% 남았어요")
+                        Text(remainingPercentText)
                             .font(.body3)
                             .padding(.top, 8)
                     }
@@ -87,11 +96,22 @@ struct FishCareView: View {
     }
     
     private func feedFish() {
-        
+        increaseLevelProgress()
     }
-    
+
     private func loveFish() {
-        
+        increaseLevelProgress()
+    }
+
+    private func increaseLevelProgress() {
+        let nextProgress = levelProgress + 0.05
+
+        if nextProgress >= 1.0 {
+            level += 1
+            levelProgress = 0
+        } else {
+            levelProgress = nextProgress
+        }
     }
 }
 
