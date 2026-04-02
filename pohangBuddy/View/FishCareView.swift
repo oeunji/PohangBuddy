@@ -12,9 +12,16 @@ struct FishCareView: View {
     @Environment(\.dismiss) private var dismissView
     @State private var level = 1
     @State private var levelProgress = 0.0
+    @State private var feedRemainingCount: Int
+    @State private var loveRemainingCount: Int
     @State private var fishOffsetY: CGFloat = 10
     @State private var currentFishImageName = "fishNormal"
     @State private var fishReactionToken = UUID()
+
+    init(actionCount: Int = 0) {
+        _feedRemainingCount = State(initialValue: actionCount)
+        _loveRemainingCount = State(initialValue: actionCount)
+    }
 
     private var remainingPercentText: String {
         let remainingPercent = Int((1 - levelProgress) * 100)
@@ -62,7 +69,8 @@ struct FishCareView: View {
                         FishActionCard(
                             image: .fishFood,
                             title: "밥 주기",
-                            subtitle: "1회 남았어요"
+                            subtitle: "\(feedRemainingCount)회 남았어요",
+                            isEnabled: feedRemainingCount > 0
                         ) {
                             feedFish()
                         }
@@ -70,7 +78,8 @@ struct FishCareView: View {
                         FishActionCard(
                             image: .fishLove,
                             title: "쓰담쓰담",
-                            subtitle: "1회 남았어요"
+                            subtitle: "\(loveRemainingCount)회 남았어요",
+                            isEnabled: loveRemainingCount > 0
                         ) {
                             loveFish()
                         }
@@ -96,11 +105,17 @@ struct FishCareView: View {
     }
     
     private func feedFish() {
+        guard feedRemainingCount > 0 else { return }
+
+        feedRemainingCount -= 1
         showTemporaryFishImage("fishEat")
         increaseLevelProgress()
     }
 
     private func loveFish() {
+        guard loveRemainingCount > 0 else { return }
+
+        loveRemainingCount -= 1
         showTemporaryFishImage("fishHappy")
         increaseLevelProgress()
     }
@@ -131,5 +146,5 @@ struct FishCareView: View {
 }
 
 #Preview {
-    FishCareView()
+    FishCareView(actionCount: 2)
 }

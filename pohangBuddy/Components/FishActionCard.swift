@@ -11,6 +11,7 @@ struct FishActionCard: View {
     let image: ImageResource
     let title: String
     let subtitle: String
+    let isEnabled: Bool
     let action: () -> Void
 
     var body: some View {
@@ -21,6 +22,7 @@ struct FishActionCard: View {
                     .scaledToFit()
                     .frame(height: 80)
             }
+            .disabled(!isEnabled)
 
             Text(title)
                 .font(.head2)
@@ -37,5 +39,6 @@ struct FishActionCard: View {
                 .fill(Color.white)
         )
         .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
+        .opacity(isEnabled ? 1 : 0.45)
     }
 }

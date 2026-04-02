@@ -65,7 +65,7 @@ struct HomeView: View {
                             .padding(.horizontal, 24)
                             .padding(.bottom, 24)
                             .sheet(isPresented: $showModal) {
-                                FishCareView()
+                                FishCareView(actionCount: selectedDropDown.completedCount)
                             }
                         }
                     }
