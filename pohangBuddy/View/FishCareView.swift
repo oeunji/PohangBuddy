@@ -12,7 +12,7 @@ struct FishCareView: View {
     @Environment(\.dismiss) private var dismissView
     @State private var level = 1
     @State private var levelProgress = 0.0
-    @State private var isAnimating = false
+    @State private var fishOffsetY: CGFloat = 10
 
     private var remainingPercentText: String {
         let remainingPercent = Int((1 - levelProgress) * 100)
@@ -29,17 +29,15 @@ struct FishCareView: View {
                                 
                 VStack(spacing: 0) {
                     Image("fishNormal")
-                        .offset(y: isAnimating ? -10 : 10)
-                        .animation(
-                            Animation.easeInOut(duration: 1.0)
-                                .repeatForever(autoreverses: true),
-                            value: isAnimating
-                        )
+                        .offset(x: 0, y: fishOffsetY)
+                        .frame(height: 220)
                         .onAppear {
-                            isAnimating = true
-                        }
-                        .onDisappear {
-                            isAnimating = false
+                            withAnimation(
+                                .easeInOut(duration: 1.0)
+                                .repeatForever(autoreverses: true)
+                            ) {
+                                fishOffsetY = -10
+                            }
                         }
 
                     Text("Level \(level)")
