@@ -55,18 +55,6 @@ struct HomeView: View {
                             .cornerRadius(36)
                             .padding(.horizontal, 24)
                             .padding(.vertical, 16)
-                            
-                            GradientActionButton(
-                                title: "밥 주러 가기",
-                                imageName: "meal"
-                            ) {
-                                showModal = true
-                            }
-                            .padding(.horizontal, 24)
-                            .padding(.bottom, 24)
-                            .sheet(isPresented: $showModal) {
-                                FishCareView(actionCount: selectedDropDown.completedCount)
-                            }
                         }
                     }
                     
