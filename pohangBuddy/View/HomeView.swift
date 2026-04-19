@@ -15,36 +15,45 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             Color(.white)
+                .ignoresSafeArea()
 
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text("포항의 순간을 \n모으다")
-                        .font(.display1)
-                        .foregroundStyle(.neutral10)
-                    
-                    Spacer()
-                }
-                .padding(.leading, 16)
-                .padding(.bottom, 38)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Text("포항의 순간을 \n모으다")
+                            .font(.display1)
+                            .foregroundStyle(.neutral10)
+                        
+                        Spacer()
+                    }
+                    .padding(.leading, 16)
+                    .padding(.vertical, 38)
 
-                HStack {
-                    Text("10개 중 3개 모았어요")
-                        .font(.head3)
-                        .foregroundStyle(.neutral10)
+                    HStack {
+                        Text("10개 중 3개 모았어요")
+                            .font(.head3)
+                            .foregroundStyle(.neutral10)
+                        
+                        Spacer()
+                    }
+                    .padding(.leading, 16)
+                    .padding(.bottom, 18)
                     
-                    Spacer()
+                    DropDownView(
+                        selectedOption: $selectedDropDown,
+                        options: DropDownModel.samples
+                    )
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 20)
+                    
+                    StampStatusView(stampStatuses: selectedDropDown.stampStatuses) { index in
+                        selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
+                    }
+                    .cornerRadius(36)
+                    .padding(.horizontal, 16)
                 }
-                .padding(.leading, 16)
-                .padding(.bottom, 18)
-                
-                DropDownView(
-                    selectedOption: $selectedDropDown,
-                    options: DropDownModel.samples
-                )
-                .padding(.horizontal, 16)
             }
         }
-        .ignoresSafeArea()
     }
 
     private func completeStamp(withID id: Int) {
