@@ -55,7 +55,7 @@ struct HomeView: View {
                         ) { index in
                             selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
                         }
-                        .padding(.horizontal, 16)
+                        .padding(.bottom, 32)
                     }
                 }
             }
