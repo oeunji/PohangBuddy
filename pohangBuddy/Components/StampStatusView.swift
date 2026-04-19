@@ -40,13 +40,27 @@ struct StampStatusView: View {
                 Button {
                     onTapStamp(stamp.id)
                 } label: {
-                    VStack(spacing: 4) {
-                        Text("\(stamp.id + 1)")
-                            .font(.head4)
-
-                        Text(stamp.title)
-                            .font(.micro)
-                            .lineLimit(1)
+                    VStack(spacing: 0) {
+                        Spacer()
+                        
+                        HStack {
+                            Text(stamp.title)
+                                .font(.head3)
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal, 14)
+                        .padding(.bottom, 4)
+                        
+                        HStack {
+                            Text("\(stamp.id + 1)")
+                                .font(.micro)
+                                .lineLimit(1)
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal, 14)
+                        .padding(.bottom, 14)
                     }
                     .foregroundStyle(stamp.state.foregroundColor)
                     .frame(width: cellWidth, height: cellHeight)
