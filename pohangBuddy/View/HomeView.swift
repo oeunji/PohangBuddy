@@ -41,21 +41,24 @@ struct HomeView: View {
                         }
                         .padding(.leading, 16)
                         .padding(.bottom, 18)
-
-                        DropDownView(
-                            selectedOption: $selectedDropDown,
-                            options: DropDownModel.samples
-                        )
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 20)
-
-                        StampStatusView(
-                            width: contentWidth,
-                            stampStatuses: selectedDropDown.stampStatuses
-                        ) { index in
-                            selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
+                        
+                        LazyVStack(pinnedViews: [.sectionHeaders]) {
+                            Section(header:                         DropDownView(
+                                selectedOption: $selectedDropDown,
+                                options: DropDownModel.samples
+                            )
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 20)
+                            ) {
+                                StampStatusView(
+                                    width: contentWidth,
+                                    stampStatuses: selectedDropDown.stampStatuses
+                                ) { index in
+                                    selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
+                                }
+                                .padding(.bottom, 32)
+                            }
                         }
-                        .padding(.bottom, 32)
                     }
                 }
             }
