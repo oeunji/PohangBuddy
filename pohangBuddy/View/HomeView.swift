@@ -27,6 +27,17 @@ struct HomeView: View {
                 .padding(.leading, 16)
                 .padding(.bottom, 38)
 
+                HStack {
+                    Text("10개 중 3개 모았어요")
+                        .font(.head3)
+                        .foregroundStyle(.neutral10)
+                    
+                    Spacer()
+                }
+                .padding(.leading, 16)
+                .padding(.bottom, 18)
+                
+
             }
         }
         .ignoresSafeArea()
