@@ -20,20 +20,18 @@ struct DropDownView: View {
             }
         } label: {
             HStack {
-                Image("mapFlagsFull")
-                    .foregroundStyle(Color.black)
+                Image(systemName: "pin.fill")
                 Text(selectedOption.title)
-                    .foregroundStyle(Color.black)
-                    .font(.head4)
+                    .font(.head3)
                 Spacer()
                 Image(systemName: "chevron.down")
-                    .foregroundStyle(Color.black)
             }
+            .foregroundStyle(.neutral10)
             .padding(.horizontal, 16)
             .frame(height: 56)
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 28))
         }
-        .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
+        .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
     }
 }

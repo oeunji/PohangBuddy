@@ -11,80 +11,60 @@ struct HomeView: View {
     @State private var selectedStamp: StampStatusModel?
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
-    
+
     var body: some View {
-        VStack{
-            Color.white
-                .frame(height: 0)
-            NavigationStack {
-                ZStack {
-                    VStack(spacing: 0) {
-                        HomeTopBarView()
+        GeometryReader { geometry in
+            let contentWidth = geometry.size.width - 32
+
+            ZStack {
+                Color(.white)
+                    .ignoresSafeArea()
+
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Text("포항의 순간을 \n모으다")
+                                .font(.display1)
+                                .foregroundStyle(.neutral10)
+
+                            Spacer()
+                        }
+                        .padding(.leading, 16)
+                        .padding(.vertical, 38)
+
+                        HStack {
+                            let total = 10
+                            let current = 3
+
+                            Text("\(total)개 중 \(Text("\(current)개").font(.head3)) 모았어요")
+                                .font(.head4)
+                                .foregroundStyle(.neutral10)
+
+                            Spacer()
+                        }
+                        .padding(.leading, 16)
+                        .padding(.bottom, 18)
                         
-                        ScrollView {
-                            VStack(spacing: 12) {
-                                DropDownView(
-                                    selectedOption: $selectedDropDown,
-                                    options: DropDownModel.samples
-                                )
-                                    .padding(.top)
-                                
-                                Image("map")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: .infinity)
-                                    .clipShape(RoundedRectangle(cornerRadius: 36))
-                            }
-                            .padding(.horizontal, 24)
-                            
-                            HStack {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text("스탬프 현황")
-                                        .font(.head1)
-                                    Text(selectedDropDown.statusSummary)
-                                        .font(.body1)
-                                }
-                                Spacer()
-                            }
-                            .padding(.horizontal, 24)
-                            .padding(.top, 16)
-                            
-                            StampStatusView(stampStatuses: selectedDropDown.stampStatuses) { index in
-                                selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
-                            }
-                            .cornerRadius(36)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 16)
-                            
-                            GradientActionButton(
-                                title: "밥 주러 가기",
-                                imageName: "meal"
+                        LazyVStack(pinnedViews: [.sectionHeaders]) {
+                            Section(header: DropDownView(
+                                selectedOption: $selectedDropDown,
+                                options: DropDownModel.samples
+                            )
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 20)
                             ) {
-                                showModal = true
-                            }
-                            .padding(.horizontal, 24)
-                            .padding(.bottom, 24)
-                            .sheet(isPresented: $showModal) {
-                                FishCareView(actionCount: selectedDropDown.completedCount)
+                                StampStatusView(
+                                    width: contentWidth,
+                                    stampStatuses: selectedDropDown.stampStatuses
+                                ) { index in
+                                    selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
+                                }
+                                .padding(.bottom, 32)
                             }
                         }
                     }
-                    
-                }
-                .background(
-                    Color.neutral1
-                )
-                .navigationDestination(item: $selectedStamp) { stamp in
-                    StampDetailView(
-                        detail: stamp.detail,
-                        onStampCompleted: {
-                            completeStamp(withID: stamp.id)
-                        }
-                    )
-                        .navigationTitle(stamp.detail.navigationTitle)
                 }
             }
-            
         }
     }
 

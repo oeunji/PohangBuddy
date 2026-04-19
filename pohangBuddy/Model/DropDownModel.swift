@@ -24,6 +24,19 @@ struct DropDownModel: Identifiable, Hashable {
 extension DropDownModel {
     static let samples: [DropDownModel] = [
         DropDownModel(
+            id: "all",
+            title: "전체 보기",
+            stampStatuses: [
+                StampStatusModel(id: 0, title: "물회", state: .available, detail: .restaurantDayMoolhoe),
+                StampStatusModel(id: 1, title: "과메기", state: .available, detail: .restaurantDayGwamegi),
+                StampStatusModel(id: 2, title: "초밥", state: .available, detail: .restaurantDaySushi),
+                StampStatusModel(id: 3, title: "칼국수", state: .available, detail: .restaurantDayKalguksu),
+                StampStatusModel(id: 4, title: "국밥", state: .available, detail: .restaurantDayGukbap),
+                StampStatusModel(id: 5, title: "분식", state: .available, detail: .restaurantDayBunsik)
+            ]
+        ),
+        
+        DropDownModel(
             id: "restaurant-day",
             title: "오늘은 맛집 데이",
             stampStatuses: [

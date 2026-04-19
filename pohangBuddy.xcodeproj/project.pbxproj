@@ -16,13 +16,12 @@
 		EC4230EA2F7819860009F673 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D92F7819860009F673 /* Pretendard-SemiBold.ttf */; };
 		EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4230DB2F7819860009F673 /* Assets.xcassets */; };
 		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
-		EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230F02F7828F60009F673 /* FishCareView.swift */; };
 		EC500FC82F7D4A1A00C440AD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC62F7D4A1A00C440AD /* HomeView.swift */; };
 		EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */; };
-		ECC5EA292F7D504F00A8A344 /* FishActionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5EA282F7D504F00A8A344 /* FishActionCard.swift */; };
+		EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */; };
+		EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD22F94D0EB0056618B /* MapView.swift */; };
 		ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */; };
 		ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */; };
-		ECF57E9E2F7D43A000E6D342 /* HomeTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E992F7D43A000E6D342 /* HomeTopBarView.swift */; };
 		ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */; };
 		ECF57EA02F7D43A000E6D342 /* GradientActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */; };
 		ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E962F7D43A000E6D342 /* CustomTextView.swift */; };
@@ -40,16 +39,15 @@
 		EC4230DE2F7819860009F673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pohangBuddyApp.swift; sourceTree = "<group>"; };
 		EC4230ED2F7819E10009F673 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
-		EC4230F02F7828F60009F673 /* FishCareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishCareView.swift; sourceTree = "<group>"; };
 		EC500FC62F7D4A1A00C440AD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
-		ECC5EA282F7D504F00A8A344 /* FishActionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishActionCard.swift; sourceTree = "<group>"; };
+		EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		EC7BEBD22F94D0EB0056618B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailModel.swift; sourceTree = "<group>"; };
 		ECF57E962F7D43A000E6D342 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		ECF57E972F7D43A000E6D342 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientActionButton.swift; sourceTree = "<group>"; };
-		ECF57E992F7D43A000E6D342 /* HomeTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopBarView.swift; sourceTree = "<group>"; };
 		ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
 		ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,10 +129,8 @@
 				ECF57E962F7D43A000E6D342 /* CustomTextView.swift */,
 				ECF57E972F7D43A000E6D342 /* DropDownView.swift */,
 				ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */,
-				ECF57E992F7D43A000E6D342 /* HomeTopBarView.swift */,
 				ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */,
 				ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */,
-				ECC5EA282F7D504F00A8A344 /* FishActionCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -142,9 +138,10 @@
 		ECF7B3502F78FBBE00B29402 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */,
 				EC500FC62F7D4A1A00C440AD /* HomeView.swift */,
+				EC7BEBD22F94D0EB0056618B /* MapView.swift */,
 				EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */,
-				EC4230F02F7828F60009F673 /* FishCareView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,15 +224,14 @@
 			files = (
 				ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */,
 				EC500FC82F7D4A1A00C440AD /* HomeView.swift in Sources */,
+				EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */,
 				EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */,
 				ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */,
-				ECF57E9E2F7D43A000E6D342 /* HomeTopBarView.swift in Sources */,
 				ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */,
 				ECF57EA02F7D43A000E6D342 /* GradientActionButton.swift in Sources */,
-				ECC5EA292F7D504F00A8A344 /* FishActionCard.swift in Sources */,
+				EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */,
 				ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */,
 				ECF57EA22F7D43A000E6D342 /* DropDownView.swift in Sources */,
-				EC4230F12F7828F60009F673 /* FishCareView.swift in Sources */,
 				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
 				EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */,
 				EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */,
@@ -378,6 +374,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pohangBuddy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pollector - 포항의 순간을 모아보세요";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 업로드하기 위해 사진 라이브러리 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -412,6 +409,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pohangBuddy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pollector - 포항의 순간을 모아보세요";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 업로드하기 위해 사진 라이브러리 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
