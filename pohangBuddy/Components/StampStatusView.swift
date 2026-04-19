@@ -8,49 +8,68 @@
 import SwiftUI
 
 struct StampStatusView: View {
+    let width: CGFloat
     let stampStatuses: [StampStatusModel]
     let onTapStamp: (Int) -> Void
 
+    private let horizontalSpacing: CGFloat = 10
+    private let verticalSpacing: CGFloat = 12
+
+    private var cellWidth: CGFloat {
+        (width - horizontalSpacing) / 2
+    }
+
+    private var cellHeight: CGFloat {
+        cellWidth * (19.0 / 18.0)
+    }
+
+    private var totalHeight: CGFloat {
+        let rowCount = ceil(CGFloat(stampStatuses.count) / 2.0)
+        return rowCount * cellHeight + max(0, rowCount - 1) * verticalSpacing
+    }
+
     var body: some View {
-        ZStack {
-            LazyVGrid(
-                columns: Array(repeating: GridItem(.fixed(60), spacing: 24), count: 4),
-                spacing: 18
-            ) {
-                ForEach(stampStatuses) { stamp in
-                    Button {
-                        onTapStamp(stamp.id)
-                    } label: {
-                        VStack(spacing: 4) {
-                            Text("\(stamp.id + 1)")
-                                .font(.head4)
-                            Text(stamp.title)
-                                .font(.micro)
-                                .lineLimit(1)
-                        }
-                            .foregroundStyle(stamp.state.foregroundColor)
+        LazyVGrid(
+            columns: [
+                GridItem(.fixed(cellWidth), spacing: horizontalSpacing),
+                GridItem(.fixed(cellWidth))
+            ],
+            spacing: verticalSpacing
+        ) {
+            ForEach(stampStatuses) { stamp in
+                Button {
+                    onTapStamp(stamp.id)
+                } label: {
+                    VStack(spacing: 4) {
+                        Text("\(stamp.id + 1)")
+                            .font(.head4)
+
+                        Text(stamp.title)
+                            .font(.micro)
                             .lineLimit(1)
-                            .frame(width: 64, height: 64)
-                            .background(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .fill(stamp.state.backgroundColor)
-                            )
                     }
-                    .buttonStyle(.plain)
+                    .foregroundStyle(stamp.state.foregroundColor)
+                    .frame(width: cellWidth, height: cellHeight)
+                    .background(
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(stamp.state.backgroundColor)
+                    )
                 }
+                .buttonStyle(.plain)
             }
-            .padding(.vertical)
-            .background(
-                Color.primary2
-            )
         }
+        .frame(height: totalHeight)
     }
 }
 
 #Preview {
-    NavigationStack {
-        StampStatusView(stampStatuses: DropDownModel.samples[0].stampStatuses) { index in
-            print(index)
+    GeometryReader { geometry in
+        StampStatusView(
+            width: geometry.size.width - 32,
+            stampStatuses: DropDownModel.samples[0].stampStatuses
+        ) { index in
+            print("Tapped stamp: \(index)")
         }
+        .padding(.horizontal, 16)
     }
 }

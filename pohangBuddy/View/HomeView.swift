@@ -11,46 +11,52 @@ struct HomeView: View {
     @State private var selectedStamp: StampStatusModel?
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
-    
+
     var body: some View {
-        ZStack {
-            Color(.white)
-                .ignoresSafeArea()
+        GeometryReader { geometry in
+            let contentWidth = geometry.size.width - 32
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack {
-                        Text("포항의 순간을 \n모으다")
-                            .font(.display1)
-                            .foregroundStyle(.neutral10)
-                        
-                        Spacer()
-                    }
-                    .padding(.leading, 16)
-                    .padding(.vertical, 38)
+            ZStack {
+                Color(.white)
+                    .ignoresSafeArea()
 
-                    HStack {
-                        Text("10개 중 3개 모았어요")
-                            .font(.head3)
-                            .foregroundStyle(.neutral10)
-                        
-                        Spacer()
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Text("포항의 순간을 \n모으다")
+                                .font(.display1)
+                                .foregroundStyle(.neutral10)
+
+                            Spacer()
+                        }
+                        .padding(.leading, 16)
+                        .padding(.vertical, 38)
+
+                        HStack {
+                            Text("10개 중 3개 모았어요")
+                                .font(.head3)
+                                .foregroundStyle(.neutral10)
+
+                            Spacer()
+                        }
+                        .padding(.leading, 16)
+                        .padding(.bottom, 18)
+
+                        DropDownView(
+                            selectedOption: $selectedDropDown,
+                            options: DropDownModel.samples
+                        )
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 20)
+
+                        StampStatusView(
+                            width: contentWidth,
+                            stampStatuses: selectedDropDown.stampStatuses
+                        ) { index in
+                            selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
+                        }
+                        .padding(.horizontal, 16)
                     }
-                    .padding(.leading, 16)
-                    .padding(.bottom, 18)
-                    
-                    DropDownView(
-                        selectedOption: $selectedDropDown,
-                        options: DropDownModel.samples
-                    )
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 20)
-                    
-                    StampStatusView(stampStatuses: selectedDropDown.stampStatuses) { index in
-                        selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
-                    }
-                    .cornerRadius(36)
-                    .padding(.horizontal, 16)
                 }
             }
         }
