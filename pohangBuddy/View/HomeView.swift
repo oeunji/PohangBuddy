@@ -37,7 +37,11 @@ struct HomeView: View {
                 .padding(.leading, 16)
                 .padding(.bottom, 18)
                 
-
+                DropDownView(
+                    selectedOption: $selectedDropDown,
+                    options: DropDownModel.samples
+                )
+                .padding(.horizontal, 16)
             }
         }
         .ignoresSafeArea()
