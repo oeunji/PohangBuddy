@@ -38,6 +38,7 @@ struct HomeView: View {
 
                             Text("\(total)개 중 \(Text("\(current)개").font(.head3)) 모았어요")
                                 .font(.head4)
+                                .foregroundStyle(.neutral10)
 
                             Spacer()
                         }
@@ -45,7 +46,7 @@ struct HomeView: View {
                         .padding(.bottom, 18)
                         
                         LazyVStack(pinnedViews: [.sectionHeaders]) {
-                            Section(header:                         DropDownView(
+                            Section(header: DropDownView(
                                 selectedOption: $selectedDropDown,
                                 options: DropDownModel.samples
                             )

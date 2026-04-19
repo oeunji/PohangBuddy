@@ -21,14 +21,12 @@ struct DropDownView: View {
         } label: {
             HStack {
                 Image(systemName: "pin.fill")
-                    .foregroundStyle(Color.black)
                 Text(selectedOption.title)
-                    .foregroundStyle(Color.black)
                     .font(.head3)
                 Spacer()
                 Image(systemName: "chevron.down")
-                    .foregroundStyle(Color.black)
             }
+            .foregroundStyle(.neutral10)
             .padding(.horizontal, 16)
             .frame(height: 56)
             .background(Color.white)
