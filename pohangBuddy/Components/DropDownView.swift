@@ -34,6 +34,6 @@ struct DropDownView: View {
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 28))
         }
-        .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
+        .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
     }
 }

@@ -54,8 +54,10 @@ struct StampStatusView: View {
                         RoundedRectangle(cornerRadius: 24)
                             .fill(stamp.state.backgroundColor)
                     )
+                    
                 }
                 .buttonStyle(.plain)
+                .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
             }
         }
         .frame(height: totalHeight)
