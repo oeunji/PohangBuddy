@@ -15,6 +15,19 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             Color(.white)
+
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Text("포항의 순간을 \n모으다")
+                        .font(.display1)
+                        .foregroundStyle(.neutral10)
+                    
+                    Spacer()
+                }
+                .padding(.leading, 16)
+                .padding(.bottom, 38)
+
+            }
         }
         .ignoresSafeArea()
     }

@@ -140,8 +140,8 @@
 			children = (
 				EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */,
 				EC500FC62F7D4A1A00C440AD /* HomeView.swift */,
-				EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */,
 				EC7BEBD22F94D0EB0056618B /* MapView.swift */,
+				EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

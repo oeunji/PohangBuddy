@@ -20,11 +20,11 @@ struct DropDownView: View {
             }
         } label: {
             HStack {
-                Image("mapFlagsFull")
+                Image(systemName: "pin.fill")
                     .foregroundStyle(Color.black)
                 Text(selectedOption.title)
                     .foregroundStyle(Color.black)
-                    .font(.head4)
+                    .font(.head3)
                 Spacer()
                 Image(systemName: "chevron.down")
                     .foregroundStyle(Color.black)
