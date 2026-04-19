@@ -33,9 +33,11 @@ struct HomeView: View {
                         .padding(.vertical, 38)
 
                         HStack {
-                            Text("10개 중 3개 모았어요")
-                                .font(.head3)
-                                .foregroundStyle(.neutral10)
+                            let total = 10
+                            let current = 3
+
+                            Text("\(total)개 중 \(Text("\(current)개").font(.head3)) 모았어요")
+                                .font(.head4)
 
                             Spacer()
                         }
