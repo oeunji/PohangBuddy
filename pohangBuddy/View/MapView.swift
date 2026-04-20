@@ -11,12 +11,16 @@ import MapKit
 struct MapView: View {
     
     var body: some View {
-        Map() {
-
+        ZStack(alignment: .top) {
+            Map()
+                .ignoresSafeArea()
+            
+            VStack(spacing: 0) {
+                CategoryScrollView()
+                Spacer()
+            }
         }
-        .ignoresSafeArea()
     }
-
 }
 
 #Preview {
