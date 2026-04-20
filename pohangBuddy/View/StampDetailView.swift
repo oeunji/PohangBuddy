@@ -10,109 +10,113 @@ import SwiftUI
 struct StampDetailView: View {
     let detail: StampDetailModel
     let onStampCompleted: () -> Void
-    
+
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
-    
-    // TODO: - PageControl 프로퍼티
+
     let array: [Color] = [.red, .green, .blue]
     @State var selection = 0
 
     var body: some View {
-        ScrollView {
-            Image(detail.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 240)
-                .frame(maxWidth: .infinity)
-                .clipped()
-                .padding(.top, 10)
-                .padding(.bottom, 16)
-            
-            PageControl(numberOfPages: array.count, currentPage: $selection)
-                .padding(.bottom, 16)
-            
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text(detail.placeName)
-                        .font(.head1)
-                        .foregroundStyle(.neutral10)
-                        .padding(.top, 16)
-                    
-                    Spacer()
-                }
-                .padding(.leading, 16)
-                .padding(.bottom, 8)
-                
-                HStack {
-                    VStack(spacing: 0) {
-                        HStack {
-                            Text("현위치에서 \(detail.distanceText)")
-                                .font(.body3)
-                                .foregroundStyle(.neutral10)
-                                .padding(.leading, 16)
-                                .padding(.bottom, 8)
-                            
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Image(systemName: "pin.fill")
-                                .font(.body4)
-                            
-                            Text("바로가기 | \(detail.address)")
-                                .font(.body4)
-                            
-                            Text("복사")
-                                .font(.micro)
-                            
-                            Spacer()
-                        }
-                        .foregroundStyle(.neutral5)
-                        .padding(.leading, 16)
-                        .padding(.bottom, 30)
-                    }
-                }
-                
+        GeometryReader { geometry in
+            let contentWidth = geometry.size.width - 32
+
+            ScrollView {
+                Image(detail.imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 240)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .padding(.top, 10)
+                    .padding(.bottom, 16)
+
+                PageControl(numberOfPages: array.count, currentPage: $selection)
+                    .padding(.bottom, 16)
+
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(detail.reviewTitle)
-                        .font(.head1)
-                        .foregroundStyle(.neutral10)
-                        .padding(.bottom, 8)
+                    HStack {
+                        Text(detail.placeName)
+                            .font(.head1)
+                            .foregroundStyle(.neutral10)
+                            .padding(.top, 16)
 
-                    Text(detail.reviewPrompt)
-                        .font(.micro1)
-                        .foregroundStyle(.gray5)
-                        .padding(.bottom, 8)
-                    
-                    Text(Date().koreanDateString)
-                        .font(.body4)
-                        .foregroundStyle(.neutral10)
-                        .padding(.bottom, 8)
+                        Spacer()
+                    }
+                    .padding(.leading, 16)
+                    .padding(.bottom, 8)
+
+                    HStack {
+                        VStack(spacing: 0) {
+                            HStack {
+                                Text("현위치에서 \(detail.distanceText)")
+                                    .font(.body3)
+                                    .foregroundStyle(.neutral10)
+                                    .padding(.leading, 16)
+                                    .padding(.bottom, 8)
+
+                                Spacer()
+                            }
+
+                            HStack {
+                                Image(systemName: "pin.fill")
+                                    .font(.body4)
+
+                                Text("바로가기 | \(detail.address)")
+                                    .font(.body4)
+
+                                Text("복사")
+                                    .font(.micro)
+
+                                Spacer()
+                            }
+                            .foregroundStyle(.neutral5)
+                            .padding(.leading, 16)
+                            .padding(.bottom, 30)
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(detail.reviewTitle)
+                            .font(.head1)
+                            .foregroundStyle(.neutral10)
+                            .padding(.bottom, 8)
+
+                        Text(detail.reviewPrompt)
+                            .font(.micro1)
+                            .foregroundStyle(.gray5)
+                            .padding(.bottom, 8)
+
+                        Text(Date().koreanDateString)
+                            .font(.body4)
+                            .foregroundStyle(.neutral10)
+                            .padding(.bottom, 8)
+
+                        ImagePickerView(width: contentWidth)
+                    }
+                    .padding(.horizontal, 16)
                 }
-                .padding(.leading, 16)
-            }
-            
-            CustomTextView(
-                text: $reviewText,
-                placeholder: detail.reviewPlaceholder
-            )
-            .padding(.horizontal, 16)
-            
-            ActionButton(
-                title: detail.actionButtonTitle,
-                imageName: detail.actionButtonImageName
-            ) {
-                stampButtonTapped()
-            }
-            .padding(.top, 24)
-            .padding(.horizontal, 24)
-            .padding(.bottom, 24)
 
+                CustomTextView(
+                    text: $reviewText,
+                    placeholder: detail.reviewPlaceholder
+                )
+                .padding(.horizontal, 16)
+
+                ActionButton(
+                    title: detail.actionButtonTitle,
+                    imageName: detail.actionButtonImageName
+                ) {
+                    stampButtonTapped()
+                }
+                .padding(.top, 24)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 24)
+            }
+            .background(Color.white)
         }
-        .background(Color.white)
     }
-    
+
     private func stampButtonTapped() {
         onStampCompleted()
         dismiss()
