@@ -10,6 +10,7 @@ import SwiftUI
 struct StampDetailView: View {
     let detail: StampDetailModel
     let onStampCompleted: () -> Void
+    
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
     
@@ -31,41 +32,45 @@ struct StampDetailView: View {
             PageControl(numberOfPages: array.count, currentPage: $selection)
                 .padding(.bottom, 16)
             
-            Text(detail.placeName)
-                .font(.head1)
-                .padding(.top, 16)
-            
-            VStack(spacing: 0) {
-                InfoRow(
-                    imageName: "mapFlagsFull",
-                    title: "주소",
-                    value: detail.address
-                )
-
-                Divider()
-
-                InfoRow(
-                    imageName: "route",
-                    title: "거리",
-                    value: detail.distanceText
-                )
-
-                Divider()
-
-                InfoRow(
-                    imageName: "money",
-                    title: "예상 비용",
-                    value: detail.priceText
-                )
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Text(detail.placeName)
+                        .font(.head1)
+                        .padding(.top, 16)
+                    
+                    Spacer()
+                }
+                .padding(.leading, 16)
+                .padding(.bottom, 8)
+                
+                HStack {
+                    VStack(spacing: 0) {
+                        HStack {
+                            Text("현위치에서 \(detail.distanceText)")
+                                .font(.body3)
+                                .padding(.leading, 16)
+                                .padding(.bottom, 8)
+                            
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            Image(systemName: "pin.fill")
+                                .font(.body4)
+                            
+                            Text("바로가기 | \(detail.address)")
+                                .font(.body4)
+                            
+                            Text("복사")
+                                .font(.micro)
+                            
+                            Spacer()
+                        }
+                        .padding(.leading, 16)
+                        .padding(.bottom, 8)
+                    }
+                }
             }
-            .padding(.horizontal, 20)
-            .background(
-                RoundedRectangle(cornerRadius: 28)
-                    .fill(Color.white)
-            )
-            .padding(.horizontal, 24)
-            .padding(.vertical, 4)
-            .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
             
             HStack {
                 VStack(alignment: .leading, spacing: 4) {

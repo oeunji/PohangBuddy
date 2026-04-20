@@ -19,6 +19,7 @@ extension Font {
 
     static let body1: Font = .custom("Pretendard-Regular", size: 15)    // 일반 본문
     static let body3: Font = .custom("Pretendard-Medium", size: 14)     //
+    static let body4: Font = .custom("Pretendard-Regular", size: 13)     //
 
 //    static let caption: Font = .custom("Pretendard-Regular", size: 13)  // 시간 정보, 태그, 단위, 날짜 등 작은 설명
 
