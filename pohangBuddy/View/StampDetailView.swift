@@ -10,95 +10,143 @@ import SwiftUI
 struct StampDetailView: View {
     let detail: StampDetailModel
     let onStampCompleted: () -> Void
+
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
 
-    var body: some View {
-        ScrollView {
-            Image(detail.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 250)
-                .frame(maxWidth: .infinity)
-                .clipped()
-                .cornerRadius(36)
-                .padding(.horizontal, 24)
-                .padding(.top, 24)
-            
-            Text(detail.placeName)
-                .font(.head1)
-                .padding(.top, 16)
-            
-            VStack(spacing: 0) {
-                InfoRow(
-                    imageName: "mapFlagsFull",
-                    title: "주소",
-                    value: detail.address
-                )
-
-                Divider()
-
-                InfoRow(
-                    imageName: "route",
-                    title: "거리",
-                    value: detail.distanceText
-                )
-
-                Divider()
-
-                InfoRow(
-                    imageName: "money",
-                    title: "예상 비용",
-                    value: detail.priceText
-                )
-            }
-            .padding(.horizontal, 20)
-            .background(
-                RoundedRectangle(cornerRadius: 28)
-                    .fill(Color.white)
-            )
-            .padding(.horizontal, 24)
-            .padding(.vertical, 4)
-            .shadow(color: .black.opacity(0.05), radius: 8, y: 4)
-            
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(detail.reviewTitle)
-                        .font(.head1)
-
-                    Text(detail.reviewPrompt)
-                        .font(.body3)
-                        .foregroundStyle(.gray)
-                }
-                .padding(.horizontal, 32)
-                .padding(.top, 16)
-                
-                Spacer()
-            }
-            
-            CustomTextView(
-                text: $reviewText,
-                placeholder: detail.reviewPlaceholder
-            )
-            .padding(.horizontal, 24)
-            
-            GradientActionButton(
-                title: detail.actionButtonTitle,
-                imageName: detail.actionButtonImageName
-            ) {
-                stampButtonTapped()
-            }
-            .padding(.top, 24)
-            .padding(.horizontal, 24)
-            .padding(.bottom, 24)
-
-        }
-        .background(
-            Color.neutral1
-                .ignoresSafeArea(.all)
-        )
-    }
+    let array: [Color] = [.red, .green, .blue]
+    @State var selection = 0
     
+    @State private var isBookmarked = false
+
+    var body: some View {
+        GeometryReader { geometry in
+            let contentWidth = geometry.size.width - 32
+
+            ScrollView {
+                Image(detail.imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 240)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .padding(.top, 10)
+                    .padding(.bottom, 16)
+
+                PageControl(numberOfPages: array.count, currentPage: $selection)
+                    .padding(.bottom, 16)
+
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Text(detail.placeName)
+                            .font(.head1)
+                            .foregroundStyle(.neutral10)
+                            .padding(.top, 16)
+
+                        Spacer()
+                    }
+                    .padding(.leading, 16)
+                    .padding(.bottom, 8)
+
+                    HStack {
+                        VStack(spacing: 0) {
+                            HStack {
+                                Text("현위치에서 \(detail.distanceText)")
+                                    .font(.body3)
+                                    .foregroundStyle(.neutral10)
+                                    .padding(.leading, 16)
+                                    .padding(.bottom, 8)
+
+                                Spacer()
+                            }
+
+                            HStack {
+                                Button {
+                                    print("바로가기 클릭")
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "pin.fill")
+                                            .font(.body4)
+                                            .frame(width: 13, height: 13)
+
+                                        Text("바로가기")
+                                            .font(.body4)
+                                    }
+                                }
+
+                                Text(detail.address)
+                                    .font(.body4)
+
+                                Button {
+                                    print("복사")
+                                } label: {
+                                    Text("복사")
+                                        .font(.micro)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .fill(Color.gray2)
+                                        }
+                                }
+
+                                Spacer()
+                            }
+                            .foregroundStyle(.neutral5)
+                            .padding(.leading, 16)
+                            .padding(.bottom, 30)
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(detail.reviewTitle)
+                            .font(.head1)
+                            .foregroundStyle(.neutral10)
+                            .padding(.bottom, 8)
+
+                        Text(detail.reviewPrompt)
+                            .font(.micro1)
+                            .foregroundStyle(.gray5)
+                            .padding(.bottom, 8)
+
+                        Text(Date().koreanDateString)
+                            .font(.body4)
+                            .foregroundStyle(.neutral10)
+                            .padding(.bottom, 8)
+
+                        ImagePickerView(width: contentWidth)
+                    }
+                    .padding(.horizontal, 16)
+                }
+
+                CustomTextView(
+                    text: $reviewText,
+                    placeholder: detail.reviewPlaceholder
+                )
+                .padding(.horizontal, 16)
+
+                ActionButton(
+                    title: detail.actionButtonTitle,
+                    imageName: detail.actionButtonImageName
+                ) {
+                    stampButtonTapped()
+                }
+                .padding(.top, 24)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 24)
+            }
+            .background(Color.white)
+            .toolbar(.hidden, for: .tabBar)
+            .toolbar {
+                Button {
+                    isBookmarked.toggle()
+                } label: {
+                    Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
+                }
+            }
+        }
+    }
+
     private func stampButtonTapped() {
         onStampCompleted()
         dismiss()
@@ -107,7 +155,7 @@ struct StampDetailView: View {
 
 #Preview {
     StampDetailView(
-        detail: DropDownModel.samples[0].stampStatuses[0].detail,
+        detail: DropDownModel.samples[1].stampStatuses[1].detail,
         onStampCompleted: {}
     )
 }

@@ -15,26 +15,29 @@ struct CustomTextView: View {
         ZStack(alignment: .topLeading) {
             if text.isEmpty {
                 Text(placeholder)
-                    .foregroundStyle(.gray)
-                    .padding(.top, 20)
-                    .padding(.leading, 20)
+                    .font(.micro1)
+                    .foregroundStyle(.gray5)
+                    .padding(.top, 18)
+                    .padding(.leading, 18)
                     .zIndex(1)
             }
 
             TextEditor(text: $text)
+                .font(.body4)
                 .scrollContentBackground(.hidden)
-                .padding(12)
+                .padding(10)
                 .background(Color.clear)
                 .zIndex(0)
         }
-        .frame(height: 150)
+        .frame(height: 198)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.white)
         )
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
         )
+        .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
     }
 }

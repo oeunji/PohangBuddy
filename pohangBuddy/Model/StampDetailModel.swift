@@ -38,9 +38,9 @@ extension StampDetailModel {
             distanceText: distanceText,
             priceText: priceText,
             reviewTitle: "리뷰 작성하기",
-            reviewPrompt: "오늘의 경험을 남겨보세요",
+            reviewPrompt: "오늘의 순간을 사진과 함께 기록해보세요",
             reviewPlaceholder: "자유롭게 기록해보세요",
-            actionButtonTitle: "스탬프 찍기",
+            actionButtonTitle: "스탬프 받기",
             actionButtonImageName: "completeIcon"
         )
     }

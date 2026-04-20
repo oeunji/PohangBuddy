@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GradientActionButton: View {
+struct ActionButton: View {
     let title: String
     let imageName: String
     let action: () -> Void
@@ -25,16 +25,10 @@ struct GradientActionButton: View {
                     .frame(width: 20, height: 20)
             }
             .foregroundStyle(Color.white)
-            .frame(maxWidth: .infinity, minHeight: 60)
+            .frame(maxWidth: .infinity, minHeight: 56)
             .background(
-                RoundedRectangle(cornerRadius: 30)
-                    .fill(
-                        LinearGradient(
-                            colors: [Color.primary3, Color.primary8],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                RoundedRectangle(cornerRadius: 24)
+                    .fill(.neutral3)
             )
             .shadow(color: Color.blue.opacity(0.3), radius: 8, y: 4)
         }

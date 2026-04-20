@@ -22,10 +22,13 @@
 		EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD22F94D0EB0056618B /* MapView.swift */; };
 		ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BB92F96028D007FDC3C /* CategoryChip.swift */; };
 		ECF37BBC2F960A4B007FDC3C /* CategoryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBB2F960A4B007FDC3C /* CategoryScrollView.swift */; };
+		ECF37BBE2F961C4A007FDC3C /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBD2F961C4A007FDC3C /* PageControl.swift */; };
+		ECF37BC02F964E49007FDC3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBF2F964E49007FDC3C /* Date+Extension.swift */; };
+		ECF37BC22F964EE8007FDC3C /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BC12F964EE8007FDC3C /* ImagePickerView.swift */; };
 		ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */; };
 		ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */; };
 		ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */; };
-		ECF57EA02F7D43A000E6D342 /* GradientActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */; };
+		ECF57EA02F7D43A000E6D342 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E982F7D43A000E6D342 /* ActionButton.swift */; };
 		ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E962F7D43A000E6D342 /* CustomTextView.swift */; };
 		ECF57EA22F7D43A000E6D342 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E972F7D43A000E6D342 /* DropDownView.swift */; };
 /* End PBXBuildFile section */
@@ -48,10 +51,13 @@
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF37BB92F96028D007FDC3C /* CategoryChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChip.swift; sourceTree = "<group>"; };
 		ECF37BBB2F960A4B007FDC3C /* CategoryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScrollView.swift; sourceTree = "<group>"; };
+		ECF37BBD2F961C4A007FDC3C /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		ECF37BBF2F964E49007FDC3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		ECF37BC12F964EE8007FDC3C /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailModel.swift; sourceTree = "<group>"; };
 		ECF57E962F7D43A000E6D342 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		ECF57E972F7D43A000E6D342 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
-		ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientActionButton.swift; sourceTree = "<group>"; };
+		ECF57E982F7D43A000E6D342 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
 		ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +103,6 @@
 				EC3256382F7B7582003A25EE /* Model */,
 				ECF7B3502F78FBBE00B29402 /* View */,
 				ECF57E9C2F7D43A000E6D342 /* Components */,
-				EC4230DA2F7819860009F673 /* Font */,
 				EC4230EF2F781E000009F673 /* Extension */,
 			);
 			path = pohangBuddy;
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4230ED2F7819E10009F673 /* Font+Extension.swift */,
+				ECF37BBF2F964E49007FDC3C /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -132,11 +138,14 @@
 			children = (
 				ECF57E962F7D43A000E6D342 /* CustomTextView.swift */,
 				ECF57E972F7D43A000E6D342 /* DropDownView.swift */,
-				ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */,
+				ECF57E982F7D43A000E6D342 /* ActionButton.swift */,
 				ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */,
 				ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */,
 				ECF37BB92F96028D007FDC3C /* CategoryChip.swift */,
 				ECF37BBB2F960A4B007FDC3C /* CategoryScrollView.swift */,
+				ECF37BBD2F961C4A007FDC3C /* PageControl.swift */,
+				ECF37BC12F964EE8007FDC3C /* ImagePickerView.swift */,
+				EC4230DA2F7819860009F673 /* Font */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -235,7 +244,7 @@
 				EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */,
 				ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */,
 				ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */,
-				ECF57EA02F7D43A000E6D342 /* GradientActionButton.swift in Sources */,
+				ECF57EA02F7D43A000E6D342 /* ActionButton.swift in Sources */,
 				EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */,
 				ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */,
 				ECF57EA22F7D43A000E6D342 /* DropDownView.swift in Sources */,
@@ -243,7 +252,10 @@
 				EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */,
 				EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */,
 				EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */,
+				ECF37BBE2F961C4A007FDC3C /* PageControl.swift in Sources */,
 				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,
+				ECF37BC02F964E49007FDC3C /* Date+Extension.swift in Sources */,
+				ECF37BC22F964EE8007FDC3C /* ImagePickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

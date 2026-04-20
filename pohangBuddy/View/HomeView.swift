@@ -66,6 +66,13 @@ struct HomeView: View {
                 }
             }
         }
+        .navigationDestination(item: $selectedStamp) { stamp in
+            StampDetailView(
+                detail: stamp.detail
+            ) {
+                completeStamp(withID: stamp.id)
+            }
+        }
     }
 
     private func completeStamp(withID id: Int) {
@@ -91,5 +98,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    NavigationStack {
+        HomeView()
+    }
 }

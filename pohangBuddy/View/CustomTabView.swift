@@ -12,10 +12,15 @@ struct CustomTabView: View {
     var body: some View {
         TabView {
             Tab("홈", systemImage: "house") {
-                HomeView()
+                NavigationStack {
+                    HomeView()
+                }
             }
+
             Tab("지도", systemImage: "map") {
-                MapView()
+                NavigationStack {
+                    MapView()
+                }
             }
         }
         .tint(.neutral6)
