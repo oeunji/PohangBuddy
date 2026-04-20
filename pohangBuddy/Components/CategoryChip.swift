@@ -34,9 +34,9 @@ struct CategoryChip: View {
                         ), lineWidth: 1.5)
                 }
             )
-            .foregroundColor(isSelected ? Color(.neutral1) : Color(.neutral9))
-            .cornerRadius(42)
             .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
+            .foregroundColor(isSelected ? Color(.neutral1) : Color(.neutral9))
+            .cornerRadius(22)
             .onTapGesture(perform: action)
     }
 }
