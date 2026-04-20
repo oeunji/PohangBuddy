@@ -81,8 +81,8 @@ struct StampDetailView: View {
                         .padding(.bottom, 8)
 
                     Text(detail.reviewPrompt)
-                        .font(.body3)
-                        .foregroundStyle(.neutral5)
+                        .font(.micro1)
+                        .foregroundStyle(.gray5)
                 }
                 .padding(.leading, 16)
                 .padding(.bottom, 8)
