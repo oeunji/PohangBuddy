@@ -16,18 +16,27 @@ struct CategoryChip: View {
         Text(title)
             .font(.head4)
             .padding(.all, 14)
-            .background(isSelected ? Color(.neutral9) : Color(.neutral1))
+            .background(
+                ZStack {
+                    RoundedRectangle(cornerRadius: 42)
+                        .fill(.ultraThinMaterial)
+                    
+                    if isSelected {
+                        RoundedRectangle(cornerRadius: 42)
+                            .fill(Color.neutral9.opacity(0.3))
+                    }
+                    
+                    RoundedRectangle(cornerRadius: 42)
+                        .stroke(.linearGradient(
+                            colors: [.white.opacity(0.7), .clear],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ), lineWidth: 1.5)
+                }
+            )
             .foregroundColor(isSelected ? Color(.neutral1) : Color(.neutral9))
             .cornerRadius(42)
-        
             .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
             .onTapGesture(perform: action)
-        
     }
 }
-
-#Preview {
-    CategoryChip(title: "전체 보기", isSelected: false, action: temp)
-}
-
-func temp() {}
