@@ -27,13 +27,13 @@ struct CustomTextView: View {
                 .background(Color.clear)
                 .zIndex(0)
         }
-        .frame(height: 150)
+        .frame(height: 198)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.white)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 24)
                 .stroke(Color.gray.opacity(0.2), lineWidth: 1)
         )
     }

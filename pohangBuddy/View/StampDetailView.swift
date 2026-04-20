@@ -36,6 +36,7 @@ struct StampDetailView: View {
                 HStack {
                     Text(detail.placeName)
                         .font(.head1)
+                        .foregroundStyle(.neutral10)
                         .padding(.top, 16)
                     
                     Spacer()
@@ -48,6 +49,7 @@ struct StampDetailView: View {
                         HStack {
                             Text("현위치에서 \(detail.distanceText)")
                                 .font(.body3)
+                                .foregroundStyle(.neutral10)
                                 .padding(.leading, 16)
                                 .padding(.bottom, 8)
                             
@@ -66,32 +68,31 @@ struct StampDetailView: View {
                             
                             Spacer()
                         }
+                        .foregroundStyle(.neutral5)
                         .padding(.leading, 16)
-                        .padding(.bottom, 8)
+                        .padding(.bottom, 30)
                     }
                 }
-            }
-            
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
+                
+                VStack(alignment: .leading, spacing: 0) {
                     Text(detail.reviewTitle)
                         .font(.head1)
+                        .foregroundStyle(.neutral10)
+                        .padding(.bottom, 8)
 
                     Text(detail.reviewPrompt)
                         .font(.body3)
-                        .foregroundStyle(.gray)
+                        .foregroundStyle(.neutral5)
                 }
-                .padding(.horizontal, 32)
-                .padding(.top, 16)
-                
-                Spacer()
+                .padding(.leading, 16)
+                .padding(.bottom, 8)
             }
             
             CustomTextView(
                 text: $reviewText,
                 placeholder: detail.reviewPlaceholder
             )
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 16)
             
             GradientActionButton(
                 title: detail.actionButtonTitle,
