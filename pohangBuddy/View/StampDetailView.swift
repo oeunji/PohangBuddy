@@ -18,12 +18,10 @@ struct StampDetailView: View {
             Image(detail.imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(height: 250)
+                .frame(height: 240)
                 .frame(maxWidth: .infinity)
                 .clipped()
-                .cornerRadius(36)
-                .padding(.horizontal, 24)
-                .padding(.top, 24)
+                .padding(.top, 10)
             
             Text(detail.placeName)
                 .font(.head1)
@@ -107,7 +105,7 @@ struct StampDetailView: View {
 
 #Preview {
     StampDetailView(
-        detail: DropDownModel.samples[0].stampStatuses[0].detail,
+        detail: DropDownModel.samples[1].stampStatuses[1].detail,
         onStampCompleted: {}
     )
 }
