@@ -23,6 +23,7 @@
 		ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BB92F96028D007FDC3C /* CategoryChip.swift */; };
 		ECF37BBC2F960A4B007FDC3C /* CategoryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBB2F960A4B007FDC3C /* CategoryScrollView.swift */; };
 		ECF37BBE2F961C4A007FDC3C /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBD2F961C4A007FDC3C /* PageControl.swift */; };
+		ECF37BC02F964E49007FDC3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBF2F964E49007FDC3C /* Date+Extension.swift */; };
 		ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */; };
 		ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */; };
 		ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */; };
@@ -50,6 +51,7 @@
 		ECF37BB92F96028D007FDC3C /* CategoryChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChip.swift; sourceTree = "<group>"; };
 		ECF37BBB2F960A4B007FDC3C /* CategoryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScrollView.swift; sourceTree = "<group>"; };
 		ECF37BBD2F961C4A007FDC3C /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		ECF37BBF2F964E49007FDC3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailModel.swift; sourceTree = "<group>"; };
 		ECF57E962F7D43A000E6D342 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		ECF57E972F7D43A000E6D342 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4230ED2F7819E10009F673 /* Font+Extension.swift */,
+				ECF37BBF2F964E49007FDC3C /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */,
 				ECF37BBE2F961C4A007FDC3C /* PageControl.swift in Sources */,
 				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,
+				ECF37BC02F964E49007FDC3C /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
