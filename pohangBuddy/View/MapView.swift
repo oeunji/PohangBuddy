@@ -6,18 +6,21 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
     
     var body: some View {
-        ZStack {
-            Color(.black)
+        ZStack(alignment: .top) {
+            Map()
+                .ignoresSafeArea()
             
-
+            VStack(spacing: 0) {
+                CategoryScrollView()
+                Spacer()
+            }
         }
-        .ignoresSafeArea()
     }
-
 }
 
 #Preview {
