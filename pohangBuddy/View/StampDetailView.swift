@@ -12,6 +12,10 @@ struct StampDetailView: View {
     let onStampCompleted: () -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
+    
+    // TODO: - PageControl 프로퍼티
+    let array: [Color] = [.red, .green, .blue]
+    @State var selection = 0
 
     var body: some View {
         ScrollView {
@@ -22,6 +26,10 @@ struct StampDetailView: View {
                 .frame(maxWidth: .infinity)
                 .clipped()
                 .padding(.top, 10)
+                .padding(.bottom, 16)
+            
+            PageControl(numberOfPages: array.count, currentPage: $selection)
+                .padding(.bottom, 16)
             
             Text(detail.placeName)
                 .font(.head1)
@@ -91,10 +99,7 @@ struct StampDetailView: View {
             .padding(.bottom, 24)
 
         }
-        .background(
-            Color.neutral1
-                .ignoresSafeArea(.all)
-        )
+        .background(Color.white)
     }
     
     private func stampButtonTapped() {
