@@ -61,14 +61,34 @@ struct StampDetailView: View {
                             }
 
                             HStack {
-                                Image(systemName: "pin.fill")
+                                Button {
+                                    print("바로가기 클릭")
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "pin.fill")
+                                            .font(.body4)
+                                            .frame(width: 13, height: 13)
+
+                                        Text("바로가기")
+                                            .font(.body4)
+                                    }
+                                }
+
+                                Text(detail.address)
                                     .font(.body4)
 
-                                Text("바로가기 | \(detail.address)")
-                                    .font(.body4)
-
-                                Text("복사")
-                                    .font(.micro)
+                                Button {
+                                    print("복사")
+                                } label: {
+                                    Text("복사")
+                                        .font(.micro)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .fill(Color.gray2)
+                                        }
+                                }
 
                                 Spacer()
                             }
