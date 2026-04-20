@@ -94,7 +94,7 @@ struct StampDetailView: View {
             )
             .padding(.horizontal, 16)
             
-            GradientActionButton(
+            ActionButton(
                 title: detail.actionButtonTitle,
                 imageName: detail.actionButtonImageName
             ) {
