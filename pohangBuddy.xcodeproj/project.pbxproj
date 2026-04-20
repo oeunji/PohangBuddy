@@ -20,6 +20,7 @@
 		EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */; };
 		EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */; };
 		EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD22F94D0EB0056618B /* MapView.swift */; };
+		ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BB92F96028D007FDC3C /* CategoryChip.swift */; };
 		ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */; };
 		ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */; };
 		ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */; };
@@ -44,6 +45,7 @@
 		EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		EC7BEBD22F94D0EB0056618B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF37BB92F96028D007FDC3C /* CategoryChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChip.swift; sourceTree = "<group>"; };
 		ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailModel.swift; sourceTree = "<group>"; };
 		ECF57E962F7D43A000E6D342 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		ECF57E972F7D43A000E6D342 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				ECF57E982F7D43A000E6D342 /* GradientActionButton.swift */,
 				ECF57E9A2F7D43A000E6D342 /* InfoRow.swift */,
 				ECF57E9B2F7D43A000E6D342 /* StampStatusView.swift */,
+				ECF37BB92F96028D007FDC3C /* CategoryChip.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */,
 				EC500FC82F7D4A1A00C440AD /* HomeView.swift in Sources */,
 				EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */,
+				ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */,
 				EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */,
 				ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */,
 				ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */,
