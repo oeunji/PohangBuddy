@@ -83,9 +83,14 @@ struct StampDetailView: View {
                     Text(detail.reviewPrompt)
                         .font(.micro1)
                         .foregroundStyle(.gray5)
+                        .padding(.bottom, 8)
+                    
+                    Text(Date().koreanDateString)
+                        .font(.body4)
+                        .foregroundStyle(.neutral10)
+                        .padding(.bottom, 8)
                 }
                 .padding(.leading, 16)
-                .padding(.bottom, 8)
             }
             
             CustomTextView(
