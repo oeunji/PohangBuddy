@@ -16,6 +16,8 @@ struct StampDetailView: View {
 
     let array: [Color] = [.red, .green, .blue]
     @State var selection = 0
+    
+    @State private var isBookmarked = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -115,6 +117,13 @@ struct StampDetailView: View {
             }
             .background(Color.white)
             .toolbar(.hidden, for: .tabBar)
+            .toolbar {
+                Button {
+                    isBookmarked.toggle()
+                } label: {
+                    Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
+                }
+            }
         }
     }
 
