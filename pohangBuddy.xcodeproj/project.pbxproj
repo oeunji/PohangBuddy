@@ -18,6 +18,7 @@
 		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
 		EC500FC82F7D4A1A00C440AD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC62F7D4A1A00C440AD /* HomeView.swift */; };
 		EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */; };
+		EC5D25972F96750D00CCAC52 /* Configuration.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EC5D25962F96750D00CCAC52 /* Configuration.xcconfig */; };
 		EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */; };
 		EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD22F94D0EB0056618B /* MapView.swift */; };
 		ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BB92F96028D007FDC3C /* CategoryChip.swift */; };
@@ -46,6 +47,7 @@
 		EC4230ED2F7819E10009F673 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		EC500FC62F7D4A1A00C440AD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
+		EC5D25962F96750D00CCAC52 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = "<group>"; };
 		EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		EC7BEBD22F94D0EB0056618B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 		EC4230E12F7819860009F673 /* pohangBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				EC5D25952F9674F800CCAC52 /* Configuration */,
 				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230DB2F7819860009F673 /* Assets.xcassets */,
 				EC4230DE2F7819860009F673 /* Info.plist */,
@@ -115,6 +118,14 @@
 				ECF37BBF2F964E49007FDC3C /* Date+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		EC5D25952F9674F800CCAC52 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				EC5D25962F96750D00CCAC52 /* Configuration.xcconfig */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		ECE5E91A2F7622F30087EB62 = {
@@ -227,6 +238,7 @@
 				EC4230E92F7819860009F673 /* Pretendard-Regular.ttf in Resources */,
 				EC4230EA2F7819860009F673 /* Pretendard-SemiBold.ttf in Resources */,
 				EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */,
+				EC5D25972F96750D00CCAC52 /* Configuration.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
