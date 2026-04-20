@@ -114,6 +114,7 @@ struct StampDetailView: View {
                 .padding(.bottom, 24)
             }
             .background(Color.white)
+            .toolbar(.hidden, for: .tabBar)
         }
     }
 
