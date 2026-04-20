@@ -1,0 +1,114 @@
+language: "ko-KR"
+
+reviews:
+  profile: "chill"
+
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "main"
+      - "develop"
+
+  instructions: |
+    이 저장소의 Swift / SwiftUI 코드 리뷰 시 아래 스타일 가이드를 우선적으로 따르세요.
+
+    [네이밍]
+    - 변수와 함수 이름은 lowerCamelCase를 사용합니다.
+    - 배열이나 복수 의미를 담는 변수명은 끝에 s를 붙이는 것을 선호합니다.
+    - Bool 값은 의미가 드러나게 작성합니다. 예: isShowing
+    - 구조체, 클래스, 열거형 이름은 UpperCamelCase를 사용합니다.
+    - 타입 이름 앞에 불필요한 prefix를 붙이지 않습니다.
+    - 열거형 case 이름은 lowerCamelCase를 사용합니다.
+    - 프로토콜은 역할에 맞게 명사 또는 형용사형으로 작성합니다.
+    - delegate 패턴의 메서드는 첫 번째 인자로 source 객체를 받는 형태를 선호합니다.
+
+    [함수 네이밍]
+    - 함수 이름은 일반적으로 동사원형으로 시작합니다.
+    - Event-handling 함수는 will / did 를 활용한 이름을 선호합니다.
+      예: willFinishSession, didFinishSession, scheduleDidChange
+    - 데이터를 가져오는 함수 이름에 get 사용을 지양합니다.
+    - 실패 가능성이 있는 비동기 요청은 request를, 실패 없이 값을 찾거나 반환하는 경우 fetch를 사용합니다.
+
+    [주석]
+    - 주석은 간결하고 핵심 요약 중심으로 작성합니다.
+    - 함수/메서드에는 가능하면 Swift DocC 스타일의 /// 문서를 사용합니다.
+    - 문서 주석에는 함수가 무엇을 하는지, 파라미터와 반환값을 설명합니다.
+    - void 반환이나 자명한 내용은 장황하게 적지 않습니다.
+    - 연관 코드 그룹에는 MARK: 를 활용하는 것을 권장합니다.
+    - 미완성 작업이나 수정 필요 항목은 TODO: / FIXME: 를 사용합니다.
+
+    [포맷팅]
+    - 들여쓰기는 스페이스 4칸 기준을 사용합니다.
+    - 콜론(:)의 왼쪽에는 공백을 두지 않고, 오른쪽에는 한 칸 공백을 둡니다.
+    - import는 알파벳순으로 정렬하고 중복 import를 제거합니다.
+
+    [타입]
+    - 컴파일러가 충분히 추론 가능한 경우 타입 추론을 선호합니다.
+    - CGFloat, Int64 등 명시가 더 적절한 경우에만 타입을 직접 적습니다.
+    - Array<T>, Dictionary<K, V> 대신 [T], [K: V] 축약 문법을 사용합니다.
+    - 빈 배열/딕셔너리 선언 시에는 타입이 드러나게 작성하는 것을 선호합니다.
+      예: var students: [String] = []
+
+    [클로저]
+    - 단일 후행 클로저는 trailing closure 문법을 선호합니다.
+    - 불필요한 타입 표기, 함수 라벨, 소괄호는 생략합니다.
+    - 다중 클로저 인자 함수는 Swift의 다중 후행 클로저 문법을 선호합니다.
+
+    [메모리 관리]
+    - 순환 참조 가능성이 있는 경우 weak / unowned 사용을 검토합니다.
+    - weak 참조는 Optional이어야 합니다.
+
+    [파일 구성]
+    - property, computed property, property observer의 배치를 일관되게 유지합니다.
+    - computed property / property observer가 있는 속성은 같은 종류 선언 집합의 끝에 두는 방식을 선호합니다.
+
+    [SwiftUI]
+    - 모든 View는 가능하면 struct로 정의합니다.
+    - @ViewBuilder 함수나 computed property로 하위 뷰를 만드는 방식을 지양하고, 별도 View struct로 분리하는 것을 선호합니다.
+    - 한 View struct 안에서 레이아웃 컨테이너(VStack, HStack, ZStack, Grid 등)를 과도하게 중첩하지 마세요.
+    - 가능하면 하나의 View는 하나의 주된 레이아웃 방향/의도를 가지도록 분리합니다.
+    - 레이아웃 컨테이너가 여러 개 필요할 정도로 복잡해지면 하위 View로 추출하는 방향을 우선 검토합니다.
+
+    [리뷰 방식]
+    - 리뷰 시 기능적 결함, 크래시 위험, 상태 관리 문제, 메모리 문제를 스타일 이슈보다 우선합니다.
+    - 단순 취향 차이보다는 이 스타일 가이드에 명시된 규칙 위반만 코멘트하세요.
+    - 사소한 스타일 이슈는 한 번에 묶어서 제안하고, 불필요하게 많은 코멘트를 남기지 마세요.
+    - SwiftUI에서는 상태 흐름(@State, @Binding, Observable 계열), 네비게이션, 레이아웃 안정성을 함께 점검하세요.
+    - 리뷰 코멘트는 한국어로 작성하세요.
+
+  path_instructions:
+    - path: "**/*.swift"
+      instructions: |
+        Swift 파일에 대해서만 위 스타일 가이드를 엄격히 적용하세요.
+        특히 아래 항목을 우선 체크하세요:
+        - 함수/변수/타입 네이밍
+        - trailing closure 사용 여부
+        - get 대신 fetch/request 사용 여부
+        - import 정렬 및 중복
+        - SwiftUI View 분리 방식
+        - 과도한 레이아웃 컨테이너 중첩
+
+    - path: "**/*View.swift"
+      instructions: |
+        SwiftUI View 파일은 다음을 추가로 검토하세요:
+        - 하위 UI 조각을 computed property / @ViewBuilder 함수보다 별도 View struct로 분리했는지
+        - 상태 소유권(@State / @Binding)이 명확한지
+        - 레이아웃 컨테이너가 과도하게 중첩되지 않았는지
+        - NavigationStack, sheet, fullScreenCover, navigationDestination 사용이 상태와 잘 연결되어 있는지
+
+    - path: "**/Model/*.swift"
+      instructions: |
+        Model 파일은 다음을 추가로 검토하세요:
+        - 타입 이름이 명확한지
+        - 프로퍼티 이름이 의미를 잘 드러내는지
+        - 불필요한 prefix가 없는지
+        - 컬렉션 이름이 복수형인지
+
+chat:
+  auto_reply: true
