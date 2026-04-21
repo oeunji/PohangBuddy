@@ -19,6 +19,7 @@
 		EC500FC82F7D4A1A00C440AD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC62F7D4A1A00C440AD /* HomeView.swift */; };
 		EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */; };
 		EC5D25972F96750D00CCAC52 /* Configuration.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EC5D25962F96750D00CCAC52 /* Configuration.xcconfig */; };
+		EC5D259A2F97144300CCAC52 /* GooglePlacesSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EC5D25992F97144300CCAC52 /* GooglePlacesSwift */; };
 		EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */; };
 		EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD22F94D0EB0056618B /* MapView.swift */; };
 		ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BB92F96028D007FDC3C /* CategoryChip.swift */; };
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC5D259A2F97144300CCAC52 /* GooglePlacesSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +191,7 @@
 			);
 			name = pohangBuddy;
 			packageProductDependencies = (
+				EC5D25992F97144300CCAC52 /* GooglePlacesSwift */,
 			);
 			productName = pohangBuddy;
 			productReference = ECE5E9232F7622F30087EB62 /* pohangBuddy.app */;
@@ -218,6 +221,9 @@
 			);
 			mainGroup = ECE5E91A2F7622F30087EB62;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EC5D25982F97144300CCAC52 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = ECE5E9242F7622F30087EB62 /* Products */;
 			projectDirPath = "";
@@ -487,6 +493,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC5D25982F97144300CCAC52 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC5D25992F97144300CCAC52 /* GooglePlacesSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC5D25982F97144300CCAC52 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlacesSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ECE5E91B2F7622F30087EB62 /* Project object */;
 }
