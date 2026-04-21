@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import GooglePlacesSwift
 
 @main
@@ -23,5 +24,6 @@ struct pohangBuddyApp: App {
         WindowGroup {
             CustomTabView()
         }
+        .modelContainer(for: [StampListModel.self])
     }
 }
