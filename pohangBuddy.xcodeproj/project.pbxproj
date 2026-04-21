@@ -123,6 +123,7 @@
 				EC3A20E32F978A7C00647BD9 /* Base */,
 				EC3A20DF2F97888200647BD9 /* DTO */,
 				EC3256382F7B7582003A25EE /* Model */,
+				EC3A20E82F978AB600647BD9 /* PlacesService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -131,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				EC3A20E62F978AAB00647BD9 /* ModelType.swift */,
-				EC3A20E82F978AB600647BD9 /* PlacesService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
