@@ -15,14 +15,14 @@ protocol PlacesServicing {
 
 @MainActor
 final class PlacesService: PlacesServicing {
-    private let client: PlacesClient
+    private let clientProvider: @MainActor () -> PlacesClient
 
-    init(client: PlacesClient) {
-        self.client = client
+    init(clientProvider: @escaping @MainActor () -> PlacesClient = { PlacesClient.shared }) {
+        self.clientProvider = clientProvider
     }
 
-    convenience init() {
-        self.init(client: PlacesClient.shared)
+    convenience init(client: PlacesClient) {
+        self.init(clientProvider: { client })
     }
 
     func searchByText(keyword: String) async throws -> [Place] {
@@ -53,7 +53,7 @@ final class PlacesService: PlacesServicing {
             shouldIncludePureServiceAreaBusinesses: false
         )
 
-        let result = await client.searchByText(with: request)
+        let result = await clientProvider().searchByText(with: request)
 
         switch result {
         case .success(let places):

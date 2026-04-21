@@ -27,7 +27,6 @@
 		EC4230EE2F7819E10009F673 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230ED2F7819E10009F673 /* Font+Extension.swift */; };
 		EC500FC82F7D4A1A00C440AD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC62F7D4A1A00C440AD /* HomeView.swift */; };
 		EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC500FC72F7D4A1A00C440AD /* StampDetailView.swift */; };
-		EC5D25972F96750D00CCAC52 /* Configuration.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EC5D25962F96750D00CCAC52 /* Configuration.xcconfig */; };
 		EC5D259A2F97144300CCAC52 /* GooglePlacesSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EC5D25992F97144300CCAC52 /* GooglePlacesSwift */; };
 		EC5D259C2F9717F400CCAC52 /* StampListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D259B2F9717F400CCAC52 /* StampListModel.swift */; };
 		EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */; };
@@ -339,7 +338,6 @@
 				EC4230E92F7819860009F673 /* Pretendard-Regular.ttf in Resources */,
 				EC4230EA2F7819860009F673 /* Pretendard-SemiBold.ttf in Resources */,
 				EC4230EB2F7819860009F673 /* Assets.xcassets in Resources */,
-				EC5D25972F96750D00CCAC52 /* Configuration.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +502,7 @@
 		};
 		ECE5E92F2F7622F30087EB62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC5D25962F96750D00CCAC52 /* Configuration.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -539,6 +538,7 @@
 		};
 		ECE5E9302F7622F30087EB62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC5D25962F96750D00CCAC52 /* Configuration.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
