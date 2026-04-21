@@ -13,11 +13,11 @@ import GooglePlacesSwift
 struct pohangBuddyApp: App {
     
     init() {
-        guard let googleMapAPIKey = Bundle.main.object(forInfoDictionaryKey: "GOOGLE_MAP_API_KEY") as? String else {
-            fatalError("API Key not found")
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "GOOGLE_MAP_API_KEY") as? String else {
+            fatalError("GOOGLE_MAP_API_KEY가 없습니다.")
         }
-        
-        _ = PlacesClient.provideAPIKey(googleMapAPIKey)
+
+        _ = PlacesClient.provideAPIKey(apiKey)
     }
     
     var body: some Scene {
