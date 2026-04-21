@@ -11,10 +11,11 @@ struct HomeView: View {
     @State private var selectedStamp: StampStatusModel?
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
+    @StateObject private var searchViewModel = SearchViewModel()
 
     var body: some View {
         GeometryReader { geometry in
-            let contentWidth = geometry.size.width - 32
+            let contentWidth = max(0, geometry.size.width - 32)
 
             ZStack {
                 Color(.white)
@@ -55,9 +56,9 @@ struct HomeView: View {
                             ) {
                                 StampStatusView(
                                     width: contentWidth,
-                                    stampStatuses: selectedDropDown.stampStatuses
+                                    stampStatuses: searchViewModel.stampStatuses
                                 ) { index in
-                                    selectedStamp = selectedDropDown.stampStatuses.first { $0.id == index }
+                                    selectedStamp = searchViewModel.stampStatuses.first { $0.id == index }
                                 }
                                 .padding(.bottom, 32)
                             }
@@ -73,10 +74,13 @@ struct HomeView: View {
                 completeStamp(withID: stamp.id)
             }
         }
+        .task(id: selectedDropDown.id) {
+            await searchViewModel.loadStampStatuses(for: selectedDropDown.stampStatuses)
+        }
     }
 
-    private func completeStamp(withID id: Int) {
-        let updatedStatuses = selectedDropDown.stampStatuses.map { stamp in
+    private func completeStamp(withID id: String) {
+        let updatedStatuses = searchViewModel.stampStatuses.map { stamp in
             guard stamp.id == id else { return stamp }
 
             return StampStatusModel(
@@ -87,11 +91,7 @@ struct HomeView: View {
             )
         }
 
-        selectedDropDown = DropDownModel(
-            id: selectedDropDown.id,
-            title: selectedDropDown.title,
-            stampStatuses: updatedStatuses
-        )
+        searchViewModel.stampStatuses = updatedStatuses
 
         selectedStamp = updatedStatuses.first { $0.id == id }
     }

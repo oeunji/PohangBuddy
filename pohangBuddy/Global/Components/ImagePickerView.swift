@@ -14,7 +14,7 @@ struct ImagePickerView: View {
     @State private var selectedImageCount = 2
 
     private var cellSize: CGFloat {
-        (width - 16) / 3
+        max(0, (width - 16) / 3)
     }
 
     var body: some View {

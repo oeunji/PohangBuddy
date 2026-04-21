@@ -21,7 +21,7 @@ struct StampDetailView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let contentWidth = geometry.size.width - 32
+            let contentWidth = max(0, geometry.size.width - 32)
 
             ScrollView {
                 Image(detail.imageName)

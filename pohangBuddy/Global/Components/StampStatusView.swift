@@ -10,13 +10,13 @@ import SwiftUI
 struct StampStatusView: View {
     let width: CGFloat
     let stampStatuses: [StampStatusModel]
-    let onTapStamp: (Int) -> Void
+    let onTapStamp: (String) -> Void
 
     private let horizontalSpacing: CGFloat = 10
     private let verticalSpacing: CGFloat = 12
 
     private var cellWidth: CGFloat {
-        (width - horizontalSpacing) / 2
+        max(0, (width - horizontalSpacing) / 2)
     }
 
     private var cellHeight: CGFloat {
@@ -53,7 +53,7 @@ struct StampStatusView: View {
                         .padding(.bottom, 4)
                         
                         HStack {
-                            Text("\(stamp.id + 1)")
+                            Text(stamp.id)
                                 .font(.micro)
                                 .lineLimit(1)
                             
