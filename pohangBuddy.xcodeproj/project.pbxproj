@@ -82,10 +82,10 @@
 		EC3256382F7B7582003A25EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EC5D259B2F9717F400CCAC52 /* StampListModel.swift */,
 				ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */,
 				EC32563A2F7B7599003A25EE /* DropDownModel.swift */,
 				EC32563C2F7B761A003A25EE /* StampStatusModel.swift */,
-				EC5D259B2F9717F400CCAC52 /* StampListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
