@@ -121,6 +121,8 @@
 			children = (
 				EC3A20F92F978BA500647BD9 /* Error */,
 				EC3A20E32F978A7C00647BD9 /* Base */,
+				EC3A20DF2F97888200647BD9 /* DTO */,
+				EC3256382F7B7582003A25EE /* Model */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -150,6 +152,34 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		EC3A21002F978FDD00647BD9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EC3A21012F978FF600647BD9 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				ECF57E9C2F7D43A000E6D342 /* Components */,
+				EC4230EF2F781E000009F673 /* Extension */,
+				EC3A21022F978FFD00647BD9 /* Resources */,
+				EC5D25952F9674F800CCAC52 /* Configuration */,
+				EC4230DE2F7819860009F673 /* Info.plist */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		EC3A21022F978FFD00647BD9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC4230DB2F7819860009F673 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		EC4230DA2F7819860009F673 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,17 +194,11 @@
 		EC4230E12F7819860009F673 /* pohangBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				EC3A20FB2F978DA100647BD9 /* ViewModel */,
-				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
-				EC4230DB2F7819860009F673 /* Assets.xcassets */,
-				EC4230DE2F7819860009F673 /* Info.plist */,
-				EC3256382F7B7582003A25EE /* Model */,
+				EC3A21002F978FDD00647BD9 /* App */,
 				ECF7B3502F78FBBE00B29402 /* View */,
-				ECF57E9C2F7D43A000E6D342 /* Components */,
-				EC4230EF2F781E000009F673 /* Extension */,
-				EC5D25952F9674F800CCAC52 /* Configuration */,
-				EC3A20DF2F97888200647BD9 /* DTO */,
+				EC3A20FB2F978DA100647BD9 /* ViewModel */,
 				EC3A20E22F978A7700647BD9 /* Network */,
+				EC3A21012F978FF600647BD9 /* Global */,
 			);
 			path = pohangBuddy;
 			sourceTree = "<group>";
@@ -488,7 +512,7 @@
 				DEVELOPMENT_TEAM = AT9KX3ZBW6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = pohangBuddy/Info.plist;
+				INFOPLIST_FILE = pohangBuddy/Global/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pollector - 포항의 순간을 모아보세요";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 업로드하기 위해 사진 라이브러리 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -523,7 +547,7 @@
 				DEVELOPMENT_TEAM = AT9KX3ZBW6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = pohangBuddy/Info.plist;
+				INFOPLIST_FILE = pohangBuddy/Global/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pollector - 포항의 순간을 모아보세요";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 업로드하기 위해 사진 라이브러리 접근이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
