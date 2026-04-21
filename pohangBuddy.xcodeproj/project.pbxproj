@@ -10,15 +10,14 @@
 		EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563A2F7B7599003A25EE /* DropDownModel.swift */; };
 		EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563C2F7B761A003A25EE /* StampStatusModel.swift */; };
 		EC3A20E12F97888E00647BD9 /* SerachByTextResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E02F97888E00647BD9 /* SerachByTextResponse.swift */; };
-		EC3A20E52F978A8A00647BD9 /* BaseResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E42F978A8A00647BD9 /* BaseResponseBody.swift */; };
 		EC3A20E72F978AAB00647BD9 /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E62F978AAB00647BD9 /* ModelType.swift */; };
-		EC3A20E92F978AB600647BD9 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E82F978AB600647BD9 /* BaseService.swift */; };
-		EC3A20EB2F978AD800647BD9 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20EA2F978AD800647BD9 /* BaseTargetType.swift */; };
+		EC3A20E92F978AB600647BD9 /* PlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E82F978AB600647BD9 /* PlacesService.swift */; };
 		EC3A20EE2F978B5A00647BD9 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = EC3A20ED2F978B5A00647BD9 /* CombineMoya */; };
 		EC3A20F02F978B5A00647BD9 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = EC3A20EF2F978B5A00647BD9 /* Moya */; };
 		EC3A20F22F978B5A00647BD9 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = EC3A20F12F978B5A00647BD9 /* ReactiveMoya */; };
 		EC3A20F42F978B5A00647BD9 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = EC3A20F32F978B5A00647BD9 /* RxMoya */; };
 		EC3A20FA2F978BA500647BD9 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20F82F978BA500647BD9 /* NetworkError.swift */; };
+		EC3A20FD2F978DAA00647BD9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20FC2F978DAA00647BD9 /* SearchViewModel.swift */; };
 		EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */; };
 		EC4230E72F7819860009F673 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D62F7819860009F673 /* Pretendard-Light.ttf */; };
 		EC4230E82F7819860009F673 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC4230D72F7819860009F673 /* Pretendard-Medium.ttf */; };
@@ -50,11 +49,10 @@
 		EC32563A2F7B7599003A25EE /* DropDownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownModel.swift; sourceTree = "<group>"; };
 		EC32563C2F7B761A003A25EE /* StampStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusModel.swift; sourceTree = "<group>"; };
 		EC3A20E02F97888E00647BD9 /* SerachByTextResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachByTextResponse.swift; sourceTree = "<group>"; };
-		EC3A20E42F978A8A00647BD9 /* BaseResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseBody.swift; sourceTree = "<group>"; };
 		EC3A20E62F978AAB00647BD9 /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
-		EC3A20E82F978AB600647BD9 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		EC3A20EA2F978AD800647BD9 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		EC3A20E82F978AB600647BD9 /* PlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesService.swift; sourceTree = "<group>"; };
 		EC3A20F82F978BA500647BD9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EC3A20FC2F978DAA00647BD9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		EC4230D62F7819860009F673 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.ttf"; sourceTree = "<group>"; };
 		EC4230D72F7819860009F673 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.ttf"; sourceTree = "<group>"; };
 		EC4230D82F7819860009F673 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
@@ -130,10 +128,8 @@
 		EC3A20E32F978A7C00647BD9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				EC3A20E42F978A8A00647BD9 /* BaseResponseBody.swift */,
 				EC3A20E62F978AAB00647BD9 /* ModelType.swift */,
-				EC3A20E82F978AB600647BD9 /* BaseService.swift */,
-				EC3A20EA2F978AD800647BD9 /* BaseTargetType.swift */,
+				EC3A20E82F978AB600647BD9 /* PlacesService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -144,6 +140,14 @@
 				EC3A20F82F978BA500647BD9 /* NetworkError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		EC3A20FB2F978DA100647BD9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EC3A20FC2F978DAA00647BD9 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EC4230DA2F7819860009F673 /* Font */ = {
@@ -160,9 +164,7 @@
 		EC4230E12F7819860009F673 /* pohangBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				EC3A20E22F978A7700647BD9 /* Network */,
-				EC3A20DF2F97888200647BD9 /* DTO */,
-				EC5D25952F9674F800CCAC52 /* Configuration */,
+				EC3A20FB2F978DA100647BD9 /* ViewModel */,
 				EC4230DF2F7819860009F673 /* pohangBuddyApp.swift */,
 				EC4230DB2F7819860009F673 /* Assets.xcassets */,
 				EC4230DE2F7819860009F673 /* Info.plist */,
@@ -170,6 +172,9 @@
 				ECF7B3502F78FBBE00B29402 /* View */,
 				ECF57E9C2F7D43A000E6D342 /* Components */,
 				EC4230EF2F781E000009F673 /* Extension */,
+				EC5D25952F9674F800CCAC52 /* Configuration */,
+				EC3A20DF2F97888200647BD9 /* DTO */,
+				EC3A20E22F978A7700647BD9 /* Network */,
 			);
 			path = pohangBuddy;
 			sourceTree = "<group>";
@@ -321,16 +326,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC3A20EB2F978AD800647BD9 /* BaseTargetType.swift in Sources */,
 				ECF57E952F7D34C100E6D342 /* StampDetailModel.swift in Sources */,
 				EC500FC82F7D4A1A00C440AD /* HomeView.swift in Sources */,
 				EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */,
 				ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */,
 				EC500FC92F7D4A1A00C440AD /* StampDetailView.swift in Sources */,
-				EC3A20E52F978A8A00647BD9 /* BaseResponseBody.swift in Sources */,
 				ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */,
 				ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */,
-				EC3A20E92F978AB600647BD9 /* BaseService.swift in Sources */,
+				EC3A20E92F978AB600647BD9 /* PlacesService.swift in Sources */,
 				ECF57EA02F7D43A000E6D342 /* ActionButton.swift in Sources */,
 				EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */,
 				ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */,
@@ -340,6 +343,7 @@
 				EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */,
 				EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */,
 				ECF37BBE2F961C4A007FDC3C /* PageControl.swift in Sources */,
+				EC3A20FD2F978DAA00647BD9 /* SearchViewModel.swift in Sources */,
 				EC4230E42F7819860009F673 /* pohangBuddyApp.swift in Sources */,
 				EC5D259C2F9717F400CCAC52 /* StampListModel.swift in Sources */,
 				ECF37BC02F964E49007FDC3C /* Date+Extension.swift in Sources */,
