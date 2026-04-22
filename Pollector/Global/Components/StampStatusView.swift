@@ -42,28 +42,27 @@ struct StampStatusView: View {
                     onTapPlace(place)
                 } label: {
                     ZStack {
-                        cardImage(
-                            for: place.photos.first
-                        )
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(.gray1)
+
+                        cardImage(for: place.photos.first)
                             .frame(width: cellWidth, height: cellHeight)
-                            .cornerRadius(24)
+
                         VStack(spacing: 0) {
                             Spacer()
-                            
+
                             HStack {
                                 Text(place.keyword)
                                     .font(.head3)
-                                
                                 Spacer()
                             }
                             .padding(.horizontal, 14)
                             .padding(.bottom, 4)
-                            
+
                             HStack {
                                 Text(place.name)
                                     .font(.micro)
                                     .lineLimit(1)
-                                
                                 Spacer()
                             }
                             .padding(.horizontal, 14)
@@ -72,6 +71,7 @@ struct StampStatusView: View {
                     }
                     .foregroundStyle(.white)
                     .frame(width: cellWidth, height: cellHeight)
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
                 }
                 .buttonStyle(.plain)
                 .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
@@ -90,11 +90,16 @@ struct StampStatusView: View {
                 .frame(width: cellWidth, height: cellHeight)
                 .clipped()
         } else {
-            Image(.normalmage)
-                .resizable()
-                .scaledToFill()
-                .frame(width: cellWidth, height: cellHeight)
-                .clipped()
+            ZStack {
+                RoundedRectangle(cornerRadius: 24)
+                    .fill(.gray1)
+
+                Image(.imageDefault)
+                    .resizable()
+                    .scaledToFit()
+                    .padding(36)
+            }
+            .frame(width: cellWidth, height: cellHeight)
         }
     }
 }

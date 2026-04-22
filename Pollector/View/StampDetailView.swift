@@ -159,7 +159,7 @@ struct StampDetailView: View {
                 .resizable()
                 .scaledToFill()
         } else {
-            Image(.normalmage)
+            Image(.imageDefault)
                 .resizable()
                 .scaledToFill()
         }
