@@ -80,7 +80,7 @@ struct StampDetailView: View {
                                     print("복사")
                                 } label: {
                                     Text("복사")
-                                        .font(.micro)
+                                        .font(.micro2)
                                         .padding(.horizontal, 8)
                                         .padding(.vertical, 4)
                                         .background {

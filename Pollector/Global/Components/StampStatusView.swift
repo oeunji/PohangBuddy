@@ -71,7 +71,7 @@ struct StampStatusView: View {
 
                             HStack {
                                 Text(place.name)
-                                    .font(.micro)
+                                    .font(.micro2)
                                     .lineLimit(1)
                                 Spacer()
                             }

@@ -40,7 +40,7 @@ struct HomeView: View {
                             let total = selectedDropDown.keywords.count
                             let current = searchViewModel.places.count
 
-                            Text("\(total)개 중 \(Text("\(current)개").font(.head3)) 모았어요")
+                            Text("\(total)개 중 \(Text("\(current)개").font(.head5)) 모았어요")
                                 .font(.head4)
                                 .foregroundStyle(.neutral10)
 
