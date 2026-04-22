@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EC32563B2F7B7599003A25EE /* DropDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563A2F7B7599003A25EE /* DropDownModel.swift */; };
 		EC32563D2F7B761A003A25EE /* StampStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC32563C2F7B761A003A25EE /* StampStatusModel.swift */; };
-		EC3A20E12F97888E00647BD9 /* SerachByTextResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E02F97888E00647BD9 /* SerachByTextResponse.swift */; };
 		EC3A20E72F978AAB00647BD9 /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E62F978AAB00647BD9 /* ModelType.swift */; };
 		EC3A20E92F978AB600647BD9 /* PlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A20E82F978AB600647BD9 /* PlacesService.swift */; };
 		EC3A20EE2F978B5A00647BD9 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = EC3A20ED2F978B5A00647BD9 /* CombineMoya */; };
@@ -31,6 +30,8 @@
 		EC5D259C2F9717F400CCAC52 /* StampListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D259B2F9717F400CCAC52 /* StampListModel.swift */; };
 		EC7BEBD12F94CF2F0056618B /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */; };
 		EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BEBD22F94D0EB0056618B /* MapView.swift */; };
+		EC98DD632F98652B00C1EA5E /* PlacesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC98DD622F98652B00C1EA5E /* PlacesDTO.swift */; };
+		EC98DD652F98658900C1EA5E /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC98DD642F98658900C1EA5E /* Places.swift */; };
 		ECF37BBA2F96028D007FDC3C /* CategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BB92F96028D007FDC3C /* CategoryChip.swift */; };
 		ECF37BBC2F960A4B007FDC3C /* CategoryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBB2F960A4B007FDC3C /* CategoryScrollView.swift */; };
 		ECF37BBE2F961C4A007FDC3C /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF37BBD2F961C4A007FDC3C /* PageControl.swift */; };
@@ -47,7 +48,6 @@
 /* Begin PBXFileReference section */
 		EC32563A2F7B7599003A25EE /* DropDownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownModel.swift; sourceTree = "<group>"; };
 		EC32563C2F7B761A003A25EE /* StampStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampStatusModel.swift; sourceTree = "<group>"; };
-		EC3A20E02F97888E00647BD9 /* SerachByTextResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachByTextResponse.swift; sourceTree = "<group>"; };
 		EC3A20E62F978AAB00647BD9 /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		EC3A20E82F978AB600647BD9 /* PlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesService.swift; sourceTree = "<group>"; };
 		EC3A20F82F978BA500647BD9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -66,6 +66,8 @@
 		EC5D259B2F9717F400CCAC52 /* StampListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampListModel.swift; sourceTree = "<group>"; };
 		EC7BEBD02F94CF2F0056618B /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		EC7BEBD22F94D0EB0056618B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		EC98DD622F98652B00C1EA5E /* PlacesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDTO.swift; sourceTree = "<group>"; };
+		EC98DD642F98658900C1EA5E /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
 		ECE5E9232F7622F30087EB62 /* pohangBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pohangBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF37BB92F96028D007FDC3C /* CategoryChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChip.swift; sourceTree = "<group>"; };
 		ECF37BBB2F960A4B007FDC3C /* CategoryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScrollView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				ECF57E942F7D34C100E6D342 /* StampDetailModel.swift */,
 				EC32563A2F7B7599003A25EE /* DropDownModel.swift */,
 				EC32563C2F7B761A003A25EE /* StampStatusModel.swift */,
+				EC98DD642F98658900C1EA5E /* Places.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,7 +113,7 @@
 		EC3A20DF2F97888200647BD9 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				EC3A20E02F97888E00647BD9 /* SerachByTextResponse.swift */,
+				EC98DD622F98652B00C1EA5E /* PlacesDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				ECF57E9D2F7D43A000E6D342 /* InfoRow.swift in Sources */,
 				ECF57E9F2F7D43A000E6D342 /* StampStatusView.swift in Sources */,
 				EC3A20E92F978AB600647BD9 /* PlacesService.swift in Sources */,
+				EC98DD652F98658900C1EA5E /* Places.swift in Sources */,
 				ECF57EA02F7D43A000E6D342 /* ActionButton.swift in Sources */,
 				EC7BEBD32F94D0EB0056618B /* MapView.swift in Sources */,
 				ECF57EA12F7D43A000E6D342 /* CustomTextView.swift in Sources */,
@@ -371,8 +375,8 @@
 				ECF37BC02F964E49007FDC3C /* Date+Extension.swift in Sources */,
 				EC3A20E72F978AAB00647BD9 /* ModelType.swift in Sources */,
 				EC3A20FA2F978BA500647BD9 /* NetworkError.swift in Sources */,
+				EC98DD632F98652B00C1EA5E /* PlacesDTO.swift in Sources */,
 				ECF37BC22F964EE8007FDC3C /* ImagePickerView.swift in Sources */,
-				EC3A20E12F97888E00647BD9 /* SerachByTextResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
