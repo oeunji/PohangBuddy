@@ -14,10 +14,7 @@ struct StampDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
-
-    let array: [Color] = [.red, .green, .blue]
-    @State var selection = 0
-    
+    @State private var selection = 0
     @State private var isBookmarked = false
 
     var body: some View {
@@ -25,14 +22,14 @@ struct StampDetailView: View {
             let contentWidth = max(0, geometry.size.width - 32)
 
             ScrollView {
-                placeImage
+                placeImagePager
                     .frame(height: 240)
                     .frame(maxWidth: .infinity)
                     .clipped()
                     .padding(.top, 10)
                     .padding(.bottom, 16)
 
-                PageControl(numberOfPages: array.count, currentPage: $selection)
+                PageControl(numberOfPages: pageCount, currentPage: $selection)
                     .padding(.bottom, 16)
 
                 VStack(alignment: .leading, spacing: 0) {
@@ -152,19 +149,58 @@ struct StampDetailView: View {
     }
 
     @ViewBuilder
-    private var placeImage: some View {
-        if let imageData = place.primaryPhoto?.imageData,
-           let image = UIImage(data: imageData) {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFill()
-        } else {
-            Image(.imageDefault)
-                .resizable()
-                .scaledToFill()
+    private var placeImagePager: some View {
+        let imageItems = placeImageItems
+
+        TabView(selection: $selection) {
+            if imageItems.isEmpty {
+                fallbackPlaceImage
+                    .tag(0)
+            } else {
+                ForEach(Array(imageItems.enumerated()), id: \.element.id) { index, item in
+                    Image(uiImage: item.image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity)
+                        .clipped()
+                        .tag(index)
+                }
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+    }
+
+    private var pageCount: Int {
+        max(placeImageItems.count, 1)
+    }
+
+    private var placeImageItems: [PlaceImageItem] {
+        place.sortedPhotos.compactMap { photo in
+            guard let imageData = photo.imageData,
+                  let image = UIImage(data: imageData) else {
+                return nil
+            }
+
+            return PlaceImageItem(
+                id: "\(photo.sortIndex)-\(photo.reference)",
+                image: image
+            )
         }
     }
+
+    private var fallbackPlaceImage: some View {
+        Image(.imageDefault)
+            .resizable()
+            .scaledToFill()
+    }
 }
+
+private struct PlaceImageItem {
+    let id: String
+    let image: UIImage
+}
+
+extension PlaceImageItem: Identifiable {}
 
 #Preview {
     StampDetailView(

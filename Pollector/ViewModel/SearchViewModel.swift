@@ -53,7 +53,7 @@ final class SearchViewModel: ObservableObject {
 
             if let cachedPlace = fetchCachedPlace(cacheKey: cacheKey, modelContext: modelContext) {
                 logCacheHit(keyword: keyword)
-                if hasRenderablePhoto(cachedPlace) {
+                if !needsPhotoRefresh(cachedPlace) {
                     updatedPlaces.append(cachedPlace)
                     continue
                 }
@@ -83,12 +83,12 @@ final class SearchViewModel: ObservableObject {
                     continue
                 }
 
-                let photoImageData = await fetchFirstPhotoData(from: place)
+                let photoImageDataList = await fetchPhotoDataList(from: place)
                 let cachedPlace = makeCachedPlace(
                     from: place,
                     keyword: keyword,
                     cacheKey: cacheKey,
-                    photoImageData: photoImageData
+                    photoImageDataList: photoImageDataList
                 )
 
                 modelContext.insert(cachedPlace)
@@ -129,7 +129,7 @@ final class SearchViewModel: ObservableObject {
         from place: Place,
         keyword: String,
         cacheKey: String,
-        photoImageData: Data?
+        photoImageDataList: [Data?]
     ) -> Places {
         return Places(
             cacheKey: cacheKey,
@@ -141,7 +141,7 @@ final class SearchViewModel: ObservableObject {
             longitude: place.location.longitude,
             googleMapsURL: nil,
             rating: place.rating.map(Double.init),
-            photos: makePlacesPhotos(from: place, photoImageData: photoImageData)
+            photos: makePlacesPhotos(from: place, photoImageDataList: photoImageDataList)
         )
     }
 
@@ -153,12 +153,18 @@ final class SearchViewModel: ObservableObject {
         )
     }
 
-    private func hasRenderablePhoto(_ place: Places) -> Bool {
-        guard let imageData = place.primaryPhoto?.imageData else {
-            return false
+    private func needsPhotoRefresh(_ place: Places) -> Bool {
+        guard !place.photos.isEmpty else {
+            return true
         }
 
-        return !imageData.isEmpty && UIImage(data: imageData) != nil
+        return place.photos.contains { photo in
+            guard let imageData = photo.imageData else {
+                return true
+            }
+
+            return imageData.isEmpty || UIImage(data: imageData) == nil
+        }
     }
 
     private func refreshCachedPlace(
@@ -172,7 +178,7 @@ final class SearchViewModel: ObservableObject {
             return
         }
 
-        let photoImageData = await fetchFirstPhotoData(from: place)
+        let photoImageDataList = await fetchPhotoDataList(from: place)
         cachedPlace.placeID = place.placeID
         cachedPlace.name = place.displayName ?? keyword
         cachedPlace.address = place.formattedAddress
@@ -181,36 +187,43 @@ final class SearchViewModel: ObservableObject {
         cachedPlace.rating = place.rating.map(Double.init)
         cachedPlace.photos = makePlacesPhotos(
             from: place,
-            photoImageData: photoImageData
+            photoImageDataList: photoImageDataList
         )
 
         try? modelContext.save()
     }
 
-    private func fetchFirstPhotoData(from place: Place) async -> Data? {
-        guard let photo = place.photos?.first else {
-            return nil
+    private func fetchPhotoDataList(from place: Place) async -> [Data?] {
+        guard let photos = place.photos else {
+            return []
         }
 
-        do {
-            let image = try await service.fetchPhoto(
-                photo,
-                maxSize: CGSize(width: 600, height: 700)
-            )
+        var photoDataList: [Data?] = []
 
-            return image.jpegData(compressionQuality: 0.85)
-        } catch {
-            return nil
+        for photo in photos {
+            do {
+                let image = try await service.fetchPhoto(
+                    photo,
+                    maxSize: CGSize(width: 600, height: 700)
+                )
+
+                photoDataList.append(image.jpegData(compressionQuality: 0.85))
+            } catch {
+                photoDataList.append(nil)
+            }
         }
+
+        return photoDataList
     }
 
-    private func makePlacesPhotos(from place: Place, photoImageData: Data?) -> [PlacesPhoto] {
+    private func makePlacesPhotos(from place: Place, photoImageDataList: [Data?]) -> [PlacesPhoto] {
         place.photos?.enumerated().map { index, photo in
             PlacesPhoto(
                 reference: photo.description,
                 width: Int(photo.maxSize.width),
                 height: Int(photo.maxSize.height),
-                imageData: index == 0 ? photoImageData : nil
+                imageData: photoImageDataList.indices.contains(index) ? photoImageDataList[index] : nil,
+                sortIndex: index
             )
         } ?? []
     }
