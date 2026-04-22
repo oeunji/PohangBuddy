@@ -30,7 +30,8 @@ struct pohangBuddyApp: App {
         .modelContainer(for: [
             StampListModel.self,
             Places.self,
-            PlacesPhoto.self
+            PlacesPhoto.self,
+            StampCompletionModel.self
         ])
     }
 }

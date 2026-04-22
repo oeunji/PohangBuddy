@@ -10,6 +10,7 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @Query private var completedStamps: [StampCompletionModel]
     @State private var selectedPlace: Places?
     @State private var showsPlaceDetail = false
     @State private var showModal = false
@@ -38,7 +39,7 @@ struct HomeView: View {
 
                         HStack {
                             let total = selectedDropDown.keywords.count
-                            let current = searchViewModel.places.count
+                            let current = completedCount
 
                             Text("\(total)개 중 \(Text("\(current)개").font(.head5)) 모았어요")
                                 .font(.head4)
@@ -59,7 +60,8 @@ struct HomeView: View {
                             ) {
                                 StampStatusView(
                                     width: contentWidth,
-                                    places: searchViewModel.places
+                                    places: searchViewModel.places,
+                                    completedKeywords: completedKeywords
                                 ) { place in
                                     selectedPlace = place
                                     showsPlaceDetail = true
@@ -74,7 +76,7 @@ struct HomeView: View {
         .navigationDestination(isPresented: $showsPlaceDetail) {
             if let selectedPlace {
                 StampDetailView(place: selectedPlace) {
-                    showsPlaceDetail = false
+                    completeStamp(for: selectedPlace)
                 }
             }
         }
@@ -84,6 +86,46 @@ struct HomeView: View {
                 modelContext: modelContext
             )
         }
+    }
+
+    private var completedCount: Int {
+        completedKeywords.count
+    }
+
+    private var completedKeywords: Set<String> {
+        Set(
+            completedStamps
+                .filter { selectedDropDown.keywords.contains($0.keyword) }
+                .map(\.keyword)
+        )
+    }
+
+    private func completeStamp(for place: Places) {
+        let completionID = StampCompletionModel.makeID(keyword: place.keyword)
+        let descriptor = FetchDescriptor<StampCompletionModel>(
+            predicate: #Predicate { completion in
+                completion.id == completionID
+            }
+        )
+
+        if let existingCompletion = try? modelContext.fetch(descriptor).first {
+            existingCompletion.placeCacheKey = place.cacheKey
+            existingCompletion.placeID = place.placeID
+            existingCompletion.placeName = place.name
+            existingCompletion.completedDate = Date()
+        } else {
+            let completion = StampCompletionModel(
+                keyword: place.keyword,
+                placeCacheKey: place.cacheKey,
+                placeID: place.placeID,
+                placeName: place.name
+            )
+
+            modelContext.insert(completion)
+        }
+
+        try? modelContext.save()
+        showsPlaceDetail = false
     }
 }
 

@@ -11,6 +11,7 @@ import UIKit
 struct StampStatusView: View {
     let width: CGFloat
     let places: [Places]
+    let completedKeywords: Set<String>
     let onTapPlace: (Places) -> Void
 
     private let horizontalSpacing: CGFloat = 10
@@ -38,6 +39,8 @@ struct StampStatusView: View {
             spacing: verticalSpacing
         ) {
             ForEach(places, id: \.cacheKey) { place in
+                let isCompleted = completedKeywords.contains(place.keyword)
+
                 Button {
                     onTapPlace(place)
                 } label: {
@@ -47,6 +50,7 @@ struct StampStatusView: View {
 
                         cardImage(for: place.primaryPhoto)
                             .frame(width: cellWidth, height: cellHeight)
+                            .saturation(isCompleted ? 1 : 0)
                             .overlay {
                                 LinearGradient(
                                     gradient: Gradient(colors: [
@@ -120,7 +124,8 @@ struct StampStatusView: View {
             width: geometry.size.width - 32,
             places: [
                 Places(cacheKey: "preview:place", keyword: "미리보기", name: "포항 미리보기")
-            ]
+            ],
+            completedKeywords: []
         ) { place in
             print("Tapped place: \(place.name)")
         }
