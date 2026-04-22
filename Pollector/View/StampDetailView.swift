@@ -50,7 +50,7 @@ struct StampDetailView: View {
                     HStack {
                         VStack(spacing: 0) {
                             HStack {
-                                Text("포항에서 둘러보기")
+                                Text(place.address ?? "위치 정보가 없어요")
                                     .font(.body3)
                                     .foregroundStyle(.neutral10)
                                     .padding(.leading, 16)
@@ -73,7 +73,7 @@ struct StampDetailView: View {
                                     }
                                 }
 
-                                Text(place.address ?? "주소 정보 없음")
+                                Text(place.address ?? "위치 정보가 없어요")
                                     .font(.body4)
 
                                 Button {
