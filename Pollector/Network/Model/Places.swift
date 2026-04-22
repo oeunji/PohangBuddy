@@ -56,10 +56,12 @@ final class PlacesPhoto {
     var reference: String
     var width: Int
     var height: Int
+    var imageData: Data?
 
-    init(reference: String, width: Int, height: Int) {
+    init(reference: String, width: Int, height: Int, imageData: Data? = nil) {
         self.reference = reference
         self.width = width
         self.height = height
+        self.imageData = imageData
     }
 }

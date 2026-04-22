@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct StampStatusView: View {
     let width: CGFloat
-    let stampStatuses: [StampStatusModel]
-    let onTapStamp: (String) -> Void
+    let places: [Places]
+    let onTapPlace: (Places) -> Void
 
     private let horizontalSpacing: CGFloat = 10
     private let verticalSpacing: CGFloat = 12
@@ -24,7 +25,7 @@ struct StampStatusView: View {
     }
 
     private var totalHeight: CGFloat {
-        let rowCount = ceil(CGFloat(stampStatuses.count) / 2.0)
+        let rowCount = ceil(CGFloat(places.count) / 2.0)
         return rowCount * cellHeight + max(0, rowCount - 1) * verticalSpacing
     }
 
@@ -36,20 +37,21 @@ struct StampStatusView: View {
             ],
             spacing: verticalSpacing
         ) {
-            ForEach(stampStatuses) { stamp in
+            ForEach(places, id: \.cacheKey) { place in
                 Button {
-                    onTapStamp(stamp.id)
+                    onTapPlace(place)
                 } label: {
                     ZStack {
-                        Image(.ATV)
-                            .resizable()
+                        cardImage(
+                            for: place.photos.first
+                        )
                             .frame(width: cellWidth, height: cellHeight)
                             .cornerRadius(24)
                         VStack(spacing: 0) {
                             Spacer()
                             
                             HStack {
-                                Text(stamp.title)
+                                Text(place.keyword)
                                     .font(.head3)
                                 
                                 Spacer()
@@ -58,7 +60,7 @@ struct StampStatusView: View {
                             .padding(.bottom, 4)
                             
                             HStack {
-                                Text(stamp.id)
+                                Text(place.name)
                                     .font(.micro)
                                     .lineLimit(1)
                                 
@@ -68,13 +70,8 @@ struct StampStatusView: View {
                             .padding(.bottom, 14)
                         }
                     }
-                    .foregroundStyle(stamp.state.foregroundColor)
+                    .foregroundStyle(.white)
                     .frame(width: cellWidth, height: cellHeight)
-//                    .background(
-//                        RoundedRectangle(cornerRadius: 24)
-//                            .fill(stamp.state.backgroundColor)
-//                    )
-                    
                 }
                 .buttonStyle(.plain)
                 .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
@@ -82,15 +79,35 @@ struct StampStatusView: View {
         }
         .frame(height: totalHeight)
     }
+
+    @ViewBuilder
+    private func cardImage(for photo: PlacesPhoto?) -> some View {
+        if let imageData = photo?.imageData,
+           let image = UIImage(data: imageData) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: cellWidth, height: cellHeight)
+                .clipped()
+        } else {
+            Image(.normalmage)
+                .resizable()
+                .scaledToFill()
+                .frame(width: cellWidth, height: cellHeight)
+                .clipped()
+        }
+    }
 }
 
 #Preview {
     GeometryReader { geometry in
         StampStatusView(
             width: geometry.size.width - 32,
-            stampStatuses: DropDownModel.samples[0].stampStatuses
-        ) { index in
-            print("Tapped stamp: \(index)")
+            places: [
+                Places(cacheKey: "preview:place", keyword: "미리보기", name: "포항 미리보기")
+            ]
+        ) { place in
+            print("Tapped place: \(place.name)")
         }
         .padding(.horizontal, 16)
     }

@@ -10,7 +10,8 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var selectedStamp: StampStatusModel?
+    @State private var selectedPlace: Places?
+    @State private var showsPlaceDetail = false
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
     @StateObject private var searchViewModel = SearchViewModel()
@@ -36,8 +37,8 @@ struct HomeView: View {
                         .padding(.vertical, 38)
 
                         HStack {
-                            let total = 10
-                            let current = 3
+                            let total = selectedDropDown.keywords.count
+                            let current = searchViewModel.places.count
 
                             Text("\(total)개 중 \(Text("\(current)개").font(.head3)) 모았어요")
                                 .font(.head4)
@@ -58,9 +59,10 @@ struct HomeView: View {
                             ) {
                                 StampStatusView(
                                     width: contentWidth,
-                                    stampStatuses: searchViewModel.stampStatuses
-                                ) { index in
-                                    selectedStamp = searchViewModel.stampStatuses.first { $0.id == index }
+                                    places: searchViewModel.places
+                                ) { place in
+                                    selectedPlace = place
+                                    showsPlaceDetail = true
                                 }
                                 .padding(.bottom, 32)
                             }
@@ -69,36 +71,19 @@ struct HomeView: View {
                 }
             }
         }
-        .navigationDestination(item: $selectedStamp) { stamp in
-            StampDetailView(
-                detail: stamp.detail
-            ) {
-                completeStamp(withID: stamp.id)
+        .navigationDestination(isPresented: $showsPlaceDetail) {
+            if let selectedPlace {
+                StampDetailView(place: selectedPlace) {
+                    showsPlaceDetail = false
+                }
             }
         }
         .task(id: selectedDropDown.id) {
-            await searchViewModel.loadStampStatuses(
-                for: selectedDropDown.stampStatuses,
+            await searchViewModel.loadPlaces(
+                for: selectedDropDown.keywords,
                 modelContext: modelContext
             )
         }
-    }
-
-    private func completeStamp(withID id: String) {
-        let updatedStatuses = searchViewModel.stampStatuses.map { stamp in
-            guard stamp.id == id else { return stamp }
-
-            return StampStatusModel(
-                id: stamp.id,
-                title: stamp.title,
-                state: .completed,
-                detail: stamp.detail
-            )
-        }
-
-        searchViewModel.stampStatuses = updatedStatuses
-
-        selectedStamp = updatedStatuses.first { $0.id == id }
     }
 }
 

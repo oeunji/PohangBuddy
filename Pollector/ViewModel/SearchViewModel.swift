@@ -7,14 +7,16 @@
 
 import Foundation
 import Combine
+import CoreGraphics
 import CoreLocation
 import GooglePlacesSwift
 import SwiftData
+import UIKit
 
 @MainActor
 final class SearchViewModel: ObservableObject {
-    @Published var places: [Place] = []
-    @Published var stampStatuses: [StampStatusModel] = []
+    @Published var searchResults: [Place] = []
+    @Published var places: [Places] = []
     @Published var errorMessage: String?
 
     private let service: PlacesServicing
@@ -29,7 +31,7 @@ final class SearchViewModel: ObservableObject {
 
     func search(keyword: String) async {
         do {
-            places = try await service.searchByText(keyword: keyword)
+            searchResults = try await service.searchByText(keyword: keyword)
             errorMessage = nil
         } catch let error as NetworkError {
             errorMessage = error.localizedDescription
@@ -38,19 +40,20 @@ final class SearchViewModel: ObservableObject {
         }
     }
 
-    func loadStampStatuses(for baseStatuses: [StampStatusModel], modelContext: ModelContext) async {
-        stampStatuses = baseStatuses
+    func loadPlaces(for keywords: [String], modelContext: ModelContext) async {
+        places = keywords.map { keyword in
+            makePlaceholderPlace(keyword: keyword)
+        }
 
-        var updatedStatuses: [StampStatusModel] = []
+        var updatedPlaces: [Places] = []
         var latestErrorMessage: String?
 
-        for status in baseStatuses {
-            let keyword = status.title
+        for keyword in keywords {
             let cacheKey = makeCacheKey(keyword: keyword)
 
             if let cachedPlace = fetchCachedPlace(cacheKey: cacheKey, modelContext: modelContext) {
                 logCacheHit(keyword: keyword)
-                updatedStatuses.append(makeStampStatus(from: cachedPlace, fallback: status))
+                updatedPlaces.append(cachedPlace)
                 continue
             }
 
@@ -60,31 +63,32 @@ final class SearchViewModel: ObservableObject {
                 let places = try await service.searchByText(keyword: keyword)
 
                 guard let place = places.first else {
-                    updatedStatuses.append(status)
+                    updatedPlaces.append(makePlaceholderPlace(keyword: keyword))
                     continue
                 }
 
+                let photoImageData = await fetchFirstPhotoData(from: place)
                 let cachedPlace = makeCachedPlace(
                     from: place,
                     keyword: keyword,
                     cacheKey: cacheKey,
-                    fallback: status
+                    photoImageData: photoImageData
                 )
 
                 modelContext.insert(cachedPlace)
                 try? modelContext.save()
 
-                updatedStatuses.append(makeStampStatus(from: cachedPlace, fallback: status))
+                updatedPlaces.append(cachedPlace)
             } catch let error as NetworkError {
                 latestErrorMessage = error.localizedDescription
-                updatedStatuses.append(status)
+                updatedPlaces.append(makePlaceholderPlace(keyword: keyword))
             } catch {
                 latestErrorMessage = NetworkError.unknownError.localizedDescription
-                updatedStatuses.append(status)
+                updatedPlaces.append(makePlaceholderPlace(keyword: keyword))
             }
         }
 
-        stampStatuses = updatedStatuses
+        places = updatedPlaces
         errorMessage = latestErrorMessage
     }
 
@@ -109,13 +113,14 @@ final class SearchViewModel: ObservableObject {
         from place: Place,
         keyword: String,
         cacheKey: String,
-        fallback: StampStatusModel
+        photoImageData: Data?
     ) -> Places {
-        let photos = place.photos?.map { photo in
+        let photos = place.photos?.enumerated().map { index, photo in
             PlacesPhoto(
                 reference: photo.description,
                 width: Int(photo.maxSize.width),
-                height: Int(photo.maxSize.height)
+                height: Int(photo.maxSize.height),
+                imageData: index == 0 ? photoImageData : nil
             )
         } ?? []
 
@@ -123,7 +128,7 @@ final class SearchViewModel: ObservableObject {
             cacheKey: cacheKey,
             keyword: keyword,
             placeID: place.placeID,
-            name: place.displayName ?? fallback.detail.placeName,
+            name: place.displayName ?? keyword,
             address: place.formattedAddress,
             latitude: place.location.latitude,
             longitude: place.location.longitude,
@@ -133,25 +138,29 @@ final class SearchViewModel: ObservableObject {
         )
     }
 
-    private func makeStampStatus(from cachedPlace: Places, fallback: StampStatusModel) -> StampStatusModel {
-        StampStatusModel(
-            id: cachedPlace.name,
-            title: fallback.title,
-            state: fallback.state,
-            detail: StampDetailModel(
-                navigationTitle: "미션! \(fallback.title)",
-                imageName: fallback.detail.imageName,
-                placeName: cachedPlace.name,
-                address: cachedPlace.address ?? fallback.detail.address,
-                distanceText: fallback.detail.distanceText,
-                priceText: fallback.detail.priceText,
-                reviewTitle: fallback.detail.reviewTitle,
-                reviewPrompt: fallback.detail.reviewPrompt,
-                reviewPlaceholder: fallback.detail.reviewPlaceholder,
-                actionButtonTitle: fallback.detail.actionButtonTitle,
-                actionButtonImageName: fallback.detail.actionButtonImageName
-            )
+    private func makePlaceholderPlace(keyword: String) -> Places {
+        Places(
+            cacheKey: makeCacheKey(keyword: keyword),
+            keyword: keyword,
+            name: keyword
         )
+    }
+
+    private func fetchFirstPhotoData(from place: Place) async -> Data? {
+        guard let photo = place.photos?.first else {
+            return nil
+        }
+
+        do {
+            let image = try await service.fetchPhoto(
+                photo,
+                maxSize: CGSize(width: 600, height: 700)
+            )
+
+            return image.jpegData(compressionQuality: 0.85)
+        } catch {
+            return nil
+        }
     }
 
     private func logCacheHit(keyword: String) {

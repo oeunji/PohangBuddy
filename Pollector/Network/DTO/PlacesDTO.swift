@@ -35,6 +35,7 @@ struct PlacesPhotoDTO {
     let reference: String
     let width: Int
     let height: Int
+    let imageData: Data?
 }
 
 extension PlacesPhotoDTO {
@@ -42,7 +43,8 @@ extension PlacesPhotoDTO {
         PlacesPhoto(
             reference: reference,
             width: width,
-            height: height
+            height: height,
+            imageData: imageData
         )
     }
 }

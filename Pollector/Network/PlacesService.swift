@@ -8,9 +8,11 @@
 import Foundation
 import CoreLocation
 import GooglePlacesSwift
+import UIKit
 
 protocol PlacesServicing {
     func searchByText(keyword: String) async throws -> [Place]
+    func fetchPhoto(_ photo: Photo, maxSize: CGSize) async throws -> UIImage
 }
 
 @MainActor
@@ -62,6 +64,18 @@ final class PlacesService: PlacesServicing {
             return places
         case .failure(let error):
             logSearchError(query: query, error: error)
+            throw NetworkError.placesError(error)
+        }
+    }
+
+    func fetchPhoto(_ photo: Photo, maxSize: CGSize) async throws -> UIImage {
+        let request = FetchPhotoRequest(photo: photo, maxSize: maxSize)
+        let result = await clientProvider().fetchPhoto(with: request)
+
+        switch result {
+        case .success(let image):
+            return image
+        case .failure(let error):
             throw NetworkError.placesError(error)
         }
     }

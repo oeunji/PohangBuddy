@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct StampDetailView: View {
-    let detail: StampDetailModel
+    let place: Places
     let onStampCompleted: () -> Void
 
     @Environment(\.dismiss) private var dismiss
@@ -24,9 +25,7 @@ struct StampDetailView: View {
             let contentWidth = max(0, geometry.size.width - 32)
 
             ScrollView {
-                Image(detail.imageName)
-                    .resizable()
-                    .scaledToFill()
+                placeImage
                     .frame(height: 240)
                     .frame(maxWidth: .infinity)
                     .clipped()
@@ -38,7 +37,7 @@ struct StampDetailView: View {
 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
-                        Text(detail.placeName)
+                        Text(place.name)
                             .font(.head1)
                             .foregroundStyle(.neutral10)
                             .padding(.top, 16)
@@ -51,7 +50,7 @@ struct StampDetailView: View {
                     HStack {
                         VStack(spacing: 0) {
                             HStack {
-                                Text("현위치에서 \(detail.distanceText)")
+                                Text("포항에서 둘러보기")
                                     .font(.body3)
                                     .foregroundStyle(.neutral10)
                                     .padding(.leading, 16)
@@ -74,7 +73,7 @@ struct StampDetailView: View {
                                     }
                                 }
 
-                                Text(detail.address)
+                                Text(place.address ?? "주소 정보 없음")
                                     .font(.body4)
 
                                 Button {
@@ -99,12 +98,12 @@ struct StampDetailView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 0) {
-                        Text(detail.reviewTitle)
+                        Text("리뷰 작성하기")
                             .font(.head1)
                             .foregroundStyle(.neutral10)
                             .padding(.bottom, 8)
 
-                        Text(detail.reviewPrompt)
+                        Text("오늘의 순간을 사진과 함께 기록해보세요")
                             .font(.micro1)
                             .foregroundStyle(.gray5)
                             .padding(.bottom, 8)
@@ -121,13 +120,13 @@ struct StampDetailView: View {
 
                 CustomTextView(
                     text: $reviewText,
-                    placeholder: detail.reviewPlaceholder
+                    placeholder: "자유롭게 기록해보세요"
                 )
                 .padding(.horizontal, 16)
 
                 ActionButton(
-                    title: detail.actionButtonTitle,
-                    imageName: detail.actionButtonImageName
+                    title: "스탬프 받기",
+                    imageName: "completeIcon"
                 ) {
                     stampButtonTapped()
                 }
@@ -151,11 +150,30 @@ struct StampDetailView: View {
         onStampCompleted()
         dismiss()
     }
+
+    @ViewBuilder
+    private var placeImage: some View {
+        if let imageData = place.photos.first?.imageData,
+           let image = UIImage(data: imageData) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFill()
+        } else {
+            Image(.normalmage)
+                .resizable()
+                .scaledToFill()
+        }
+    }
 }
 
 #Preview {
     StampDetailView(
-        detail: DropDownModel.samples[1].stampStatuses[1].detail,
+        place: Places(
+            cacheKey: "preview:place",
+            keyword: "미리보기",
+            name: "포항 미리보기",
+            address: "경북 포항시"
+        ),
         onStampCompleted: {}
     )
 }
