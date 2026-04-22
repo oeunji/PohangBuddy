@@ -6,18 +6,60 @@
 //
 
 import Foundation
-import CoreLocation
+import SwiftData
 
-struct Places {
-    let name: String
-    let address: String
-    let coordinate: CLLocationCoordinate2D
-    let googleMapsURL: String
-    let photos: [PlacesPhoto]
+@Model
+final class Places {
+    @Attribute(.unique) var cacheKey: String
+    var keyword: String
+    var placeID: String?
+    var name: String
+    var address: String?
+    var latitude: Double?
+    var longitude: Double?
+    var googleMapsURL: String?
+    var rating: Double?
+    var createdDate: Date
+
+    @Relationship(deleteRule: .cascade)
+    var photos: [PlacesPhoto]
+
+    init(
+        cacheKey: String,
+        keyword: String,
+        placeID: String? = nil,
+        name: String,
+        address: String? = nil,
+        latitude: Double? = nil,
+        longitude: Double? = nil,
+        googleMapsURL: String? = nil,
+        rating: Double? = nil,
+        photos: [PlacesPhoto] = [],
+        createdDate: Date = Date()
+    ) {
+        self.cacheKey = cacheKey
+        self.keyword = keyword
+        self.placeID = placeID
+        self.name = name
+        self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
+        self.googleMapsURL = googleMapsURL
+        self.rating = rating
+        self.photos = photos
+        self.createdDate = createdDate
+    }
 }
 
-struct PlacesPhoto {
-    let reference: String
-    let width: Int
-    let height: Int
+@Model
+final class PlacesPhoto {
+    var reference: String
+    var width: Int
+    var height: Int
+
+    init(reference: String, width: Int, height: Int) {
+        self.reference = reference
+        self.width = width
+        self.height = height
+    }
 }

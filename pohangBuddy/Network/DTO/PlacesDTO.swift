@@ -19,9 +19,12 @@ struct PlacesDTO {
 extension PlacesDTO {
     func toModel() -> Places {
         Places(
+            cacheKey: name,
+            keyword: name,
             name: name,
             address: address,
-            coordinate: coordinate,
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude,
             googleMapsURL: googleMapsURL,
             photos: photos.map { $0.toModel() }
         )
