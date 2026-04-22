@@ -40,34 +40,40 @@ struct StampStatusView: View {
                 Button {
                     onTapStamp(stamp.id)
                 } label: {
-                    VStack(spacing: 0) {
-                        Spacer()
-                        
-                        HStack {
-                            Text(stamp.title)
-                                .font(.head3)
-                            
+                    ZStack {
+                        Image(.ATV)
+                            .resizable()
+                            .frame(width: cellWidth, height: cellHeight)
+                            .cornerRadius(24)
+                        VStack(spacing: 0) {
                             Spacer()
-                        }
-                        .padding(.horizontal, 14)
-                        .padding(.bottom, 4)
-                        
-                        HStack {
-                            Text(stamp.id)
-                                .font(.micro)
-                                .lineLimit(1)
                             
-                            Spacer()
+                            HStack {
+                                Text(stamp.title)
+                                    .font(.head3)
+                                
+                                Spacer()
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.bottom, 4)
+                            
+                            HStack {
+                                Text(stamp.id)
+                                    .font(.micro)
+                                    .lineLimit(1)
+                                
+                                Spacer()
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.bottom, 14)
                         }
-                        .padding(.horizontal, 14)
-                        .padding(.bottom, 14)
                     }
                     .foregroundStyle(stamp.state.foregroundColor)
                     .frame(width: cellWidth, height: cellHeight)
-                    .background(
-                        RoundedRectangle(cornerRadius: 24)
-                            .fill(stamp.state.backgroundColor)
-                    )
+//                    .background(
+//                        RoundedRectangle(cornerRadius: 24)
+//                            .fill(stamp.state.backgroundColor)
+//                    )
                     
                 }
                 .buttonStyle(.plain)
