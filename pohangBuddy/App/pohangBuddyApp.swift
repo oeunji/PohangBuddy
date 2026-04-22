@@ -27,6 +27,10 @@ struct pohangBuddyApp: App {
         WindowGroup {
             CustomTabView()
         }
-        .modelContainer(for: [StampListModel.self])
+        .modelContainer(for: [
+            StampListModel.self,
+            Places.self,
+            PlacesPhoto.self
+        ])
     }
 }
