@@ -48,16 +48,6 @@ struct HomeView: View {
                             Spacer()
                         }
                         .padding(.leading, 16)
-                        .padding(.bottom, 8)
-                        
-                        HStack {
-                            Text("카드를 눌러 포항의 순간을 모아보세요")
-                                .font(.body3)
-                                .foregroundStyle(.neutral8)
-
-                            Spacer()
-                        }
-                        .padding(.leading, 16)
                         .padding(.bottom, 18)
                         
                         LazyVStack(pinnedViews: [.sectionHeaders]) {

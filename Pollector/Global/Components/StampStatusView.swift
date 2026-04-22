@@ -75,7 +75,7 @@ struct StampStatusView: View {
                             .padding(.bottom, 4)
 
                             HStack {
-                                Text(place.name)
+                                Text(isCompleted ? place.name : "포항의 순간을 채워보세요")
                                     .font(.micro2)
                                     .lineLimit(1)
                                 Spacer()
