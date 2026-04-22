@@ -51,7 +51,7 @@ struct HomeView: View {
                         .padding(.bottom, 8)
                         
                         HStack {
-                            Text("포항의 순간을 하나씩 모아보세요")
+                            Text("카드를 눌러 포항의 순간을 모아보세요")
                                 .font(.body3)
                                 .foregroundStyle(.neutral8)
 
