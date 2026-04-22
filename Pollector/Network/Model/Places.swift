@@ -49,6 +49,13 @@ final class Places {
         self.photos = photos
         self.createdDate = createdDate
     }
+
+    var primaryPhoto: PlacesPhoto? {
+        photos.first { photo in
+            guard let imageData = photo.imageData else { return false }
+            return !imageData.isEmpty
+        } ?? photos.first
+    }
 }
 
 @Model

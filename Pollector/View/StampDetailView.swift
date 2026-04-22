@@ -153,7 +153,7 @@ struct StampDetailView: View {
 
     @ViewBuilder
     private var placeImage: some View {
-        if let imageData = place.photos.first?.imageData,
+        if let imageData = place.primaryPhoto?.imageData,
            let image = UIImage(data: imageData) {
             Image(uiImage: image)
                 .resizable()

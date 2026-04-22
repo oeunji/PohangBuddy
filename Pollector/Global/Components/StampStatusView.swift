@@ -45,7 +45,7 @@ struct StampStatusView: View {
                         RoundedRectangle(cornerRadius: 24)
                             .fill(.gray1)
 
-                        cardImage(for: place.photos.first)
+                        cardImage(for: place.primaryPhoto)
                             .frame(width: cellWidth, height: cellHeight)
                             .overlay {
                                 LinearGradient(

@@ -53,8 +53,24 @@ final class SearchViewModel: ObservableObject {
 
             if let cachedPlace = fetchCachedPlace(cacheKey: cacheKey, modelContext: modelContext) {
                 logCacheHit(keyword: keyword)
-                updatedPlaces.append(cachedPlace)
-                continue
+                if hasRenderablePhoto(cachedPlace) {
+                    updatedPlaces.append(cachedPlace)
+                    continue
+                }
+
+                do {
+                    try await refreshCachedPlace(cachedPlace, keyword: keyword, modelContext: modelContext)
+                    updatedPlaces.append(cachedPlace)
+                    continue
+                } catch let error as NetworkError {
+                    latestErrorMessage = error.localizedDescription
+                    updatedPlaces.append(cachedPlace)
+                    continue
+                } catch {
+                    latestErrorMessage = NetworkError.unknownError.localizedDescription
+                    updatedPlaces.append(cachedPlace)
+                    continue
+                }
             }
 
             logCacheMiss(keyword: keyword)
@@ -115,15 +131,6 @@ final class SearchViewModel: ObservableObject {
         cacheKey: String,
         photoImageData: Data?
     ) -> Places {
-        let photos = place.photos?.enumerated().map { index, photo in
-            PlacesPhoto(
-                reference: photo.description,
-                width: Int(photo.maxSize.width),
-                height: Int(photo.maxSize.height),
-                imageData: index == 0 ? photoImageData : nil
-            )
-        } ?? []
-
         return Places(
             cacheKey: cacheKey,
             keyword: keyword,
@@ -134,7 +141,7 @@ final class SearchViewModel: ObservableObject {
             longitude: place.location.longitude,
             googleMapsURL: nil,
             rating: place.rating.map(Double.init),
-            photos: photos
+            photos: makePlacesPhotos(from: place, photoImageData: photoImageData)
         )
     }
 
@@ -144,6 +151,40 @@ final class SearchViewModel: ObservableObject {
             keyword: keyword,
             name: keyword
         )
+    }
+
+    private func hasRenderablePhoto(_ place: Places) -> Bool {
+        guard let imageData = place.primaryPhoto?.imageData else {
+            return false
+        }
+
+        return !imageData.isEmpty && UIImage(data: imageData) != nil
+    }
+
+    private func refreshCachedPlace(
+        _ cachedPlace: Places,
+        keyword: String,
+        modelContext: ModelContext
+    ) async throws {
+        let places = try await service.searchByText(keyword: keyword)
+
+        guard let place = places.first else {
+            return
+        }
+
+        let photoImageData = await fetchFirstPhotoData(from: place)
+        cachedPlace.placeID = place.placeID
+        cachedPlace.name = place.displayName ?? keyword
+        cachedPlace.address = place.formattedAddress
+        cachedPlace.latitude = place.location.latitude
+        cachedPlace.longitude = place.location.longitude
+        cachedPlace.rating = place.rating.map(Double.init)
+        cachedPlace.photos = makePlacesPhotos(
+            from: place,
+            photoImageData: photoImageData
+        )
+
+        try? modelContext.save()
     }
 
     private func fetchFirstPhotoData(from place: Place) async -> Data? {
@@ -161,6 +202,17 @@ final class SearchViewModel: ObservableObject {
         } catch {
             return nil
         }
+    }
+
+    private func makePlacesPhotos(from place: Place, photoImageData: Data?) -> [PlacesPhoto] {
+        place.photos?.enumerated().map { index, photo in
+            PlacesPhoto(
+                reference: photo.description,
+                width: Int(photo.maxSize.width),
+                height: Int(photo.maxSize.height),
+                imageData: index == 0 ? photoImageData : nil
+            )
+        } ?? []
     }
 
     private func logCacheHit(keyword: String) {
