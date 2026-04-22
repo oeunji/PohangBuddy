@@ -1,6 +1,6 @@
 //
 //  MapView.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 4/19/26.
 //

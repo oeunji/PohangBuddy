@@ -1,6 +1,6 @@
 //
-//  pohangBuddyApp.swift
-//  pohangBuddy
+//  PollectorApp.swift
+//  Pollector
 //
 //  Created by 이은지 on 3/27/26.
 //
@@ -10,7 +10,7 @@ import SwiftData
 import GooglePlacesSwift
 
 @main
-struct pohangBuddyApp: App {
+struct PollectorApp: App {
     
     init() {
         guard

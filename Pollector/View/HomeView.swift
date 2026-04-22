@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 3/27/26.
 //

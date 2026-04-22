@@ -1,6 +1,6 @@
 //
 //  DropDownModel.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 3/31/26.
 //

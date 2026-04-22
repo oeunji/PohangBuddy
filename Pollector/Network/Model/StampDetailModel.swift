@@ -1,6 +1,6 @@
 //
 //  StampDetailModel.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by Codex on 4/1/26.
 //
