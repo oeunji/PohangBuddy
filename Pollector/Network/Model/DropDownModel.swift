@@ -11,10 +11,6 @@ struct DropDownModel: Identifiable, Hashable {
     let id: String
     let title: String
     let keywords: [String]
-
-    var statusSummary: String {
-        "\(keywords.count)개를 둘러볼 수 있어요!"
-    }
 }
 
 extension DropDownModel {
@@ -24,14 +20,14 @@ extension DropDownModel {
         "초밥",
         "칼국수",
         "국밥",
-        "분식"
+        "분식",
+        "돈까스"
     ]
 
     private static let dopamineKeywords = [
         "서핑",
         "클라이밍",
-        "게임",
-        "ATV",
+        "서바이벌게임",
         "요트",
         "드라이브",
         "패러글라이딩",
@@ -42,7 +38,7 @@ extension DropDownModel {
         "바다 산책",
         "카페",
         "사찰",
-        "정원"
+        "공원"
     ]
 
     private static let restKeywords = [
@@ -59,22 +55,22 @@ extension DropDownModel {
         
         DropDownModel(
             id: "restaurant-day",
-            title: "오늘은 맛집 데이",
+            title: "맛집 한 끼",
             keywords: restaurantKeywords
         ),
         DropDownModel(
             id: "dopamine-day",
-            title: "오늘은 도파민 데이",
+            title: "짜릿한 하루",
             keywords: dopamineKeywords
         ),
         DropDownModel(
             id: "healing-day",
-            title: "오늘은 힐링 데이",
+            title: "느긋한 시간",
             keywords: healingKeywords
         ),
         DropDownModel(
             id: "rest-day",
-            title: "오늘은 휴식 데이",
+            title: "쉬어가는 하루",
             keywords: restKeywords
         )
     ]

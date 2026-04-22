@@ -126,15 +126,6 @@ extension StampDetailModel {
         priceText: "10,000원"
     )
 
-    static let dopamineDayKaraoke = make(
-        navigationTitle: "미션! ATV 즐기기",
-        imageName: "ATV",
-        placeName: "호미곶atv",
-        address: "경북 포항시 남구 호미곶면 송림촌길 3 호미곶atv",
-        distanceText: "23km",
-        priceText: "38,000원"
-    )
-
     static let dopamineDayBowling = make(
         navigationTitle: "미션! 요트 타기",
         imageName: "요트",
