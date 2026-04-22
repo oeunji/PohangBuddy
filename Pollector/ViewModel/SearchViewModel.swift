@@ -20,6 +20,7 @@ final class SearchViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private let service: PlacesServicing
+    private let maxCachedPhotoCount = 3
 
     init(service: PlacesServicing) {
         self.service = service
@@ -41,9 +42,7 @@ final class SearchViewModel: ObservableObject {
     }
 
     func loadPlaces(for keywords: [String], modelContext: ModelContext) async {
-        places = keywords.map { keyword in
-            makePlaceholderPlace(keyword: keyword)
-        }
+        places = []
 
         var updatedPlaces: [Places] = []
         var latestErrorMessage: String?
@@ -79,28 +78,36 @@ final class SearchViewModel: ObservableObject {
                 let places = try await service.searchByText(keyword: keyword)
 
                 guard let place = places.first else {
-                    updatedPlaces.append(makePlaceholderPlace(keyword: keyword))
                     continue
                 }
 
-                let photoImageDataList = await fetchPhotoDataList(from: place)
                 let cachedPlace = makeCachedPlace(
                     from: place,
                     keyword: keyword,
                     cacheKey: cacheKey,
-                    photoImageDataList: photoImageDataList
+                    photos: []
                 )
 
                 modelContext.insert(cachedPlace)
-                try? modelContext.save()
+                do {
+                    try modelContext.save()
+                    let photoImageDataList = await fetchPhotoDataList(from: place)
+                    replacePhotos(
+                        on: cachedPlace,
+                        with: makePlacesPhotos(from: place, photoImageDataList: photoImageDataList),
+                        modelContext: modelContext
+                    )
+                    try modelContext.save()
+                    logCacheSaved(keyword: keyword)
+                } catch {
+                    logCacheSaveFailure(keyword: keyword, error: error)
+                }
 
                 updatedPlaces.append(cachedPlace)
             } catch let error as NetworkError {
                 latestErrorMessage = error.localizedDescription
-                updatedPlaces.append(makePlaceholderPlace(keyword: keyword))
             } catch {
                 latestErrorMessage = NetworkError.unknownError.localizedDescription
-                updatedPlaces.append(makePlaceholderPlace(keyword: keyword))
             }
         }
 
@@ -109,11 +116,12 @@ final class SearchViewModel: ObservableObject {
     }
 
     private func makeCacheKey(keyword: String) -> String {
-        "pohang:\(keyword)"
+        let normalizedKeyword = keyword.trimmingCharacters(in: .whitespacesAndNewlines)
+        return "pohang:\(normalizedKeyword)"
     }
 
     private func fetchCachedPlace(cacheKey: String, modelContext: ModelContext) -> Places? {
-        let descriptor = FetchDescriptor<Places>(
+        var descriptor = FetchDescriptor<Places>(
             predicate: #Predicate { place in
                 place.cacheKey == cacheKey
             },
@@ -121,15 +129,42 @@ final class SearchViewModel: ObservableObject {
                 SortDescriptor(\.createdDate, order: .reverse)
             ]
         )
+        descriptor.fetchLimit = 1
 
-        return try? modelContext.fetch(descriptor).first
+        do {
+            if let cachedPlace = try modelContext.fetch(descriptor).first {
+                return cachedPlace
+            }
+
+            return fetchCachedPlaceByScanning(cacheKey: cacheKey, modelContext: modelContext)
+        } catch {
+            logCacheFetchFailure(cacheKey: cacheKey, error: error)
+            return fetchCachedPlaceByScanning(cacheKey: cacheKey, modelContext: modelContext)
+        }
+    }
+
+    private func fetchCachedPlaceByScanning(cacheKey: String, modelContext: ModelContext) -> Places? {
+        let descriptor = FetchDescriptor<Places>(
+            sortBy: [
+                SortDescriptor(\.createdDate, order: .reverse)
+            ]
+        )
+
+        do {
+            let cachedPlaces = try modelContext.fetch(descriptor)
+            logCacheSnapshot(cacheKey: cacheKey, cachedPlaces: cachedPlaces)
+            return cachedPlaces.first { $0.cacheKey == cacheKey }
+        } catch {
+            logCacheFetchFailure(cacheKey: cacheKey, error: error)
+            return nil
+        }
     }
 
     private func makeCachedPlace(
         from place: Place,
         keyword: String,
         cacheKey: String,
-        photoImageDataList: [Data?]
+        photos: [PlacesPhoto]
     ) -> Places {
         return Places(
             cacheKey: cacheKey,
@@ -141,15 +176,7 @@ final class SearchViewModel: ObservableObject {
             longitude: place.location.longitude,
             googleMapsURL: nil,
             rating: place.rating.map(Double.init),
-            photos: makePlacesPhotos(from: place, photoImageDataList: photoImageDataList)
-        )
-    }
-
-    private func makePlaceholderPlace(keyword: String) -> Places {
-        Places(
-            cacheKey: makeCacheKey(keyword: keyword),
-            keyword: keyword,
-            name: keyword
+            photos: photos
         )
     }
 
@@ -185,12 +212,18 @@ final class SearchViewModel: ObservableObject {
         cachedPlace.latitude = place.location.latitude
         cachedPlace.longitude = place.location.longitude
         cachedPlace.rating = place.rating.map(Double.init)
-        cachedPlace.photos = makePlacesPhotos(
-            from: place,
-            photoImageDataList: photoImageDataList
+        replacePhotos(
+            on: cachedPlace,
+            with: makePlacesPhotos(from: place, photoImageDataList: photoImageDataList),
+            modelContext: modelContext
         )
 
-        try? modelContext.save()
+        do {
+            try modelContext.save()
+            logCacheSaved(keyword: keyword)
+        } catch {
+            logCacheSaveFailure(keyword: keyword, error: error)
+        }
     }
 
     private func fetchPhotoDataList(from place: Place) async -> [Data?] {
@@ -200,7 +233,7 @@ final class SearchViewModel: ObservableObject {
 
         var photoDataList: [Data?] = []
 
-        for photo in photos {
+        for photo in photos.prefix(maxCachedPhotoCount) {
             do {
                 let image = try await service.fetchPhoto(
                     photo,
@@ -217,7 +250,7 @@ final class SearchViewModel: ObservableObject {
     }
 
     private func makePlacesPhotos(from place: Place, photoImageDataList: [Data?]) -> [PlacesPhoto] {
-        place.photos?.enumerated().map { index, photo in
+        place.photos?.prefix(maxCachedPhotoCount).enumerated().map { index, photo in
             PlacesPhoto(
                 reference: photo.description,
                 width: Int(photo.maxSize.width),
@@ -226,6 +259,22 @@ final class SearchViewModel: ObservableObject {
                 sortIndex: index
             )
         } ?? []
+    }
+
+    private func replacePhotos(
+        on cachedPlace: Places,
+        with photos: [PlacesPhoto],
+        modelContext: ModelContext
+    ) {
+        cachedPlace.photos.forEach { photo in
+            modelContext.delete(photo)
+        }
+
+        photos.forEach { photo in
+            modelContext.insert(photo)
+        }
+
+        cachedPlace.photos = photos
     }
 
     private func logCacheHit(keyword: String) {
@@ -237,6 +286,35 @@ final class SearchViewModel: ObservableObject {
     private func logCacheMiss(keyword: String) {
         #if DEBUG
         print("🌐 [PlacesCache] miss: \(keyword)")
+        #endif
+    }
+
+    private func logCacheSaved(keyword: String) {
+        #if DEBUG
+        print("✅ [PlacesCache] saved: \(keyword)")
+        #endif
+    }
+
+    private func logCacheFetchFailure(cacheKey: String, error: Error) {
+        #if DEBUG
+        print("⚠️ [PlacesCache] fetch failed: \(cacheKey) | \(error)")
+        #endif
+    }
+
+    private func logCacheSaveFailure(keyword: String, error: Error) {
+        #if DEBUG
+        print("⚠️ [PlacesCache] save failed: \(keyword) | \(error)")
+        #endif
+    }
+
+    private func logCacheSnapshot(cacheKey: String, cachedPlaces: [Places]) {
+        #if DEBUG
+        let cacheKeys = cachedPlaces
+            .prefix(8)
+            .map(\.cacheKey)
+            .joined(separator: ", ")
+
+        print("🧾 [PlacesCache] lookup: \(cacheKey) | stored count: \(cachedPlaces.count) | keys: [\(cacheKeys)]")
         #endif
     }
 }

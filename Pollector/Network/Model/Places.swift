@@ -59,7 +59,7 @@ final class Places {
 
     var sortedPhotos: [PlacesPhoto] {
         photos.sorted { lhs, rhs in
-            lhs.sortIndex < rhs.sortIndex
+            lhs.sortIndexValue < rhs.sortIndexValue
         }
     }
 }
@@ -70,7 +70,7 @@ final class PlacesPhoto {
     var width: Int
     var height: Int
     var imageData: Data?
-    var sortIndex: Int
+    var sortIndex: Int?
 
     init(
         reference: String,
@@ -84,5 +84,9 @@ final class PlacesPhoto {
         self.height = height
         self.imageData = imageData
         self.sortIndex = sortIndex
+    }
+
+    var sortIndexValue: Int {
+        sortIndex ?? 0
     }
 }

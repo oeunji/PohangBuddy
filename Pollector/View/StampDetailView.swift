@@ -182,7 +182,7 @@ struct StampDetailView: View {
             }
 
             return PlaceImageItem(
-                id: "\(photo.sortIndex)-\(photo.reference)",
+                id: "\(photo.sortIndexValue)-\(photo.reference)",
                 image: image
             )
         }
