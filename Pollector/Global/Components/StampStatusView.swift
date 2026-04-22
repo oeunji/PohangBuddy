@@ -51,6 +51,7 @@ struct StampStatusView: View {
                         cardImage(for: place.primaryPhoto)
                             .frame(width: cellWidth, height: cellHeight)
                             .saturation(isCompleted ? 1 : 0)
+                            .blur(radius: isCompleted ? 0 : 2.5)
                             .overlay {
                                 LinearGradient(
                                     gradient: Gradient(colors: [
