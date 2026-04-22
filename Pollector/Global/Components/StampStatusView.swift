@@ -47,6 +47,16 @@ struct StampStatusView: View {
 
                         cardImage(for: place.photos.first)
                             .frame(width: cellWidth, height: cellHeight)
+                            .overlay {
+                                LinearGradient(
+                                    gradient: Gradient(colors: [
+                                        .clear,
+                                        .black.opacity(0.5)
+                                    ]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            }
 
                         VStack(spacing: 0) {
                             Spacer()
