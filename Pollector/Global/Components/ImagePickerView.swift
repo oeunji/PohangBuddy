@@ -21,7 +21,9 @@ struct ImagePickerView: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            addPhotoCell
+            if selectedImages.count < maxImageCount {
+                addPhotoCell
+            }
 
             ForEach(Array(selectedImages.enumerated()), id: \.offset) { index, image in
                 removablePhotoCell(image: image, index: index)
@@ -56,7 +58,6 @@ struct ImagePickerView: View {
                     }
                 }
         }
-        .disabled(selectedImages.count >= maxImageCount)
     }
 
     private func removablePhotoCell(image: UIImage, index: Int) -> some View {
