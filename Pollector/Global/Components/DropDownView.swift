@@ -10,6 +10,8 @@ import SwiftUI
 struct DropDownView: View {
     @Binding var selectedOption: DropDownModel
     let options: [DropDownModel]
+
+    private let cornerRadius: CGFloat = 24
     
     var body: some View {
         Menu {
@@ -29,9 +31,13 @@ struct DropDownView: View {
             .foregroundStyle(.neutral10)
             .padding(.horizontal, 16)
             .frame(height: 56)
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 28))
+            .background {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(.gray1)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
         }
-        .shadow(color: .black.opacity(0.2), radius: 8, y: 6)
+        .buttonStyle(.plain)
     }
 }
