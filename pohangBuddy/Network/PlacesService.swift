@@ -26,6 +26,7 @@ final class PlacesService: PlacesServicing {
     }
 
     func searchByText(keyword: String) async throws -> [Place] {
+        let query = "포항 \(keyword)"
         let properties: [PlaceProperty] = [
             .displayName,
             .formattedAddress,
@@ -39,7 +40,7 @@ final class PlacesService: PlacesServicing {
         )
 
         let request = SearchByTextRequest(
-            textQuery: "포항 \(keyword)",
+            textQuery: query,
             placeProperties: properties,
             locationBias: pohangBias,
             includedType: nil,
@@ -57,9 +58,32 @@ final class PlacesService: PlacesServicing {
 
         switch result {
         case .success(let places):
+            logSearchResult(query: query, places: places)
             return places
         case .failure(let error):
+            logSearchError(query: query, error: error)
             throw NetworkError.placesError(error)
         }
+    }
+
+    private func logSearchResult(query: String, places: [Place]) {
+        #if DEBUG
+        print("🔎 [PlacesService] request: \(query)")
+        print("✅ [PlacesService] result count: \(places.count)")
+
+        for (index, place) in places.enumerated() {
+            let name = place.displayName ?? "(no displayName)"
+            let address = place.formattedAddress ?? "(no address)"
+
+            print("API 응답 ‼️ \(places)")
+        }
+        #endif
+    }
+
+    private func logSearchError(query: String, error: Error) {
+        #if DEBUG
+        print("🔎 [PlacesService] request: \(query)")
+        print("❌ [PlacesService] error: \(error)")
+        #endif
     }
 }
