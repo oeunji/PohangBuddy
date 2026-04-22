@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
+    @Environment(\.modelContext) private var modelContext
     @State private var selectedStamp: StampStatusModel?
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
@@ -24,7 +26,7 @@ struct HomeView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
-                            Text("포항의 순간을 \n모으다")
+                            Text("포항의 \n순간을 모으다")
                                 .font(.display1)
                                 .foregroundStyle(.neutral10)
 
@@ -75,7 +77,10 @@ struct HomeView: View {
             }
         }
         .task(id: selectedDropDown.id) {
-            await searchViewModel.loadStampStatuses(for: selectedDropDown.stampStatuses)
+            await searchViewModel.loadStampStatuses(
+                for: selectedDropDown.stampStatuses,
+                modelContext: modelContext
+            )
         }
     }
 

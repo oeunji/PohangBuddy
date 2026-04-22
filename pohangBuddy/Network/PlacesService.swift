@@ -75,7 +75,7 @@ final class PlacesService: PlacesServicing {
             let name = place.displayName ?? "(no displayName)"
             let address = place.formattedAddress ?? "(no address)"
 
-            print("API 응답 ‼️ \(places)")
+            print("  \(index + 1). \(name) | \(address)")
         }
         #endif
     }
