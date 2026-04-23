@@ -15,7 +15,6 @@ struct StampDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
     @State private var selection = 0
-    @State private var isBookmarked = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -44,55 +43,33 @@ struct StampDetailView: View {
                     }
                     .padding(.leading, 16)
                     .padding(.bottom, 8)
+                    
+                    VStack(spacing: 0) {
+                        HStack {
+                            Text(place.address ?? "위치 정보가 없어요")
+                                .font(.body4)
+                                .foregroundStyle(.neutral10)
 
-                    HStack {
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text(place.address ?? "위치 정보가 없어요")
-                                    .font(.body3)
-                                    .foregroundStyle(.neutral10)
-                                    .padding(.leading, 16)
-                                    .padding(.bottom, 8)
-
-                                Spacer()
-                            }
-
-                            HStack {
-                                Button {
-                                    print("바로가기 클릭")
-                                } label: {
-                                    HStack(spacing: 4) {
-                                        Image(systemName: "pin.fill")
-                                            .font(.body4)
-                                            .frame(width: 13, height: 13)
-
-                                        Text("바로가기")
-                                            .font(.body4)
+                            Button {
+                                if let address = place.address {
+                                    UIPasteboard.general.string = address
+                                }
+                            } label: {
+                                Text("복사")
+                                    .font(.micro2)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .foregroundStyle(.neutral5)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .fill(Color.gray2)
                                     }
-                                }
-
-                                Text(place.address ?? "위치 정보가 없어요")
-                                    .font(.body4)
-
-                                Button {
-                                    print("복사")
-                                } label: {
-                                    Text("복사")
-                                        .font(.micro2)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 4)
-                                        .background {
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .fill(Color.gray2)
-                                        }
-                                }
-
-                                Spacer()
                             }
-                            .foregroundStyle(.neutral5)
-                            .padding(.leading, 16)
-                            .padding(.bottom, 48)
+
+                            Spacer()
                         }
+                        .padding(.leading, 16)
+                        .padding(.bottom, 48)
                     }
 
                     VStack(alignment: .leading, spacing: 0) {
