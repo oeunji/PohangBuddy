@@ -15,7 +15,7 @@ final class StampCompletionModel {
     var placeCacheKey: String
     var placeID: String?
     var placeName: String
-    var reviewText: String
+    var reviewText: String?
     var completedDate: Date
 
     @Relationship(deleteRule: .cascade)
@@ -26,7 +26,7 @@ final class StampCompletionModel {
         placeCacheKey: String,
         placeID: String? = nil,
         placeName: String,
-        reviewText: String = "",
+        reviewText: String? = nil,
         photos: [StampCompletionPhoto] = [],
         completedDate: Date = Date()
     ) {

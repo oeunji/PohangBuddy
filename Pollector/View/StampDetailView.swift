@@ -204,7 +204,7 @@ struct StampDetailView: View {
             return
         }
 
-        reviewText = completion.reviewText
+        reviewText = completion.reviewText ?? ""
         selectedImages = completion.sortedPhotos.compactMap { photo in
             UIImage(data: photo.imageData)
         }
