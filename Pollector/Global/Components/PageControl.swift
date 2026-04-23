@@ -20,7 +20,7 @@ struct PageControl: View {
                 let width = isCurrentPage ? height * 2 : height
                 
                 Capsule()
-                    .fill(isCurrentPage ? Color.neutral8 : Color.neutral3)
+                    .fill(isCurrentPage ? Color.white : Color.neutral7)
                     .frame(width: width, height: height)
             }
         }
