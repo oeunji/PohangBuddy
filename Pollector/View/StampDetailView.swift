@@ -7,16 +7,24 @@
 
 import SwiftUI
 import UIKit
+import SwiftData
 
 struct StampDetailView: View {
     let place: Places
-    let isCompleted: Bool
-    let onStampCompleted: () -> Void
+
+    @Environment(\.modelContext) private var modelContext
     @State private var toast: FancyToast? = nil
 
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
     @State private var selection = 0
+    @State private var selectedImages: [UIImage] = []
+    @State private var hasCompletedRecord: Bool
+
+    init(place: Places, isCompleted: Bool) {
+        self.place = place
+        _hasCompletedRecord = State(initialValue: isCompleted)
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -90,22 +98,27 @@ struct StampDetailView: View {
                             .foregroundStyle(.neutral10)
                             .padding(.bottom, 8)
 
-                        ImagePickerView(width: contentWidth)
+                        ImagePickerView(
+                            width: contentWidth,
+                            selectedImages: $selectedImages,
+                            isLocked: hasCompletedRecord
+                        )
                     }
                     .padding(.horizontal, 16)
                 }
 
                 CustomTextView(
                     text: $reviewText,
-                    placeholder: "자유롭게 기록해보세요"
+                    placeholder: "자유롭게 기록해보세요",
+                    isDisabled: hasCompletedRecord
                 )
                 .padding(.horizontal, 16)
 
                 ActionButton(
                     title: isCompleted ? "기록 완료" : "기록 남기기",
                     imageName: "pencil",
-                    backgroundColor: isCompleted ? Color.gray8 : Color.neutral4,
-                    isDisabled: isCompleted
+                    backgroundColor: hasCompletedRecord ? Color.gray8 : Color.neutral4,
+                    isDisabled: hasCompletedRecord
                 ) {
                     stampButtonTapped()
                 }
@@ -117,13 +130,85 @@ struct StampDetailView: View {
             .ignoresSafeArea()
             .toolbar(.hidden, for: .tabBar)
             .toastView(toast: $toast)
+            .task(id: place.keyword) {
+                loadSavedCompletion()
+            }
         }
     }
 
     private func stampButtonTapped() {
-        guard !isCompleted else { return }
-        onStampCompleted()
+        guard !hasCompletedRecord else { return }
+
+        let trimmedReviewText = reviewText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let photoModels = selectedImages.enumerated().compactMap { item -> StampCompletionPhoto? in
+            let (index, image) = item
+
+            guard let imageData = image.jpegData(compressionQuality: 0.85) else {
+                return nil
+            }
+
+            return StampCompletionPhoto(imageData: imageData, sortIndex: index)
+        }
+
+        for photoModel in photoModels {
+            modelContext.insert(photoModel)
+        }
+
+        let completionID = StampCompletionModel.makeID(keyword: place.keyword)
+        let descriptor = FetchDescriptor<StampCompletionModel>(
+            predicate: #Predicate { completion in
+                completion.id == completionID
+            }
+        )
+
+        if let existingCompletion = try? modelContext.fetch(descriptor).first {
+            existingCompletion.placeCacheKey = place.cacheKey
+            existingCompletion.placeID = place.placeID
+            existingCompletion.placeName = place.name
+            existingCompletion.reviewText = trimmedReviewText
+            existingCompletion.completedDate = Date()
+
+            for photo in existingCompletion.photos {
+                modelContext.delete(photo)
+            }
+
+            existingCompletion.photos = photoModels
+        } else {
+            let completion = StampCompletionModel(
+                keyword: place.keyword,
+                placeCacheKey: place.cacheKey,
+                placeID: place.placeID,
+                placeName: place.name,
+                reviewText: trimmedReviewText,
+                photos: photoModels
+            )
+
+            modelContext.insert(completion)
+        }
+
+        try? modelContext.save()
+        hasCompletedRecord = true
+        toast = FancyToast(message: "기록을 저장했어요")
         dismiss()
+    }
+
+    private func loadSavedCompletion() {
+        let completionID = StampCompletionModel.makeID(keyword: place.keyword)
+        let descriptor = FetchDescriptor<StampCompletionModel>(
+            predicate: #Predicate { completion in
+                completion.id == completionID
+            }
+        )
+
+        guard let completion = try? modelContext.fetch(descriptor).first else {
+            return
+        }
+
+        reviewText = completion.reviewText
+        selectedImages = completion.sortedPhotos.compactMap { photo in
+            UIImage(data: photo.imageData)
+        }
+        hasCompletedRecord = true
     }
 
     @ViewBuilder
@@ -188,7 +273,6 @@ extension PlaceImageItem: Identifiable {}
             name: "포항 미리보기",
             address: "경북 포항시"
         ),
-        isCompleted: false,
-        onStampCompleted: {}
+        isCompleted: false
     )
 }

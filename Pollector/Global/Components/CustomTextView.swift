@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomTextView: View {
     @Binding var text: String
     var placeholder: String = "내용을 입력해주세요"
+    var isDisabled: Bool = false
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -27,6 +28,7 @@ struct CustomTextView: View {
                 .scrollContentBackground(.hidden)
                 .padding(10)
                 .background(Color.clear)
+                .disabled(isDisabled)
                 .zIndex(0)
         }
         .frame(height: 198)

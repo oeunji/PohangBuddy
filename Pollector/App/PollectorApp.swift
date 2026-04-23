@@ -31,7 +31,8 @@ struct PollectorApp: App {
             StampListModel.self,
             Places.self,
             PlacesPhoto.self,
-            StampCompletionModel.self
+            StampCompletionModel.self,
+            StampCompletionPhoto.self
         ])
     }
 }

@@ -78,9 +78,7 @@ struct HomeView: View {
                 StampDetailView(
                     place: selectedPlace,
                     isCompleted: completedKeywords.contains(selectedPlace.keyword)
-                ) {
-                    completeStamp(for: selectedPlace)
-                }
+                )
             }
         }
         .task(id: selectedDropDown.id) {
@@ -101,34 +99,6 @@ struct HomeView: View {
                 .filter { selectedDropDown.keywords.contains($0.keyword) }
                 .map(\.keyword)
         )
-    }
-
-    private func completeStamp(for place: Places) {
-        let completionID = StampCompletionModel.makeID(keyword: place.keyword)
-        let descriptor = FetchDescriptor<StampCompletionModel>(
-            predicate: #Predicate { completion in
-                completion.id == completionID
-            }
-        )
-
-        if let existingCompletion = try? modelContext.fetch(descriptor).first {
-            existingCompletion.placeCacheKey = place.cacheKey
-            existingCompletion.placeID = place.placeID
-            existingCompletion.placeName = place.name
-            existingCompletion.completedDate = Date()
-        } else {
-            let completion = StampCompletionModel(
-                keyword: place.keyword,
-                placeCacheKey: place.cacheKey,
-                placeID: place.placeID,
-                placeName: place.name
-            )
-
-            modelContext.insert(completion)
-        }
-
-        try? modelContext.save()
-        showsPlaceDetail = false
     }
 }
 

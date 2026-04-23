@@ -10,10 +10,11 @@ import PhotosUI
 
 struct ImagePickerView: View {
     let width: CGFloat
+    @Binding var selectedImages: [UIImage]
+    var isLocked: Bool = false
 
     private let maxImageCount = 3
     @State private var selectedItems: [PhotosPickerItem] = []
-    @State private var selectedImages: [UIImage] = []
 
     private var cellSize: CGFloat {
         max(0, (width - 16) / 3)
@@ -21,12 +22,12 @@ struct ImagePickerView: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            if selectedImages.count < maxImageCount {
+            if !isLocked && selectedImages.count < maxImageCount {
                 addPhotoCell
             }
 
             ForEach(Array(selectedImages.enumerated()), id: \.offset) { index, image in
-                removablePhotoCell(image: image, index: index)
+                photoCell(image: image, index: index)
             }
         }
         .frame(height: cellSize)
@@ -60,23 +61,25 @@ struct ImagePickerView: View {
         }
     }
 
-    private func removablePhotoCell(image: UIImage, index: Int) -> some View {
+    private func photoCell(image: UIImage, index: Int) -> some View {
         Image(uiImage: image)
             .resizable()
             .scaledToFill()
             .frame(width: cellSize, height: cellSize)
             .clipShape(RoundedRectangle(cornerRadius: 18))
             .overlay(alignment: .topTrailing) {
-                Button {
-                    removeImage(at: index)
-                } label: {
-                    Image(systemName: "xmark.circle")
-                        .font(.system(size: 20))
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .black.opacity(0.45))
-                        .padding(12)
+                if !isLocked {
+                    Button {
+                        removeImage(at: index)
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                            .font(.system(size: 20))
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, .black.opacity(0.45))
+                            .padding(12)
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
     }
 
