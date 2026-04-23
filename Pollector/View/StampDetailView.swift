@@ -115,7 +115,7 @@ struct StampDetailView: View {
                 .padding(.horizontal, 16)
 
                 ActionButton(
-                    title: isCompleted ? "기록 완료" : "기록 남기기",
+                    title: hasCompletedRecord ? "기록 완료" : "기록 남기기",
                     imageName: "pencil",
                     backgroundColor: hasCompletedRecord ? Color.gray8 : Color.neutral4,
                     isDisabled: hasCompletedRecord
