@@ -20,6 +20,7 @@ struct StampDetailView: View {
     @State private var selection = 0
     @State private var selectedImages: [UIImage] = []
     @State private var hasCompletedRecord: Bool
+    private let maxReviewLength = 500
 
     init(place: Places, isCompleted: Bool) {
         self.place = place
@@ -92,17 +93,26 @@ struct StampDetailView: View {
                             .font(.micro1)
                             .foregroundStyle(.gray5)
                             .padding(.bottom, 8)
-
-                        Text(Date().koreanDateString)
-                            .font(.body4)
-                            .foregroundStyle(.neutral10)
-                            .padding(.bottom, 8)
-
+                        
                         ImagePickerView(
                             width: contentWidth,
                             selectedImages: $selectedImages,
                             isLocked: hasCompletedRecord
                         )
+                        .padding(.bottom, 8)
+                        
+                        HStack {
+                            Text("\(Date().koreanDateString)에 방문")
+                                .foregroundStyle(.neutral10)
+                            
+                            Spacer()
+                            
+                            Text("\(reviewText.count) / \(maxReviewLength)")
+                                .foregroundStyle(.neutral7)
+                        }
+                        .font(.body4)
+                        .padding(.horizontal, 6)
+                        .padding(.bottom, 8)
                     }
                     .padding(.horizontal, 16)
                 }
@@ -113,6 +123,7 @@ struct StampDetailView: View {
                     isDisabled: hasCompletedRecord
                 )
                 .padding(.horizontal, 16)
+                .padding(.bottom, 24)
 
                 ActionButton(
                     title: hasCompletedRecord ? "기록 완료" : "기록 남기기",
@@ -122,7 +133,6 @@ struct StampDetailView: View {
                 ) {
                     stampButtonTapped()
                 }
-                .padding(.top, 24)
                 .padding(.horizontal, 24)
                 .padding(.bottom, 32)
             }
@@ -130,6 +140,10 @@ struct StampDetailView: View {
             .ignoresSafeArea()
             .toolbar(.hidden, for: .tabBar)
             .toastView(toast: $toast)
+            .onChange(of: reviewText) { _, newValue in
+                guard newValue.count > maxReviewLength else { return }
+                reviewText = String(newValue.prefix(maxReviewLength))
+            }
             .task(id: place.keyword) {
                 loadSavedCompletion()
             }
@@ -204,7 +218,7 @@ struct StampDetailView: View {
             return
         }
 
-        reviewText = completion.reviewText ?? ""
+        reviewText = String((completion.reviewText ?? "").prefix(maxReviewLength))
         selectedImages = completion.sortedPhotos.compactMap { photo in
             UIImage(data: photo.imageData)
         }
