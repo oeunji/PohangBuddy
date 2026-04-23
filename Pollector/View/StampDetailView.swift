@@ -22,15 +22,16 @@ struct StampDetailView: View {
             let contentWidth = max(0, geometry.size.width - 32)
 
             ScrollView {
-                placeImagePager
-                    .frame(height: 240)
-                    .frame(maxWidth: .infinity)
-                    .clipped()
-                    .padding(.top, 10)
-                    .padding(.bottom, 16)
-
-                PageControl(numberOfPages: pageCount, currentPage: $selection)
-                    .padding(.bottom, 16)
+                ZStack(alignment: .bottom) {
+                    placeImagePager
+                        .frame(height: 240)
+                        .frame(maxWidth: .infinity)
+                        .clipped()
+                        .padding(.top, 10)
+                    
+                    PageControl(numberOfPages: pageCount, currentPage: $selection)
+                        .padding(.bottom, 16)
+                }
 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
@@ -90,7 +91,7 @@ struct StampDetailView: View {
                             }
                             .foregroundStyle(.neutral5)
                             .padding(.leading, 16)
-                            .padding(.bottom, 30)
+                            .padding(.bottom, 48)
                         }
                     }
 
