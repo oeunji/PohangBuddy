@@ -11,6 +11,7 @@ import SwiftData
 
 struct StampDetailView: View {
     let place: Places
+    let onSaved: () -> Void
 
     @Environment(\.modelContext) private var modelContext
     @State private var toast: FancyToast? = nil
@@ -22,8 +23,9 @@ struct StampDetailView: View {
     @State private var hasCompletedRecord: Bool
     private let maxReviewLength = 500
 
-    init(place: Places, isCompleted: Bool) {
+    init(place: Places, isCompleted: Bool, onSaved: @escaping () -> Void = {}) {
         self.place = place
+        self.onSaved = onSaved
         _hasCompletedRecord = State(initialValue: isCompleted)
     }
 
@@ -202,7 +204,7 @@ struct StampDetailView: View {
 
         try? modelContext.save()
         hasCompletedRecord = true
-        toast = FancyToast(message: "기록을 저장했어요")
+        onSaved()
         dismiss()
     }
 

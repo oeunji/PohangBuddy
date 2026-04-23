@@ -13,6 +13,7 @@ struct HomeView: View {
     @Query private var completedStamps: [StampCompletionModel]
     @State private var selectedPlace: Places?
     @State private var showsPlaceDetail = false
+    @State private var toast: FancyToast? = nil
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
     @StateObject private var searchViewModel = SearchViewModel()
@@ -73,12 +74,15 @@ struct HomeView: View {
                 }
             }
         }
+        .toastView(toast: $toast)
         .navigationDestination(isPresented: $showsPlaceDetail) {
             if let selectedPlace {
                 StampDetailView(
                     place: selectedPlace,
                     isCompleted: completedKeywords.contains(selectedPlace.keyword)
-                )
+                ) {
+                    toast = FancyToast(message: "기록을 남겼어요")
+                }
             }
         }
         .task(id: selectedDropDown.id) {
