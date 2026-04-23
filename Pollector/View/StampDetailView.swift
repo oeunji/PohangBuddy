@@ -133,13 +133,6 @@ struct StampDetailView: View {
             }
             .background(Color.white)
             .toolbar(.hidden, for: .tabBar)
-            .toolbar {
-                Button {
-                    isBookmarked.toggle()
-                } label: {
-                    Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
-                }
-            }
         }
     }
 
