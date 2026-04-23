@@ -11,6 +11,7 @@ import UIKit
 struct StampDetailView: View {
     let place: Places
     let onStampCompleted: () -> Void
+    @State private var toast: FancyToast? = nil
 
     @Environment(\.dismiss) private var dismiss
     @State private var reviewText = ""
@@ -54,6 +55,7 @@ struct StampDetailView: View {
                                 if let address = place.address {
                                     UIPasteboard.general.string = address
                                 }
+                                toast = FancyToast(message: "주소를 복사했어요")
                             } label: {
                                 Text("복사")
                                     .font(.micro2)
@@ -111,6 +113,7 @@ struct StampDetailView: View {
             }
             .background(Color.white)
             .toolbar(.hidden, for: .tabBar)
+            .toastView(toast: $toast)
         }
     }
 
