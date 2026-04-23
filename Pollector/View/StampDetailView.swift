@@ -10,6 +10,7 @@ import UIKit
 
 struct StampDetailView: View {
     let place: Places
+    let isCompleted: Bool
     let onStampCompleted: () -> Void
     @State private var toast: FancyToast? = nil
 
@@ -101,14 +102,16 @@ struct StampDetailView: View {
                 .padding(.horizontal, 16)
 
                 ActionButton(
-                    title: "기록 남기기",
-                    imageName: "pencil"
+                    title: isCompleted ? "기록 완료" : "기록 남기기",
+                    imageName: "pencil",
+                    backgroundColor: isCompleted ? Color.gray8 : Color.neutral4,
+                    isDisabled: isCompleted
                 ) {
                     stampButtonTapped()
                 }
                 .padding(.top, 24)
                 .padding(.horizontal, 24)
-                .padding(.bottom, 24)
+                .padding(.bottom, 32)
             }
             .background(Color.white)
             .ignoresSafeArea()
@@ -118,6 +121,7 @@ struct StampDetailView: View {
     }
 
     private func stampButtonTapped() {
+        guard !isCompleted else { return }
         onStampCompleted()
         dismiss()
     }
@@ -184,6 +188,7 @@ extension PlaceImageItem: Identifiable {}
             name: "포항 미리보기",
             address: "경북 포항시"
         ),
+        isCompleted: false,
         onStampCompleted: {}
     )
 }

@@ -75,7 +75,10 @@ struct HomeView: View {
         }
         .navigationDestination(isPresented: $showsPlaceDetail) {
             if let selectedPlace {
-                StampDetailView(place: selectedPlace) {
+                StampDetailView(
+                    place: selectedPlace,
+                    isCompleted: completedKeywords.contains(selectedPlace.keyword)
+                ) {
                     completeStamp(for: selectedPlace)
                 }
             }
