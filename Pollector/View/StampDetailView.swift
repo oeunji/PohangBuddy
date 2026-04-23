@@ -24,10 +24,9 @@ struct StampDetailView: View {
             ScrollView {
                 ZStack(alignment: .bottom) {
                     placeImagePager
-                        .frame(height: 240)
+                        .frame(height: 300)
                         .frame(maxWidth: .infinity)
                         .clipped()
-                        .padding(.top, 10)
                     
                     PageControl(numberOfPages: pageCount, currentPage: $selection)
                         .padding(.bottom, 16)
@@ -36,7 +35,7 @@ struct StampDetailView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
                         Text(place.name)
-                            .font(.head1)
+                            .font(.display2)
                             .foregroundStyle(.neutral10)
                             .padding(.top, 16)
 
@@ -102,8 +101,8 @@ struct StampDetailView: View {
                 .padding(.horizontal, 16)
 
                 ActionButton(
-                    title: "스탬프 받기",
-                    imageName: "completeIcon"
+                    title: "기록 남기기",
+                    imageName: "pencil"
                 ) {
                     stampButtonTapped()
                 }
@@ -112,6 +111,7 @@ struct StampDetailView: View {
                 .padding(.bottom, 24)
             }
             .background(Color.white)
+            .ignoresSafeArea()
             .toolbar(.hidden, for: .tabBar)
             .toastView(toast: $toast)
         }

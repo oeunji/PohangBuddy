@@ -18,7 +18,7 @@ struct ActionButton: View {
                 Text(title)
                     .font(.head3)
             } icon: {
-                Image(imageName)
+                Image(systemName: imageName)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
@@ -28,7 +28,7 @@ struct ActionButton: View {
             .frame(maxWidth: .infinity, minHeight: 56)
             .background(
                 RoundedRectangle(cornerRadius: 24)
-                    .fill(.neutral3)
+                    .fill(.neutral4)
             )
             .shadow(color: Color.blue.opacity(0.3), radius: 8, y: 4)
         }
