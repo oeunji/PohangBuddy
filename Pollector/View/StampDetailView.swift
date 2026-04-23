@@ -74,7 +74,7 @@ struct StampDetailView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("리뷰 작성하기")
+                        Text("기록 작성하기")
                             .font(.head1)
                             .foregroundStyle(.neutral10)
                             .padding(.bottom, 8)

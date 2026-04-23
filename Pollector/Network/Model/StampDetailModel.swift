@@ -37,7 +37,7 @@ extension StampDetailModel {
             address: address,
             distanceText: distanceText,
             priceText: priceText,
-            reviewTitle: "리뷰 작성하기",
+            reviewTitle: "기록 작성하기",
             reviewPrompt: "오늘의 순간을 사진과 함께 기록해보세요",
             reviewPlaceholder: "자유롭게 기록해보세요",
             actionButtonTitle: "기록 남기기",
