@@ -1,6 +1,6 @@
 //
 //  CustomTextView.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 4/1/26.
 //
@@ -10,6 +10,8 @@ import SwiftUI
 struct CustomTextView: View {
     @Binding var text: String
     var placeholder: String = "내용을 입력해주세요"
+    var isDisabled: Bool = false
+    var isFocused: FocusState<Bool>.Binding?
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -22,12 +24,24 @@ struct CustomTextView: View {
                     .zIndex(1)
             }
 
-            TextEditor(text: $text)
-                .font(.body4)
-                .scrollContentBackground(.hidden)
-                .padding(10)
-                .background(Color.clear)
-                .zIndex(0)
+            if let isFocused {
+                TextEditor(text: $text)
+                    .focused(isFocused)
+                    .font(.body4)
+                    .scrollContentBackground(.hidden)
+                    .padding(10)
+                    .background(Color.clear)
+                    .disabled(isDisabled)
+                    .zIndex(0)
+            } else {
+                TextEditor(text: $text)
+                    .font(.body4)
+                    .scrollContentBackground(.hidden)
+                    .padding(10)
+                    .background(Color.clear)
+                    .disabled(isDisabled)
+                    .zIndex(0)
+            }
         }
         .frame(height: 198)
         .background(

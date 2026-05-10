@@ -1,6 +1,6 @@
 //
 //  NetworkError.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 4/21/26.
 //

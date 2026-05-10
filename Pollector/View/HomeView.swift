@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 3/27/26.
 //
@@ -13,6 +13,7 @@ struct HomeView: View {
     @Query private var completedStamps: [StampCompletionModel]
     @State private var selectedPlace: Places?
     @State private var showsPlaceDetail = false
+    @State private var toast: FancyToast? = nil
     @State private var showModal = false
     @State private var selectedDropDown = DropDownModel.samples[0]
     @StateObject private var searchViewModel = SearchViewModel()
@@ -73,10 +74,14 @@ struct HomeView: View {
                 }
             }
         }
+        .toastView(toast: $toast)
         .navigationDestination(isPresented: $showsPlaceDetail) {
             if let selectedPlace {
-                StampDetailView(place: selectedPlace) {
-                    completeStamp(for: selectedPlace)
+                StampDetailView(
+                    place: selectedPlace,
+                    isCompleted: completedKeywords.contains(selectedPlace.keyword)
+                ) {
+                    toast = FancyToast(message: "기록을 남겼어요")
                 }
             }
         }
@@ -98,34 +103,6 @@ struct HomeView: View {
                 .filter { selectedDropDown.keywords.contains($0.keyword) }
                 .map(\.keyword)
         )
-    }
-
-    private func completeStamp(for place: Places) {
-        let completionID = StampCompletionModel.makeID(keyword: place.keyword)
-        let descriptor = FetchDescriptor<StampCompletionModel>(
-            predicate: #Predicate { completion in
-                completion.id == completionID
-            }
-        )
-
-        if let existingCompletion = try? modelContext.fetch(descriptor).first {
-            existingCompletion.placeCacheKey = place.cacheKey
-            existingCompletion.placeID = place.placeID
-            existingCompletion.placeName = place.name
-            existingCompletion.completedDate = Date()
-        } else {
-            let completion = StampCompletionModel(
-                keyword: place.keyword,
-                placeCacheKey: place.cacheKey,
-                placeID: place.placeID,
-                placeName: place.name
-            )
-
-            modelContext.insert(completion)
-        }
-
-        try? modelContext.save()
-        showsPlaceDetail = false
     }
 }
 

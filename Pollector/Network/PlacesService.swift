@@ -1,6 +1,6 @@
 //
 //  PlacesService.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 4/21/26.
 //
@@ -46,7 +46,7 @@ final class PlacesService: PlacesServicing {
             placeProperties: properties,
             locationBias: pohangBias,
             includedType: nil,
-            maxResultCount: 10,
+            maxResultCount: 1,
             minRating: 0.0,
             isOpenNow: false,
             priceLevels: nil,

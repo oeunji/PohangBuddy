@@ -1,6 +1,6 @@
 //
 //  Places.swift
-//  pohangBuddy
+//  Pollector
 //
 //  Created by 이은지 on 4/22/26.
 //
@@ -51,10 +51,16 @@ final class Places {
     }
 
     var primaryPhoto: PlacesPhoto? {
-        photos.first { photo in
+        sortedPhotos.first { photo in
             guard let imageData = photo.imageData else { return false }
             return !imageData.isEmpty
-        } ?? photos.first
+        } ?? sortedPhotos.first
+    }
+
+    var sortedPhotos: [PlacesPhoto] {
+        photos.sorted { lhs, rhs in
+            lhs.sortIndexValue < rhs.sortIndexValue
+        }
     }
 }
 
@@ -64,11 +70,23 @@ final class PlacesPhoto {
     var width: Int
     var height: Int
     var imageData: Data?
+    var sortIndex: Int?
 
-    init(reference: String, width: Int, height: Int, imageData: Data? = nil) {
+    init(
+        reference: String,
+        width: Int,
+        height: Int,
+        imageData: Data? = nil,
+        sortIndex: Int = 0
+    ) {
         self.reference = reference
         self.width = width
         self.height = height
         self.imageData = imageData
+        self.sortIndex = sortIndex
+    }
+
+    var sortIndexValue: Int {
+        sortIndex ?? 0
     }
 }
